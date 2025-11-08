@@ -19,15 +19,14 @@ const translations = {
     "nav.skill": "Skill",
     "nav.project": "Project",
     "nav.contact": "Contact",
-    "header.name": "김개발",
+    "header.name": "JH's Portfolio",
 
     // Hero Section
     "hero.badge": "신입 백엔드 개발자",
-    "hero.greeting": "안녕하세요,",
-    "hero.name": "김개발",
-    "hero.title": "입니다",
-    "hero.description":
-      "확장 가능한 서버 아키텍처와 효율적인 데이터베이스 설계를 통해\n안정적이고 성능 좋은 백엔드 시스템을 구축합니다.",
+    "hero.greeting": "늘 끊임없이 배우고자 하는",
+    "hero.name": "백엔드 개발자 황준하 ",
+    "hero.title": "포트폴리오입니다.",
+    "hero.description": "확장 가능한 서버 아키텍처와 효율적인 데이터베이스 설계를 통해\n안정적이고 성능 좋은 백엔드 시스템을 구축합니다.",
     "hero.contact": "연락하기",
     "hero.resume": "이력서 보기",
 
@@ -35,14 +34,11 @@ const translations = {
     "about.title": "About Me",
     "about.subtitle": "저를 소개합니다",
     "about.whoiam.title": "Who I Am",
-    "about.whoiam.desc":
-      "문제 해결을 즐기는 신입 백엔드 개발자입니다. 효율적인 코드와 확장 가능한 아키텍처 설계에 관심이 많습니다.",
+    "about.whoiam.desc": "문제 해결을 즐기는 신입 백엔드 개발자입니다. 효율적인 코드와 확장 가능한 아키텍처 설계에 관심이 많습니다.",
     "about.whatido.title": "What I Do",
-    "about.whatido.desc":
-      "RESTful API 설계, 데이터베이스 최적화, 서버 아키텍처 구축을 통해 안정적인 백엔드 시스템을 개발합니다.",
+    "about.whatido.desc": "RESTful API 설계, 데이터베이스 최적화, 서버 아키텍처 구축을 통해 안정적인 백엔드 시스템을 개발합니다.",
     "about.whatlove.title": "What I Love",
-    "about.whatlove.desc":
-      "새로운 기술을 배우고 적용하는 것을 좋아하며, 팀과 협업하여 더 나은 서비스를 만드는 것에 열정이 있습니다.",
+    "about.whatlove.desc": "새로운 기술을 배우고 적용하는 것을 좋아하며, 팀과 협업하여 더 나은 서비스를 만드는 것에 열정이 있습니다.",
 
     // Tech Stack Section
     "skill.title": "기술 스택",
@@ -76,9 +72,8 @@ const translations = {
     "contact.send": "이메일 보내기",
 
     // Footer
-    "footer.name": "김개발",
-    "footer.description":
-      "확장 가능한 서버 아키텍처와 효율적인 데이터베이스 설계를 통해 안정적이고 성능 좋은 백엔드 시스템을 구축합니다.",
+    "footer.name": "황준하",
+    "footer.description": "확장 가능한 서버 아키텍처와 효율적인 데이터베이스 설계를 통해 안정적이고 성능 좋은 백엔드 시스템을 구축합니다.",
     "footer.quicklinks": "Quick Links",
     "footer.connect": "Connect",
     "footer.rights": "All rights reserved.",
@@ -96,8 +91,7 @@ const translations = {
     "hero.greeting": "Hello,",
     "hero.name": "I'm Kim",
     "hero.title": "",
-    "hero.description":
-      "I design and implement stable and high-performance backend systems\nthrough scalable server architecture and efficient database design.",
+    "hero.description": "I design and implement stable and high-performance backend systems\nthrough scalable server architecture and efficient database design.",
     "hero.contact": "Contact Me",
     "hero.resume": "View Resume",
 
@@ -105,14 +99,11 @@ const translations = {
     "about.title": "About Me",
     "about.subtitle": "Let me introduce myself",
     "about.whoiam.title": "Who I Am",
-    "about.whoiam.desc":
-      "I'm a junior backend developer who enjoys problem-solving. I'm interested in efficient code and scalable architecture design.",
+    "about.whoiam.desc": "I'm a junior backend developer who enjoys problem-solving. I'm interested in efficient code and scalable architecture design.",
     "about.whatido.title": "What I Do",
-    "about.whatido.desc":
-      "I develop stable backend systems through RESTful API design, database optimization, and server architecture construction.",
+    "about.whatido.desc": "I develop stable backend systems through RESTful API design, database optimization, and server architecture construction.",
     "about.whatlove.title": "What I Love",
-    "about.whatlove.desc":
-      "I love learning and applying new technologies, and I'm passionate about creating better services through team collaboration.",
+    "about.whatlove.desc": "I love learning and applying new technologies, and I'm passionate about creating better services through team collaboration.",
 
     // Tech Stack Section
     "skill.title": "Tech Stack",
@@ -147,8 +138,7 @@ const translations = {
 
     // Footer
     "footer.name": "Kim Dev",
-    "footer.description":
-      "Building stable and high-performance backend systems through scalable server architecture and efficient database design.",
+    "footer.description": "Building stable and high-performance backend systems through scalable server architecture and efficient database design.",
     "footer.quicklinks": "Quick Links",
     "footer.connect": "Connect",
     "footer.rights": "All rights reserved.",

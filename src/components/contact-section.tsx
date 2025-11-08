@@ -25,10 +25,10 @@ export function ContactSection() {
               <div>
                 <h3 className="text-lg font-bold text-foreground mb-1">{t("contact.email")}</h3>
                 <a
-                  href="mailto:developer@example.com"
+                  href="mailto:h_leopold@naver.com"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  developer@example.com
+                  h_leopold@naver.com
                 </a>
               </div>
             </div>
@@ -41,8 +41,8 @@ export function ContactSection() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-foreground mb-1">{t("contact.phone")}</h3>
-                <a href="tel:+821012345678" className="text-muted-foreground hover:text-primary transition-colors">
-                  +82 10-1234-5678
+                <a href="tel:+821041756818" className="text-muted-foreground hover:text-primary transition-colors">
+                  +82 10-4175-6818
                 </a>
               </div>
             </div>
@@ -56,12 +56,12 @@ export function ContactSection() {
               <div>
                 <h3 className="text-lg font-bold text-foreground mb-1">{t("contact.github")}</h3>
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/backendVirtuoso"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  github.com/yourusername
+                  github.com/backendVirtuoso
                 </a>
               </div>
             </div>
@@ -75,12 +75,12 @@ export function ContactSection() {
               <div>
                 <h3 className="text-lg font-bold text-foreground mb-1">{t("contact.linkedin")}</h3>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/준하-황-5b121a350/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  linkedin.com/in/yourusername
+                  linkedin.com/in/황준하
                 </a>
               </div>
             </div>

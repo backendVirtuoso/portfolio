@@ -23,7 +23,7 @@ const techStack = [
   {
     category: "skill.tools",
     icon: GitBranch,
-    items: ["Git", "Docker", "AWS", "Jenkins"],
+    items: ["Git", "Docker", "AWS"],
   },
 ]
 

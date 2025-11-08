@@ -2,8 +2,8 @@
 
 import { ThreeScene } from "./three-scene"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, FileText } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
+import { Github, Linkedin, Mail, FileText } from "lucide-react"
 
 export function HeroSection() {
   const { t } = useI18n()

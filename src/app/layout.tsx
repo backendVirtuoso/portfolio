@@ -12,9 +12,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "김개발 - 백엔드 개발자 포트폴리오",
-  description: "신입 백엔드 개발자 김개발의 포트폴리오입니다",
-  generator: "v0.app",
+  title: "BE 개발자 황준하 포트폴리오입니다.",
+  description: "신입 백엔드 개발자 황준하의 포트폴리오입니다",
+  generator: "backendVirtuoso",
 }
 
 export default function RootLayout({
