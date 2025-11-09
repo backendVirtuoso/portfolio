@@ -86,14 +86,14 @@ const translations = {
     "nav.skill": "Skill",
     "nav.project": "Project",
     "nav.contact": "Contact",
-    "header.name": "Kim Dev",
+    "header.name": "Junha Hwang's Portfolio",
 
     // Hero Section
     "hero.badge": "Junior Backend Developer",
-    "hero.greeting": "Hello,",
-    "hero.name": "I'm Kim",
-    "hero.title": "",
-    "hero.description": "I design and implement stable and high-performance backend systems\nthrough scalable server architecture and efficient database design.",
+    "hero.greeting": "Always eager to learn,",
+    "hero.name": "Backend Developer Junha Hwang ",
+    "hero.title": "Portfolio",
+    "hero.description": "Building stable and high-performance backend systems\nthrough scalable server architecture and efficient database design.",
     "hero.contact": "Contact Me",
     "hero.resume": "View Resume",
 
@@ -119,7 +119,7 @@ const translations = {
 
     // Projects Section
     "project.title": "Projects",
-    "project.subtitle": "Practical project experience",
+    "project.subtitle": "Practical project experience applicable to real-world scenarios",
     "project.filter.all": "All",
     "project.filter.team": "Team",
     "project.filter.personal": "Personal",
@@ -141,7 +141,7 @@ const translations = {
     "contact.send": "Send Email",
 
     // Footer
-    "footer.name": "Kim Dev",
+    "footer.name": "Junha Hwang",
     "footer.description": "Building stable and high-performance backend systems through scalable server architecture and efficient database design.",
     "footer.quicklinks": "Quick Links",
     "footer.connect": "Connect",
