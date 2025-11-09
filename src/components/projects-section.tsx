@@ -87,7 +87,7 @@ export function ProjectsSection() {
                     {t(`project.category.${project.category}`)}
                   </span>
                 </div>
-                <h3 className="font-sans text-lg font-bold text-foreground leading-tight line-clamp-2 min-h-[3rem]">
+                <h3 className="font-sans text-lg font-bold text-foreground leading-tight line-clamp-2 min-h-[3rem] whitespace-pre-line">
                   {project.title}
                 </h3>
               </div>

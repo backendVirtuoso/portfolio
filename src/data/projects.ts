@@ -2,7 +2,7 @@ import type { Project } from "@/types"
 
 export const projects: Project[] = [
   {
-    title: "React SPA 경기도 사고 유형별 위치 조회 프로젝트",
+    title: "React SPA \n경기도 사고 유형별 위치 조회 프로젝트",
     description: "경기도 교통사고 다발지역 정보를 조회하고 카카오맵 API로 시각화하는 React 기반 교통안전 프로젝트입니다. react-virtualized를 활용한 렌더링 최적화와 사고유형별/지역별/연도별 검색 기능을 제공합니다",
     tech: ["HTML5", "CSS", "JavaScript", "React"],
     github: "https://github.com/backendVirtuoso/gsitm-react-traffic-safety",
