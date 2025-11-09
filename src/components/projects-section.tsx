@@ -4,12 +4,12 @@ import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
-import { useI18n } from "@/lib/i18n-context"
+import { useTranslations } from 'next-intl'
 import { projects } from "@/data/projects"
 import type { ProjectCategory } from "@/types"
 
 export function ProjectsSection() {
-  const { t } = useI18n()
+  const t = useTranslations()
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("all")
 
   const categories = [

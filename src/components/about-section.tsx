@@ -2,10 +2,10 @@
 
 import { User, Target, Heart } from "lucide-react"
 import { Card } from "@/components/ui/card"
-import { useI18n } from "@/lib/i18n-context"
+import { useTranslations } from 'next-intl'
 
 export function AboutSection() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   return (
     <section id="about" className="min-h-screen flex items-center py-20 px-4 bg-background">

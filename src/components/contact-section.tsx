@@ -3,10 +3,10 @@
 import { Mail, Github, Linkedin, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { useI18n } from "@/lib/i18n-context"
+import { useTranslations } from 'next-intl'
 
 export function ContactSection() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   return (
     <section id="contact" className="min-h-screen flex items-center py-20 px-4 bg-muted/30">

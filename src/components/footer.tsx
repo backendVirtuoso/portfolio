@@ -2,10 +2,10 @@
 
 import { Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useI18n } from "@/lib/i18n-context"
+import { useTranslations } from 'next-intl'
 
 export function Footer() {
-  const { t } = useI18n()
+  const t = useTranslations()
   const currentYear = new Date().getFullYear()
 
   return (

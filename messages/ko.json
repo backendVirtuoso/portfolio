@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "about": "About",
+    "skill": "Skill",
+    "project": "Project",
+    "contact": "Contact"
+  },
+  "header": {
+    "name": "황준하's Portfolio"
+  },
+  "hero": {
+    "badge": "신입 백엔드 개발자",
+    "greeting": "늘 끊임없이 배우고자 하는",
+    "name": "백엔드 개발자 황준하 ",
+    "title": "포트폴리오입니다.",
+    "description": "확장 가능한 서버 아키텍처와 효율적인 데이터베이스 설계를 통해\n안정적이고 성능 좋은 백엔드 시스템을 구축합니다.",
+    "contact": "연락하기",
+    "resume": "이력서 보기"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "저를 소개합니다",
+    "whoiam": {
+      "title": "Who I Am",
+      "desc": "문제 해결을 즐기는 신입 백엔드 개발자입니다. 효율적인 코드와 확장 가능한 아키텍처 설계에 관심이 많습니다."
+    },
+    "whatido": {
+      "title": "What I Do",
+      "desc": "RESTful API 설계, 데이터베이스 최적화, 서버 아키텍처 구축을 통해 안정적인 백엔드 시스템을 개발합니다."
+    },
+    "whatlove": {
+      "title": "What I Love",
+      "desc": "새로운 기술을 배우고 적용하는 것을 좋아하며, 팀과 협업하여 더 나은 서비스를 만드는 것에 열정이 있습니다."
+    }
+  },
+  "skill": {
+    "title": "기술 스택",
+    "subtitle": "다양한 기술을 활용하여 최적의 솔루션을 제공합니다",
+    "frontend": "프론트엔드",
+    "backend": "백엔드",
+    "database": "데이터베이스",
+    "orm": "ORM",
+    "tools": "도구",
+    "certificate": "자격증"
+  },
+  "project": {
+    "title": "프로젝트",
+    "subtitle": "실무에 적용 가능한 프로젝트 경험",
+    "filter": {
+      "all": "전체",
+      "team": "팀",
+      "personal": "개인",
+      "course": "강의"
+    },
+    "category": {
+      "team": "팀",
+      "personal": "개인",
+      "course": "강의"
+    },
+    "code": "코드",
+    "demo": "데모",
+    "empty": "해당 카테고리의 프로젝트가 없습니다."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "함께 일하고 싶으시다면 언제든 연락주세요",
+    "email": "Email",
+    "phone": "Phone",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "send": "이메일 보내기"
+  },
+  "footer": {
+    "name": "황준하",
+    "description": "확장 가능한 서버 아키텍처와 효율적인 데이터베이스 설계를 통해 안정적이고 성능 좋은 백엔드 시스템을 구축합니다.",
+    "quicklinks": "Quick Links",
+    "connect": "Connect",
+    "rights": "All rights reserved."
+  }
+}
+

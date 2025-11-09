@@ -4,14 +4,18 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Globe, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
-import { useI18n } from "@/lib/i18n-context"
+import { useTranslations, useLocale } from 'next-intl'
+import { useRouter, usePathname } from '@/i18n/routing'
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
-  const { language, setLanguage, t } = useI18n()
+  const t = useTranslations()
+  const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
@@ -31,7 +35,8 @@ export function Header() {
   }
 
   const toggleLanguage = () => {
-    setLanguage(language === "ko" ? "en" : "ko")
+    const newLocale = locale === 'ko' ? 'en' : 'ko'
+    router.replace(pathname, { locale: newLocale })
   }
 
   const toggleTheme = () => {

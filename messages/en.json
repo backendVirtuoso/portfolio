@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "about": "About",
+    "skill": "Skill",
+    "project": "Project",
+    "contact": "Contact"
+  },
+  "header": {
+    "name": "Junha Hwang's Portfolio"
+  },
+  "hero": {
+    "badge": "Junior Backend Developer",
+    "greeting": "Always eager to learn,",
+    "name": "Backend Developer Junha Hwang ",
+    "title": "Portfolio",
+    "description": "Building stable and high-performance backend systems\nthrough scalable server architecture and efficient database design.",
+    "contact": "Contact Me",
+    "resume": "View Resume"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Let me introduce myself",
+    "whoiam": {
+      "title": "Who I Am",
+      "desc": "I'm a junior backend developer who enjoys problem-solving. I'm interested in efficient code and scalable architecture design."
+    },
+    "whatido": {
+      "title": "What I Do",
+      "desc": "I develop stable backend systems through RESTful API design, database optimization, and server architecture construction."
+    },
+    "whatlove": {
+      "title": "What I Love",
+      "desc": "I love learning and applying new technologies, and I'm passionate about creating better services through team collaboration."
+    }
+  },
+  "skill": {
+    "title": "Tech Stack",
+    "subtitle": "Providing optimal solutions using various technologies",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "orm": "ORM",
+    "tools": "Tools",
+    "certificate": "Certificate"
+  },
+  "project": {
+    "title": "Projects",
+    "subtitle": "Practical project experience applicable to real-world scenarios",
+    "filter": {
+      "all": "All",
+      "team": "Team",
+      "personal": "Personal",
+      "course": "Course"
+    },
+    "category": {
+      "team": "Team",
+      "personal": "Personal",
+      "course": "Course"
+    },
+    "code": "Code",
+    "demo": "Demo",
+    "empty": "No projects in this category."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Feel free to reach out if you'd like to work together",
+    "email": "Email",
+    "phone": "Phone",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "send": "Send Email"
+  },
+  "footer": {
+    "name": "Junha Hwang",
+    "description": "Building stable and high-performance backend systems through scalable server architecture and efficient database design.",
+    "quicklinks": "Quick Links",
+    "connect": "Connect",
+    "rights": "All rights reserved."
+  }
+}
+

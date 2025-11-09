@@ -2,11 +2,11 @@
 
 import { ThreeScene } from "./three-scene"
 import { Button } from "@/components/ui/button"
-import { useI18n } from "@/lib/i18n-context"
+import { useTranslations } from 'next-intl'
 import { Github, Linkedin, Mail, FileText } from "lucide-react"
 
 export function HeroSection() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
