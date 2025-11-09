@@ -8,7 +8,10 @@ export function TechStackSection() {
   const t = useTranslations()
 
   return (
-    <section id="skill" className="min-h-screen flex items-center py-24 px-4 bg-muted/30">
+    <section id="skill" className="relative min-h-screen flex items-center py-24 px-4 bg-muted/30 border-t border-border/50">
+      {/* Section Decorator */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      
       <div className="mx-auto max-w-7xl w-full">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-balance font-sans text-4xl font-bold tracking-tight text-foreground md:text-5xl">

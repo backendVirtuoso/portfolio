@@ -45,7 +45,7 @@ export const projects: Project[] = [
     title: "K-Sketch",
     description: "Spring Boot v3와 React 18 기반의 종합 여행 플랫폼으로, JWT + OAuth2 인증, WebSocket + Kafka 실시간 채팅, Tour API 연동을 통한 여행지 정보 제공 및 일정 관리 기능을 갖추고 있습니다. Redis 캐싱과 이벤트 기반 아키텍처를 적용한 풀스택 프로젝트입니다.",
     tech: ["React", "Spring Boot", "MyBatis", "MySQL", "Redis", "Kafka"],
-    github: "https://github.com/dreamy-travel/K-Sketch",
+    github: "https://github.com/backendVirtuoso/K-Sketch",
     demo: "#",
     category: "team",
   },

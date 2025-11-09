@@ -9,8 +9,11 @@ export function ContactSection() {
   const t = useTranslations()
 
   return (
-    <section id="contact" className="min-h-screen flex items-center py-20 px-4 bg-muted/30">
-      <div className="mx-auto max-w-4xl">
+    <section id="contact" className="relative min-h-screen flex items-center py-24 px-4 bg-muted/30 border-t border-border/50">
+      {/* Section Decorator */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      
+      <div className="mx-auto max-w-4xl w-full">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">{t("contact.title")}</h2>
           <p className="text-lg text-muted-foreground">{t("contact.subtitle")}</p>
