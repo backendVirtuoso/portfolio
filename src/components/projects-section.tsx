@@ -22,8 +22,8 @@ const projects: Project[] = [
     title: "React SPA 경기도 사고 유형별 위치 조회 프로젝트",
     description: "교통안전기관 연락망 CRUD 기능 구현, 사고 데이터 필터링 기능 구현, Route 처리",
     tech: ["HTML5", "CSS", "JavaScript", "React"],
-    github: "https://github.com/GSITM-Team3/react-traffic-safety",
-    demo: "#",
+    github: "https://github.com/backendVirtuoso/gsitm-react-traffic-safety",
+    demo: "https://backendvirtuoso.github.io/gsitm-react-traffic-safety/",
     category: "team",
   },
   {
@@ -128,14 +128,29 @@ export function ProjectsSection() {
                 </div>
               </div>
               <div className="flex gap-2 border-t border-border p-4">
-                <Button variant="outline" size="sm" className="flex-1 gap-2 bg-transparent">
-                  <Github className="h-4 w-4" />
-                  {t("project.code")}
-                </Button>
-                <Button variant="outline" size="sm" className="flex-1 gap-2 bg-transparent">
-                  <ExternalLink className="h-4 w-4" />
-                  {t("project.demo")}
-                </Button>
+                {project.demo && project.demo !== "#" ? (
+                  <>
+                    <Button variant="outline" size="sm" className="flex-1 gap-2 bg-transparent" asChild>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="h-4 w-4" />
+                        {t("project.code")}
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="sm" className="flex-1 gap-2 bg-transparent" asChild>
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" />
+                        {t("project.demo")}
+                      </a>
+                    </Button>
+                  </>
+                ) : (
+                  <Button variant="outline" size="sm" className="w-full gap-2 bg-transparent" asChild>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <Github className="h-4 w-4" />
+                      {t("project.code")}
+                    </a>
+                  </Button>
+                )}
               </div>
             </Card>
           ))}

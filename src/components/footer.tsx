@@ -49,17 +49,23 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-bold text-foreground mb-4">{t("footer.connect")}</h3>
             <div className="flex gap-2">
-              <Button variant="outline" size="icon" className="rounded-full bg-transparent">
-                <Github className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
+              <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
+                <a href="https://github.com/backendVirtuoso" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-4 w-4" />
+                  <span className="sr-only">GitHub</span>
+                </a>
               </Button>
-              <Button variant="outline" size="icon" className="rounded-full bg-transparent">
-                <Linkedin className="h-4 w-4" />
-                <span className="sr-only">LinkedIn</span>
+              <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
+                <a href="https://linkedin.com/in/준하-황-5b121a350/" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="h-4 w-4" />
+                  <span className="sr-only">LinkedIn</span>
+                </a>
               </Button>
-              <Button variant="outline" size="icon" className="rounded-full bg-transparent">
-                <Mail className="h-4 w-4" />
-                <span className="sr-only">Email</span>
+              <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
+                <a href="mailto:h_leopold@naver.com">
+                  <Mail className="h-4 w-4" />
+                  <span className="sr-only">Email</span>
+                </a>
               </Button>
             </div>
           </div>

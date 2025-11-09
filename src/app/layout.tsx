@@ -6,6 +6,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import { I18nProvider } from "@/lib/i18n-context"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -29,6 +30,7 @@ export default function RootLayout({
           <I18nProvider>
             <Header />
             {children}
+            <SpeedInsights />
             <Footer />
           </I18nProvider>
         </ThemeProvider>

@@ -39,29 +39,39 @@ export function HeroSection() {
           </p>
 
           <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg" className="gap-2">
-              <Mail className="h-4 w-4" />
-              {t("hero.contact")}
+            <Button size="lg" className="gap-2" asChild>
+              <a href="mailto:h_leopold@naver.com">
+                <Mail className="h-4 w-4" />
+                {t("hero.contact")}
+              </a>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2 bg-transparent">
-              <FileText className="h-4 w-4" />
-              {t("hero.resume")}
+            <Button size="lg" variant="outline" className="gap-2 bg-transparent" asChild>
+              <a href="https://github.com/backendVirtuoso" target="_blank" rel="noopener noreferrer">
+                <FileText className="h-4 w-4" />
+                {t("hero.resume")}
+              </a>
             </Button>
           </div>
 
           {/* Social Links */}
           <div className="flex items-center justify-center gap-4">
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
+            <Button variant="ghost" size="icon" className="rounded-full" asChild>
+              <a href="https://github.com/backendVirtuoso" target="_blank" rel="noopener noreferrer">
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
+              </a>
             </Button>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <Linkedin className="h-5 w-5" />
-              <span className="sr-only">LinkedIn</span>
+            <Button variant="ghost" size="icon" className="rounded-full" asChild>
+              <a href="https://linkedin.com/in/준하-황-5b121a350/" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="h-5 w-5" />
+                <span className="sr-only">LinkedIn</span>
+              </a>
             </Button>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <Mail className="h-5 w-5" />
-              <span className="sr-only">Email</span>
+            <Button variant="ghost" size="icon" className="rounded-full" asChild>
+              <a href="mailto:h_leopold@naver.com">
+                <Mail className="h-5 w-5" />
+                <span className="sr-only">Email</span>
+              </a>
             </Button>
           </div>
         </div>

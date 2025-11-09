@@ -88,9 +88,11 @@ export function ContactSection() {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="gap-2">
-            <Mail className="h-4 w-4" />
-            {t("contact.send")}
+          <Button size="lg" className="gap-2" asChild>
+            <a href="mailto:h_leopold@naver.com">
+              <Mail className="h-4 w-4" />
+              {t("contact.send")}
+            </a>
           </Button>
         </div>
       </div>
