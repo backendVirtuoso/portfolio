@@ -51,7 +51,7 @@ export function ContactSection() {
           <Card className="p-6 bg-card border-border hover:border-primary transition-colors">
             <div className="flex items-start gap-4">
               <div className="p-3 rounded-full bg-secondary/10">
-                <Github className="h-6 w-6 text-secondary" />
+                <Github className="h-6 w-6 text-black/50" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-foreground mb-1">{t("contact.github")}</h3>

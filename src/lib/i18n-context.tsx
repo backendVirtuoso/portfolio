@@ -19,7 +19,7 @@ const translations = {
     "nav.skill": "Skill",
     "nav.project": "Project",
     "nav.contact": "Contact",
-    "header.name": "JH's Portfolio",
+    "header.name": "황준하's Portfolio",
 
     // Hero Section
     "hero.badge": "신입 백엔드 개발자",
@@ -43,10 +43,12 @@ const translations = {
     // Tech Stack Section
     "skill.title": "기술 스택",
     "skill.subtitle": "다양한 기술을 활용하여 최적의 솔루션을 제공합니다",
-    "skill.language": "언어",
-    "skill.framework": "프레임워크",
+    "skill.frontend": "프론트엔드",
+    "skill.backend": "백엔드",
     "skill.database": "데이터베이스",
+    "skill.orm": "ORM",
     "skill.tools": "도구",
+    "skill.certificate": "자격증",
 
     // Projects Section
     "project.title": "프로젝트",
@@ -108,10 +110,12 @@ const translations = {
     // Tech Stack Section
     "skill.title": "Tech Stack",
     "skill.subtitle": "Providing optimal solutions using various technologies",
-    "skill.language": "Language",
-    "skill.framework": "Framework",
+    "skill.frontend": "Frontend",
+    "skill.backend": "Backend",
     "skill.database": "Database",
+    "skill.orm": "ORM",
     "skill.tools": "Tools",
+    "skill.certificate": "Certificate",
 
     // Projects Section
     "project.title": "Projects",

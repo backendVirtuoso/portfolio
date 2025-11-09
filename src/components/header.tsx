@@ -55,22 +55,23 @@ export function Header() {
           {/* Logo */}
           <button
             onClick={() => scrollToSection("about")}
-            className="text-xl font-bold text-foreground hover:bg-[var(--pastel-sky)] hover:text-foreground px-3 py-2 rounded-md transition-colors"
+            className="relative text-xl font-bold text-foreground px-3 py-2 transition-colors group"
           >
             {t("header.name")}
+            <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <Button
+              <button
                 key={item.id}
-                variant="ghost"
                 onClick={() => scrollToSection(item.id)}
-                className="text-muted-foreground"
+                className="relative px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground group"
               >
                 {item.label}
-              </Button>
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+              </button>
             ))}
 
             <Button variant="ghost" size="icon" onClick={toggleLanguage} className="ml-2" aria-label="Toggle language">
@@ -108,14 +109,14 @@ export function Header() {
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-2">
               {navItems.map((item) => (
-                <Button
+                <button
                   key={item.id}
-                  variant="ghost"
                   onClick={() => scrollToSection(item.id)}
-                  className="justify-start text-muted-foreground"
+                  className="relative px-4 py-2 text-left text-sm font-medium text-muted-foreground transition-colors hover:text-foreground group"
                 >
                   {item.label}
-                </Button>
+                  <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                </button>
               ))}
             </div>
           </div>
