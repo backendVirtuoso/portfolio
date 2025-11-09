@@ -20,21 +20,21 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-20 flex min-h-screen flex-col items-center justify-center px-4">
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+        <div className="mx-auto max-w-8xl text-center">
+          <div className="mb-8 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
             {t("hero.badge")}
           </div>
 
-          <h1 className="mb-6 text-balance font-sans text-5xl font-bold tracking-tight text-foreground md:text-7xl">
+          <h1 className="mb-10 text-balance font-sans text-5xl font-bold tracking-tight text-foreground md:text-7xl leading-tight md:leading-tight">
             {t("hero.greeting")}
             <br />
-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+            <span className="text-primary">
               {t("hero.name")}
             </span>
             {t("hero.title")}
           </h1>
 
-          <p className="mb-8 text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl whitespace-pre-line">
+          <p className="mb-10 text-pretty text-lg leading-loose text-muted-foreground md:text-xl md:leading-loose whitespace-pre-line">
             {t("hero.description")}
           </p>
 
@@ -66,11 +66,21 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Down Arrow */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="h-12 w-6 rounded-full border-2 border-muted-foreground/30">
-            <div className="mx-auto mt-2 h-2 w-1 animate-pulse rounded-full bg-muted-foreground/50" />
-          </div>
+          <svg 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className="text-muted-foreground/50"
+          >
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+          </svg>
         </div>
       </div>
     </section>
