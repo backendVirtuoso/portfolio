@@ -57,5 +57,29 @@ export const projects: Project[] = [
     demo: "https://new-tube-one-kappa.vercel.app/",
     category: "course",
   },
+  {
+    title: "이벤트 기반 MSA 게시판 시스템 (CQRS & Outbox Pattern)",
+    description: "Java 21과 Spring Boot 3.4로 구현한 대규모 트래픽 처리 게시판 플랫폼. CQRS 패턴으로 읽기/쓰기 분리, Outbox Pattern으로 트랜잭션 보장, Snowflake 알고리즘 기반 분산 ID 생성을 적용한 6개 마이크로서비스 아키텍처 (게시글, 댓글, 좋아요, 조회수, 인기글 집계). Kafka 기반 이벤트 드리븐 아키텍처로 서비스 간 느슨한 결합 구현.",
+    tech: ["Java", "Spring Boot", "Spring Data JPA", "Apache Kafka", "MySQL", "Redis"],
+    github: "https://github.com/backendVirtuoso/msa-board",
+    demo: "#",
+    category: "course",
+  },
+  {
+    title: "SAGA 패턴과 API Gateway 기반 분산 트랜잭션 게시판 플랫폼",
+    description: "Spring Boot 3.5와 API Gateway로 구현한 마이크로서비스 아키텍처 기반 게시판 및 포인트 시스템. SAGA 패턴을 활용한 분산 트랜잭션 처리와 보상 트랜잭션(Compensation)으로 데이터 정합성 보장. JWT 인증, Kafka 이벤트 기반 서비스 간 통신, Database per Service 패턴 적용. 게시글 작성 시 포인트 차감 실패 시 자동 롤백 구현.",
+    tech: ["Java", "Spring Boot", "Spring Cloud Gateway", "Spring Data JPA", "Apache Kafka", "MySQL", "JWT"],
+    github: "https://github.com/backendVirtuoso/msa-service",
+    demo: "#",
+    category: "course",
+  },
+  {
+    title: "Apache Kafka 기반 이벤트 드리븐 이메일 발송 시스템",
+    description: "Spring Boot 3.5와 Apache Kafka를 활용한 비동기 이벤트 처리 시스템. 회원가입 시 환영 이메일 자동 발송 및 이메일 발송 API 제공. 멀티 파티션(3개) 병렬 처리, 지수 백오프 재시도 메커니즘(최대 5회), Dead Letter Topic(DLT)을 통한 장애 복구 구현. Producer-Consumer 패턴과 Round Robin 파티셔너로 부하 분산 처리.",
+    tech: ["Java", "Spring Boot", "Apache Kafka", "Spring Data JPA", "H2 Database"],
+    github: "https://github.com/backendVirtuoso/kafka-intro",
+    demo: "#",
+    category: "course",
+  },
 ]
 
