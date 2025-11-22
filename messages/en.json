@@ -59,7 +59,8 @@
     },
     "code": "Code",
     "demo": "Demo",
-    "empty": "No projects in this category."
+    "empty": "No projects in this category.",
+    "showMore": "Show More"
   },
   "contact": {
     "title": "Contact",

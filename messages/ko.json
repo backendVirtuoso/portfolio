@@ -59,7 +59,8 @@
     },
     "code": "코드",
     "demo": "데모",
-    "empty": "해당 카테고리의 프로젝트가 없습니다."
+    "empty": "해당 카테고리의 프로젝트가 없습니다.",
+    "showMore": "더보기"
   },
   "contact": {
     "title": "Contact",

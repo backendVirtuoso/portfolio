@@ -13,6 +13,7 @@ export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("all")
   const [expandedProjects, setExpandedProjects] = useState<Set<string>>(new Set())
   const [expandedDescriptions, setExpandedDescriptions] = useState<Set<string>>(new Set())
+  const [displayCount, setDisplayCount] = useState<number>(6)
 
   const categories = [
     { value: "all" as const, label: t("project.filter.all") },
@@ -23,6 +24,9 @@ export function ProjectsSection() {
 
   const filteredProjects =
     selectedCategory === "all" ? projects : projects.filter((project) => project.category === selectedCategory)
+  
+  const displayedProjects = filteredProjects.slice(0, displayCount)
+  const hasMoreProjects = filteredProjects.length > displayCount
 
   const toggleExpanded = (projectTitle: string) => {
     setExpandedProjects((prev) => {
@@ -48,6 +52,16 @@ export function ProjectsSection() {
     })
   }
 
+  const handleShowMore = () => {
+    setDisplayCount(filteredProjects.length)
+  }
+
+  // 카테고리 변경 시 displayCount 초기화
+  const handleCategoryChange = (category: ProjectCategory) => {
+    setSelectedCategory(category)
+    setDisplayCount(6)
+  }
+
   return (
     <section id="project" className="relative min-h-screen flex items-center bg-background py-24 px-4 border-t border-border/50">
       {/* Section Decorator */}
@@ -66,7 +80,7 @@ export function ProjectsSection() {
             <Button
               key={category.value}
               variant={selectedCategory === category.value ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category.value)}
+              onClick={() => handleCategoryChange(category.value)}
               className="min-w-[100px] px-6 transition-all duration-300 hover:scale-105"
             >
               {category.label}
@@ -75,7 +89,7 @@ export function ProjectsSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => (
+          {displayedProjects.map((project) => (
             <Card
               key={project.title}
               className="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1 border-border/50 hover:border-primary/30"
@@ -183,6 +197,19 @@ export function ProjectsSection() {
             <div className="mx-auto max-w-md">
               <p className="text-lg font-medium text-muted-foreground">{t("project.empty")}</p>
             </div>
+          </div>
+        )}
+
+        {hasMoreProjects && (
+          <div className="mt-12 flex justify-center">
+            <Button
+              onClick={handleShowMore}
+              variant="outline"
+              size="lg"
+              className="min-w-[150px] px-8 transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:border-primary"
+            >
+              {t("project.showMore")}
+            </Button>
           </div>
         )}
       </div>
