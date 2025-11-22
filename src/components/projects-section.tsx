@@ -52,8 +52,12 @@ export function ProjectsSection() {
     })
   }
 
-  const handleShowMore = () => {
-    setDisplayCount(filteredProjects.length)
+  const toggleShowMore = () => {
+    if (displayCount === 6) {
+      setDisplayCount(filteredProjects.length)
+    } else {
+      setDisplayCount(6)
+    }
   }
 
   // 카테고리 변경 시 displayCount 초기화
@@ -200,15 +204,15 @@ export function ProjectsSection() {
           </div>
         )}
 
-        {hasMoreProjects && (
+        {filteredProjects.length > 6 && (
           <div className="mt-12 flex justify-center">
             <Button
-              onClick={handleShowMore}
+              onClick={toggleShowMore}
               variant="outline"
               size="lg"
               className="min-w-[150px] px-8 transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:border-primary"
             >
-              {t("project.showMore")}
+              {displayCount === 6 ? t("project.showMore") : t("project.showLess")}
             </Button>
           </div>
         )}

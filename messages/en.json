@@ -60,7 +60,8 @@
     "code": "Code",
     "demo": "Demo",
     "empty": "No projects in this category.",
-    "showMore": "Show More"
+    "showMore": "Show More",
+    "showLess": "Show Less"
   },
   "contact": {
     "title": "Contact",
