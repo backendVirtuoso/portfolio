@@ -1,207 +1,118 @@
 # 🎨 개인 포트폴리오 웹사이트
 
-> Next.js 15와 최신 웹 기술 스택으로 제작한 현대적이고 인터랙티브한 포트폴리오 웹사이트
+> **Next.js 15와 최신 웹 기술 스택으로 제작한 현대적이고 인터랙티브한 포트폴리오 웹사이트**
+> 다국어 지원, 3D 인터랙션, 다크모드를 갖춘 반응형 웹 애플리케이션
 
-<div align="center">
-
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Click_Here-4CAF50?style=for-the-badge)](https://hjh-portfolio.vercel.app/)
-[![Next.js](https://img.shields.io/badge/Next.js-15.5-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
-
-</div>
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-hjh--portfolio.vercel.app-4CAF50?style=flat-square)](https://hjh-portfolio.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Three.js](https://img.shields.io/badge/Three.js-0.181-000000?style=flat-square&logo=three.js&logoColor=white)](https://threejs.org/)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
 
 ---
 
-## 📋 목차
+## 📌 프로젝트 소개
 
-- [🎯 프로젝트 소개](#-프로젝트-소개)
-- [🚀 개발 목표 및 배경](#-개발-목표-및-배경)
-- [✨ 주요 기능](#-주요-기능)
-- [🛠 기술 스택 및 선택 이유](#-기술-스택-및-선택-이유)
-- [📁 프로젝트 구조](#-프로젝트-구조)
-- [⚙️ 설치 및 실행 방법](#%EF%B8%8F-설치-및-실행-방법)
-- [🔧 트러블슈팅 및 해결 과정](#-트러블슈팅-및-해결-과정)
-- [📊 성과 및 학습 내용](#-성과-및-학습-내용)
-- [📞 연락처](#-연락처)
-- [📄 라이선스](#-라이선스)
-
----
-
-## 🎯 프로젝트 소개
-
-신입 백엔드 개발자로서의 기술 역량과 프로젝트 경험을 효과적으로 전달하기 위해 제작한 **개인 포트폴리오 웹사이트**입니다. 
+신입 백엔드 개발자로서의 기술 역량과 프로젝트 경험을 효과적으로 전달하기 위해 제작한 **개인 포트폴리오 웹사이트**입니다.
 
 Next.js 15의 App Router와 React 19의 최신 기능을 활용하여 **성능 최적화**, **다국어 지원**, **접근성**을 모두 갖춘 현대적인 웹 애플리케이션을 구현했습니다.
 
-### 🔗 라이브 데모
-**👉 [https://hjh-portfolio.vercel.app/](https://hjh-portfolio.vercel.app/)**
+### 프로젝트 기능
 
-### 📸 미리보기
-> 실제 배포된 웹사이트에서 다크모드, 3D 인터랙션, 반응형 레이아웃을 확인하실 수 있습니다.
+- **🌐 다국어 지원**: 한국어/영어 자동 감지 및 전환 (`next-intl`)
+- **🎨 테마 시스템**: 라이트/다크 모드 실시간 전환 (`next-themes`)
+- **🖼️ 3D 인터랙션**: Three.js 기반 반응형 3D 애니메이션
+- **📱 완벽한 반응형**: 모바일/태블릿/데스크톱 최적화
+- **🔍 프로젝트 필터링**: 카테고리별 실시간 필터링 기능
+- **♿ 접근성**: WCAG AAA 등급, 키보드 네비게이션 지원
+- **⚡ 성능 최적화**: Lighthouse 점수 90+ (모든 항목)
 
 ---
 
-## 🚀 개발 목표 및 배경
+## 🎯 개발 목표 및 배경
 
 ### 문제 인식
+
 기존 포트폴리오(Spring Boot + Thymeleaf)는 다음과 같은 한계가 있었습니다:
 - 서버 사이드 렌더링으로 인한 느린 페이지 전환
 - 모바일 환경에서의 사용자 경험 미흡
 - 다국어 지원 부재로 글로벌 기업 지원 시 제약
 - 정적 콘텐츠 수정 시 서버 재배포 필요
 
-### 개발 목표
+### 해결 방안
 
-#### 1️⃣ **최신 기술 스택 학습 및 적용**
-- Next.js 15 App Router의 서버 컴포넌트와 클라이언트 컴포넌트 최적 조합
-- React 19의 최신 Hook과 성능 개선 사항 활용
-- TypeScript로 타입 안정성 확보하여 런타임 에러 최소화
+1. **최신 프론트엔드 프레임워크 도입**: Next.js 15 App Router로 빠른 페이지 전환과 SEO 최적화
+2. **반응형 디자인 구현**: Tailwind CSS로 모든 디바이스에 최적화된 UI 제공
+3. **국제화(i18n) 구현**: next-intl로 한국어/영어 자동 감지 및 전환
+4. **정적 사이트 생성**: Vercel CDN 캐싱으로 빠른 로딩 속도 (LCP 1.2초)
+5. **컴포넌트 기반 아키텍처**: 데이터 파일 분리로 재배포 없이 콘텐츠 수정 가능
 
-#### 2️⃣ **사용자 경험(UX) 향상**
-- 라이트/다크 모드 지원으로 다양한 사용자 선호도 충족
-- Three.js 기반 3D 인터랙션으로 시각적 흥미 유발
-- 모바일 우선(Mobile-First) 반응형 디자인
+### 기술적 도전
 
-#### 3️⃣ **국제화(i18n) 대응**
-- 한국어/영어 이중 언어 지원으로 글로벌 기업 지원 가능
-- SEO 최적화된 다국어 URL 구조 (`/ko`, `/en`)
-
-#### 4️⃣ **유지보수성 및 확장성**
-- 컴포넌트 기반 아키텍처로 재사용성 극대화
-- 프로젝트/기술 스택 데이터 파일 분리로 콘텐츠 수정 용이
-- shadcn/ui 기반 디자인 시스템 구축
+- **SSR/SSG 최적 조합**: 서버 컴포넌트와 클라이언트 컴포넌트 경계 설정
+- **Three.js SSR 에러 해결**: `use client` 디렉티브와 하이드레이션 최적화
+- **다크모드 FOUC 방지**: 블로킹 스크립트로 깜빡임 현상 제거
+- **Vercel 빌드 최적화**: 의존성 최적화로 빌드 시간 45% 단축 (52초 → 29초)
+- **모바일 성능 최적화**: Lighthouse 모바일 점수 91점 달성
 
 ---
 
-## ✨ 주요 기능
+## 🎨 주요 기능
 
-### 🌐 다국어 지원 (Internationalization)
-- **라이브러리**: `next-intl` v4.5
-- **지원 언어**: 한국어(ko), 영어(en)
-- **구현 방식**: 
-  - 미들웨어에서 사용자 브라우저 언어 자동 감지
-  - 동적 라우팅 `[locale]`로 SEO 친화적 URL 생성
-  - JSON 기반 메시지 번역 파일 (`messages/ko.json`, `messages/en.json`)
+### 1. 🌐 다국어 지원 (Internationalization)
+- 한국어/영어 자동 감지 및 전환 (`next-intl` v4.5)
+- 동적 라우팅 `[locale]`로 SEO 친화적 URL (`/ko`, `/en`)
+- JSON 기반 번역 파일로 콘텐츠 중앙 관리
 
-### 🎨 테마 시스템 (Light/Dark Mode)
-- **라이브러리**: `next-themes` v0.4
-- **특징**:
-  - 시스템 환경 설정 자동 감지
-  - 사용자 선택 로컬 스토리지 저장
-  - 새로고침 없이 즉시 테마 전환
-  - CSS 변수 기반 색상 시스템
+### 2. 🎨 테마 시스템 (Light/Dark Mode)
+- 시스템 환경 설정 자동 감지
+- 로컬 스토리지 저장으로 새로고침 후에도 설정 유지
+- 깜빡임 없는 테마 전환 (FOUC 방지)
 
-### 🖼️ 3D 인터랙티브 애니메이션
-- **기술**: Three.js + React Three Fiber + Drei
-- **구현 내용**:
-  - Hero Section에 3D 회전 메시 객체
-  - 마우스 움직임에 반응하는 카메라 워크
-  - 60fps 유지를 위한 성능 최적화
+### 3. 🖼️ 3D 인터랙티브 애니메이션
+- Three.js + React Three Fiber로 Hero Section 구현
+- 마우스 움직임에 반응하는 카메라 워크
+- 모바일 환경에서는 자동 비활성화 (성능 최적화)
 
-### 📱 완벽한 반응형 디자인
-- **브레이크포인트**: Mobile (< 640px), Tablet (640-1024px), Desktop (> 1024px)
-- **Tailwind CSS** 유틸리티 클래스로 모든 디바이스 대응
-- 터치 제스처 최적화 (모바일 환경)
+### 4. 📱 완벽한 반응형 디자인
+- 모바일/태블릿/데스크톱 최적화 (Tailwind CSS)
+- 브레이크포인트: Mobile (< 640px), Tablet (640-1024px), Desktop (> 1024px)
+- 터치 제스처 및 키보드 네비게이션 지원
 
-### 🔍 프로젝트 필터링
-- **카테고리**: 팀 프로젝트 / 개인 프로젝트 / 강의 프로젝트
-- **실시간 필터링**: React 상태 관리로 즉시 렌더링
-- **프로젝트 데이터**: `src/data/projects.ts`에서 중앙 관리
-
-### 🏗️ 모듈화된 섹션 구성
-1. **Hero Section**: 첫인상 결정, 3D 배경 + CTA 버튼
-2. **About Section**: 개발자 소개 및 개발 철학
-3. **Tech Stack Section**: 카테고리별 기술 스택 (Frontend, Backend, Database, ORM, Tools, 자격증)
-4. **Projects Section**: 10개 프로젝트 포트폴리오 (GitHub 링크, 라이브 데모)
-5. **Contact Section**: 이메일, GitHub, 전화번호 연락처
+### 5. 🔍 프로젝트 필터링 시스템
+- 카테고리별 실시간 필터링 (팀/개인/강의 프로젝트)
+- GitHub 링크 및 라이브 데모 연결
+- 데이터 파일 분리로 유지보수 용이
 
 ---
 
-## 🛠 기술 스택 및 선택 이유
+## 🛠️ 기술 스택
 
-### **Frontend Framework**
+### Frontend
+| 기술 | 버전 | 선택 이유 |
+|------|------|-----------|
+| **Next.js** | 15.5 | App Router로 SSR/SSG 최적 조합, 자동 코드 분할, SEO 최적화 |
+| **React** | 19.1 | 최신 Hook API, Automatic Batching 성능 개선 |
+| **TypeScript** | 5.0 | 타입 안정성으로 런타임 에러 90% 감소, IDE 자동완성 지원 |
+| **Tailwind CSS** | 4.0 | 유틸리티 클래스로 개발 속도 70% 향상, CSS 번들 크기 78% 감소 |
+| **shadcn/ui** | Latest | Radix UI 기반 접근성 준수, 소스 코드 직접 수정 가능 |
+| **Three.js** | 0.181 | React Three Fiber로 선언적 3D 씬 작성, 60fps 유지 |
 
-#### ⚛️ **Next.js 15.5** 
-```
-✅ 선택 이유
-```
-- **App Router**: 서버 컴포넌트로 초기 로딩 속도 개선 (TTI 1.2초)
-- **정적 생성(SSG)**: 빌드 타임에 HTML 생성하여 CDN 캐싱 극대화
-- **자동 코드 분할**: 페이지별 번들 최적화로 JavaScript 크기 40% 감소
-- **SEO 최적화**: 서버 사이드 렌더링으로 검색 엔진 크롤링 개선
-- **이미지 최적화**: Next.js Image 컴포넌트로 자동 WebP 변환 및 Lazy Loading
+### Internationalization & Theme
+| 기술 | 버전 | 선택 이유 |
+|------|------|-----------|
+| **next-intl** | 4.5 | Next.js App Router 네이티브 지원, SSR/SSG 번역 가능 |
+| **next-themes** | 0.4 | 시스템 테마 감지, FOUC 방지, 로컬 스토리지 저장 |
 
-#### 🔷 **TypeScript 5.0**
-```
-✅ 선택 이유
-```
-- **타입 안정성**: 컴파일 타임 에러 검출로 런타임 버그 90% 감소
-- **IDE 지원**: 자동완성과 리팩토링으로 개발 생산성 향상
-- **코드 가독성**: 타입 정의로 함수 의도 명확화
-- **유지보수성**: 대규모 코드베이스에서도 안전한 변경 가능
-
-#### ⚛️ **React 19.1**
-```
-✅ 선택 이유
-```
-- **최신 Hook API**: `useOptimistic`, `useFormStatus` 등 신규 기능
-- **성능 개선**: Automatic Batching으로 렌더링 최적화
-- **커뮤니티**: 방대한 라이브러리 생태계 및 학습 자료
-
-### **Styling & UI**
-
-#### 🎨 **Tailwind CSS 4.0**
-```
-✅ 선택 이유
-```
-- **개발 속도**: 유틸리티 클래스로 CSS 작성 시간 70% 단축
-- **일관성**: 디자인 토큰 시스템으로 통일된 UI 구현
-- **번들 크기**: PurgeCSS로 미사용 스타일 자동 제거 (CSS 15KB)
-- **반응형**: 모바일 우선 브레이크포인트 시스템
-
-#### 🧩 **shadcn/ui + Radix UI**
-```
-✅ 선택 이유
-```
-- **접근성**: ARIA 표준 준수로 스크린 리더 완벽 지원
-- **커스터마이징**: 소스 코드 직접 수정 가능 (npm 패키지 의존성 X)
-- **일관성**: 디자인 시스템 기반 재사용 가능한 컴포넌트
-- **무게**: Headless UI로 불필요한 스타일 오버헤드 없음
-
-### **3D Graphics**
-
-#### 🌐 **Three.js + React Three Fiber**
-```
-✅ 선택 이유
-```
-- **선언적 구문**: React 컴포넌트처럼 3D 씬 작성
-- **성능**: 60fps 유지를 위한 자동 최적화
-- **생태계**: @react-three/drei로 3D 헬퍼 유틸리티 제공
-
-### **Internationalization**
-
-#### 🌍 **next-intl 4.5**
-```
-✅ 선택 이유
-```
-- **Next.js 네이티브**: App Router와 완벽 통합
-- **SSR/SSG 지원**: 서버 컴포넌트에서 번역 사용 가능
-- **타입 세이프**: TypeScript 자동완성 지원
-- **SEO**: 다국어 sitemap 자동 생성
-
-### **Deployment & Analytics**
-
-#### ☁️ **Vercel**
-```
-✅ 선택 이유
-```
-- **제로 컨피그**: Next.js 최적 호스팅 (개발사 직접 운영)
-- **엣지 네트워크**: 전 세계 CDN으로 지연 시간 최소화
-- **자동 배포**: Git 푸시 시 CI/CD 자동화
-- **Analytics**: Web Vitals 실시간 모니터링
+### DevOps & Tools
+| 기술 | 용도 | 특징 |
+|------|------|------|
+| **Vercel** | 호스팅/배포 | Next.js 최적 호스팅, 자동 CI/CD, CDN 캐싱 94% |
+| **Git & GitHub** | 버전 관리 | Conventional Commits, Feature Branch 전략 |
+| **ESLint** | 코드 품질 | Next.js 권장 규칙, TypeScript 린팅 |
+| **Vercel Analytics** | 성능 모니터링 | Core Web Vitals 실시간 측정 |
 
 ---
 
@@ -276,13 +187,13 @@ portfolio/
 
 ## ⚙️ 설치 및 실행 방법
 
-### 📋 필수 요구사항
+### 사전 요구사항
 
 - **Node.js**: 20.x 이상 (권장: 20.18 LTS)
 - **패키지 매니저**: npm 10.x 이상
 - **운영체제**: Windows, macOS, Linux 모두 지원
 
-### 🔧 로컬 환경 설정
+### 로컬 환경 설정
 
 #### 1️⃣ 저장소 클론
 
@@ -676,9 +587,9 @@ export function ThreeScene() {
 
 ---
 
-## 📊 성과 및 학습 내용
+## 🎓 배운 점 및 성장
 
-### 🎯 정량적 성과
+### 📊 정량적 성과
 
 #### **성능 지표 (Lighthouse)**
 
@@ -781,21 +692,21 @@ function filterProjects<T extends Project>(
 
 ---
 
-### 🚀 추가 개선 계획
+## 🚀 향후 개발 계획
 
-#### 단기 목표 (1개월)
+### 단기 목표 (1개월)
 - [ ] **이메일 발송 기능**: Contact 섹션에 실제 이메일 전송 API 연동 (Resend/SendGrid)
 - [ ] **블로그 섹션 추가**: MDX 기반 기술 블로그 작성 기능
 - [ ] **프로젝트 상세 페이지**: 각 프로젝트별 상세 설명 페이지 생성
 - [ ] **Storybook 도입**: 컴포넌트 문서화 및 UI 테스트
 
-#### 중기 목표 (3개월)
+### 중기 목표 (3개월)
 - [ ] **CMS 연동**: Contentful/Sanity로 프로젝트 데이터 동적 관리
 - [ ] **방문자 분석**: Google Analytics 4 또는 Plausible 연동
 - [ ] **E2E 테스트**: Playwright로 자동화 테스트 구축
 - [ ] **성능 모니터링**: Sentry 에러 트래킹 및 성능 모니터링
 
-#### 장기 목표 (6개월)
+### 장기 목표 (6개월)
 - [ ] **백엔드 API 개발**: Spring Boot로 방명록/댓글 기능 구현
 - [ ] **관리자 대시보드**: Next.js Admin Panel로 프로젝트 CRUD
 - [ ] **AI 챗봇**: OpenAI API 연동 포트폴리오 소개 챗봇
@@ -803,45 +714,36 @@ function filterProjects<T extends Project>(
 
 ---
 
-## 📞 연락처
+## 📧 연락처
 
-구직 및 프로젝트 협업 문의는 아래 채널로 연락 주세요.
-
-### 👤 황준하 (Hwang Jun Ha)
+**프로젝트 관련 문의 및 피드백은 언제든 환영합니다!**
 
 | 항목 | 링크 |
 |------|------|
 | 📧 **Email** | [포트폴리오 Contact 섹션 참조](https://hjh-portfolio.vercel.app/) |
 | 💼 **GitHub** | [@backendVirtuoso](https://github.com/backendVirtuoso) |
 | 🌐 **Portfolio** | [https://hjh-portfolio.vercel.app/](https://hjh-portfolio.vercel.app/) |
-| 📱 **LinkedIn** | [포트폴리오 참조](https://hjh-portfolio.vercel.app/) |
 
-### 💡 면접 관련 질문
+### 💡 기술 상담 가능 주제
 
-이 프로젝트에 대한 기술적 질문이나 면접 시 상세 설명이 필요하시면 언제든 연락 주세요. 다음 주제에 대해 자세히 설명드릴 수 있습니다:
-
-- ✅ Next.js App Router의 서버/클라이언트 컴포넌트 전략
-- ✅ 다국어 지원 구현 과정 및 SEO 최적화
-- ✅ Three.js 성능 최적화 및 모바일 대응
-- ✅ TypeScript 타입 시스템 활용 사례
-- ✅ Vercel 배포 자동화 및 CI/CD 파이프라인
-- ✅ 트러블슈팅 상세 과정 및 학습 내용
+- Next.js App Router의 서버/클라이언트 컴포넌트 전략
+- 다국어 지원 구현 과정 및 SEO 최적화
+- Three.js 성능 최적화 및 모바일 대응
+- TypeScript 타입 시스템 활용 사례
+- Vercel 배포 자동화 및 CI/CD 파이프라인
+- 트러블슈팅 상세 과정 및 학습 내용
 
 ---
 
 ## 📄 라이선스
 
-이 프로젝트는 개인 포트폴리오 용도로 제작되었습니다.
+이 프로젝트는 학습 및 포트폴리오 목적으로 제작되었습니다.
+상업적 사용을 원하시는 경우 아래 연락처로 문의 바랍니다.
 
 ### 사용 가능 범위
 - ✅ **학습 목적**: 코드 참고 및 학습 자료로 자유롭게 활용 가능
 - ✅ **포트폴리오 참고**: 개인 포트폴리오 제작 시 구조 참고 가능
-- ⚠️ **상업적 사용**: 사전 연락 필요
-
-### 저작권
-```
-Copyright (c) 2024 황준하 (Hwang Jun Ha)
-```
+- ⚠️ **상업적 사용**: 사전 연락 필요 ([GitHub](https://github.com/backendVirtuoso))
 
 ### 사용된 오픈소스 라이선스
 - **Next.js**: MIT License
@@ -856,13 +758,11 @@ Copyright (c) 2024 황준하 (Hwang Jun Ha)
 
 ### ⭐ 이 프로젝트가 도움이 되셨다면 Star를 눌러주세요!
 
-**제작**: 황준하 ([@backendVirtuoso](https://github.com/backendVirtuoso))  
-**배포**: Vercel  
-**마지막 업데이트**: 2024년 11월
+[![GitHub Stars](https://img.shields.io/github/stars/backendVirtuoso/portfolio?style=social)](https://github.com/backendVirtuoso/portfolio)
+[![GitHub Forks](https://img.shields.io/github/forks/backendVirtuoso/portfolio?style=social)](https://github.com/backendVirtuoso/portfolio/fork)
 
 ---
 
-[![GitHub Stars](https://img.shields.io/github/stars/backendVirtuoso/portfolio?style=social)](https://github.com/backendVirtuoso/portfolio)
-[![GitHub Forks](https://img.shields.io/github/forks/backendVirtuoso/portfolio?style=social)](https://github.com/backendVirtuoso/portfolio/fork)
+<sub>Built with ❤️ by [황준하 (backendVirtuoso)](https://github.com/backendVirtuoso)</sub>
 
 </div>
