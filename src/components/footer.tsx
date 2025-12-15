@@ -33,8 +33,18 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#career" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t("nav.career")}
+                </a>
+              </li>
+              <li>
                 <a href="#project" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t("nav.project")}
+                </a>
+              </li>
+              <li>
+                <a href="#education" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t("nav.education")}
                 </a>
               </li>
               <li>

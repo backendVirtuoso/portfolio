@@ -10,17 +10,17 @@ export const techStack: TechStack[] = [
   {
     category: "skill.backend",
     icon: Server,
-    items: ["Spring Boot", "Spring Framework", "Node.js", "Java", "Python"],
+    items: ["Spring Boot", "Spring Framework", "Java", "Python", "FastAPI"],
   },
   {
     category: "skill.database",
     icon: Database,
-    items: ["PostgreSQL", "MySQL", "Redis", "H2"],
+    items: ["PostgreSQL", "MySQL", "Redis", "MongoDB"],
   },
   {
     category: "skill.orm",
     icon: Layers,
-    items: ["MyBatis", "JPA/Hibernate", "Drizzle ORM", "Spring Data JPA"],
+    items: ["Spring Data JPA", "MyBatis", "Drizzle ORM"],
   },
   {
     category: "skill.tools",

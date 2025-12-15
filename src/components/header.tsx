@@ -46,7 +46,9 @@ export function Header() {
   const navItems = [
     { id: "about", label: t("nav.about") },
     { id: "skill", label: t("nav.skill") },
+    { id: "career", label: t("nav.career") },
     { id: "project", label: t("nav.project") },
+    { id: "education", label: t("nav.education") },
     { id: "contact", label: t("nav.contact") },
   ]
 

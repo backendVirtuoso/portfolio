@@ -2,6 +2,8 @@
   "nav": {
     "about": "About",
     "skill": "Skill",
+    "career": "Career",
+    "education": "교육/자격증",
     "project": "Project",
     "contact": "Contact"
   },
@@ -9,7 +11,7 @@
     "name": "황준하's Portfolio"
   },
   "hero": {
-    "badge": "신입 백엔드 개발자",
+    "badge": "백엔드 개발자",
     "greeting": "늘 끊임없이 배우고자 하는",
     "name": "백엔드 개발자 황준하 ",
     "title": "포트폴리오입니다.",
@@ -62,6 +64,21 @@
     "empty": "해당 카테고리의 프로젝트가 없습니다.",
     "showMore": "더보기",
     "showLess": "접기"
+  },
+  "career": {
+    "title": "경력",
+    "subtitle": "업무 경험 및 주요 성과",
+    "responsibilities": "주요 업무"
+  },
+  "education": {
+    "title": "교육 및 자격증",
+    "subtitle": "학력 및 자격증 현황",
+    "edu": {
+      "title": "학력"
+    },
+    "cert": {
+      "title": "자격증"
+    }
   },
   "contact": {
     "title": "Contact",

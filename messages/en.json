@@ -2,6 +2,8 @@
   "nav": {
     "about": "About",
     "skill": "Skill",
+    "career": "Career",
+    "education": "Education",
     "project": "Project",
     "contact": "Contact"
   },
@@ -9,7 +11,7 @@
     "name": "Junha Hwang's Portfolio"
   },
   "hero": {
-    "badge": "Junior Backend Developer",
+    "badge": "Backend Developer",
     "greeting": "Always eager to learn,",
     "name": "Backend Developer Junha Hwang ",
     "title": "Portfolio",
@@ -62,6 +64,21 @@
     "empty": "No projects in this category.",
     "showMore": "Show More",
     "showLess": "Show Less"
+  },
+  "career": {
+    "title": "Career",
+    "subtitle": "Work experience and key achievements",
+    "responsibilities": "Key Responsibilities"
+  },
+  "education": {
+    "title": "Education & Certifications",
+    "subtitle": "Academic background and professional certifications",
+    "edu": {
+      "title": "Education"
+    },
+    "cert": {
+      "title": "Certifications"
+    }
   },
   "contact": {
     "title": "Contact",

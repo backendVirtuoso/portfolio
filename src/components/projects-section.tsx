@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Calendar, Users } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { projects } from "@/data/projects"
 import type { ProjectCategory } from "@/types"
@@ -108,6 +108,18 @@ export function ProjectsSection() {
                 <h3 className="font-sans text-lg font-bold text-foreground leading-tight line-clamp-2 min-h-[3rem] whitespace-pre-line">
                   {project.title}
                 </h3>
+                {/* 프로젝트 기간 및 팀 정보 */}
+                <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="h-3.5 w-3.5" />
+                    <span>{project.period}</span>
+                  </div>
+                  <span className="text-muted-foreground/50">•</span>
+                  <div className="flex items-center gap-1.5">
+                    <Users className="h-3.5 w-3.5" />
+                    <span>{project.team}</span>
+                  </div>
+                </div>
               </div>
 
               {/* 카드 본문 */}
