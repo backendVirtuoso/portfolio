@@ -46,7 +46,7 @@ export function HeroSection() {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="gap-2 bg-transparent" asChild>
-              <a href="https://github.com/backendVirtuoso" target="_blank" rel="noopener noreferrer">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <FileText className="h-4 w-4" />
                 {t("hero.resume")}
               </a>
