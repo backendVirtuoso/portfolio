@@ -26,6 +26,8 @@ Next.js 15의 App Router와 React 19의 최신 기능을 활용하여 **성능 �
 - **🖼️ 3D 인터랙션**: Three.js 기반 반응형 3D 애니메이션
 - **📱 완벽한 반응형**: 모바일/태블릿/데스크톱 최적화
 - **🔍 프로젝트 필터링**: 카테고리별 실시간 필터링 기능
+- **💼 경력 및 교육 섹션**: 인턴 경력, 학력, 자격증 정보 제공
+- **📄 프로젝트 상세 페이지**: 각 프로젝트별 상세 정보 및 성장 스토리
 - **♿ 접근성**: WCAG AAA 등급, 키보드 네비게이션 지원
 - **⚡ 성능 최적화**: Lighthouse 점수 90+ (모든 항목)
 
@@ -91,18 +93,18 @@ Next.js 15의 App Router와 React 19의 최신 기능을 활용하여 **성능 �
 ### Frontend
 | 기술 | 버전 | 선택 이유 |
 |------|------|-----------|
-| **Next.js** | 15.5 | App Router로 SSR/SSG 최적 조합, 자동 코드 분할, SEO 최적화 |
-| **React** | 19.1 | 최신 Hook API, Automatic Batching 성능 개선 |
+| **Next.js** | 15.5.9 | App Router로 SSR/SSG 최적 조합, 자동 코드 분할, SEO 최적화 |
+| **React** | 19.1.2 | 최신 Hook API, Automatic Batching 성능 개선 |
 | **TypeScript** | 5.0 | 타입 안정성으로 런타임 에러 90% 감소, IDE 자동완성 지원 |
 | **Tailwind CSS** | 4.0 | 유틸리티 클래스로 개발 속도 70% 향상, CSS 번들 크기 78% 감소 |
 | **shadcn/ui** | Latest | Radix UI 기반 접근성 준수, 소스 코드 직접 수정 가능 |
-| **Three.js** | 0.181 | React Three Fiber로 선언적 3D 씬 작성, 60fps 유지 |
+| **Three.js** | 0.181.0 | React Three Fiber로 선언적 3D 씬 작성, 60fps 유지 |
 
 ### Internationalization & Theme
 | 기술 | 버전 | 선택 이유 |
 |------|------|-----------|
-| **next-intl** | 4.5 | Next.js App Router 네이티브 지원, SSR/SSG 번역 가능 |
-| **next-themes** | 0.4 | 시스템 테마 감지, FOUC 방지, 로컬 스토리지 저장 |
+| **next-intl** | 4.5.0 | Next.js App Router 네이티브 지원, SSR/SSG 번역 가능 |
+| **next-themes** | 0.4.6 | 시스템 테마 감지, FOUC 방지, 로컬 스토리지 저장 |
 
 ### DevOps & Tools
 | 기술 | 용도 | 특징 |
@@ -122,11 +124,16 @@ portfolio/
 │   ├── app/
 │   │   └── [locale]/                # 🌐 다국어 동적 라우팅
 │   │       ├── layout.tsx           # 루트 레이아웃 (헤더, 푸터, 테마 프로바이더)
-│   │       └── page.tsx             # 메인 페이지 (섹션 조합)
+│   │       ├── page.tsx             # 메인 페이지 (섹션 조합)
+│   │       └── projects/
+│   │           └── [id]/
+│   │               └── page.tsx     # 프로젝트 상세 페이지
 │   │
 │   ├── components/                  # 🎨 UI 컴포넌트
 │   │   ├── about-section.tsx        # About 섹션 (Who I Am, What I Do)
+│   │   ├── career-section.tsx       # 경력 섹션 (인턴 경험, 업무 내용)
 │   │   ├── contact-section.tsx      # Contact 섹션 (이메일, GitHub 링크)
+│   │   ├── education-section.tsx    # 교육 섹션 (학력, 자격증)
 │   │   ├── footer.tsx               # 푸터 (소셜 미디어, 저작권)
 │   │   ├── header.tsx               # 헤더 (네비게이션, 언어/테마 토글)
 │   │   ├── hero-section.tsx         # 히어로 섹션 (메인 타이틀, CTA)
@@ -140,7 +147,8 @@ portfolio/
 │   │       └── ...
 │   │
 │   ├── data/                        # 📊 데이터 파일
-│   │   ├── projects.ts              # 프로젝트 목록 (10개 프로젝트)
+│   │   ├── education.ts             # 경력, 학력, 자격증 데이터
+│   │   ├── projects.ts              # 프로젝트 목록 (7개 프로젝트)
 │   │   └── tech-stack.ts            # 기술 스택 목록 (6개 카테고리)
 │   │
 │   ├── i18n/                        # 🌍 국제화 설정
@@ -151,7 +159,7 @@ portfolio/
 │   │   └── utils.ts                 # 유틸리티 함수 (cn, clsx)
 │   │
 │   ├── types/
-│   │   └── index.ts                 # 타입 정의 (Project, TechStack)
+│   │   └── index.ts                 # 타입 정의 (Project, TechStack, Education, Experience, Certification)
 │   │
 │   └── middleware.ts                # Next.js 미들웨어 (로케일 감지)
 │
@@ -175,11 +183,12 @@ portfolio/
 
 | 디렉토리 | 역할 | 특징 |
 |---------|------|------|
-| `app/[locale]` | 다국어 라우팅 | 동적 경로 매개변수로 언어 분기 |
-| `components/` | UI 컴포넌트 | 섹션별 분리로 유지보수성 향상 |
-| `data/` | 정적 데이터 | 프로젝트/기술 스택 데이터 중앙 관리 |
+| `app/[locale]` | 다국어 라우팅 | 동적 경로 매개변수로 언어 분기, 프로젝트 상세 페이지 포함 |
+| `components/` | UI 컴포넌트 | 섹션별 분리로 유지보수성 향상 (경력/교육 섹션 포함) |
+| `data/` | 정적 데이터 | 프로젝트/기술 스택/경력/교육 데이터 중앙 관리 |
 | `i18n/` | 국제화 로직 | next-intl 설정 및 유틸리티 |
 | `messages/` | 번역 파일 | JSON 형식으로 언어별 텍스트 관리 |
+| `types/` | TypeScript 타입 | Project, Education, Experience 등 타입 정의 |
 
 ---
 
@@ -695,7 +704,8 @@ function filterProjects<T extends Project>(
 ### 단기 목표 (1개월)
 - [ ] **이메일 발송 기능**: Contact 섹션에 실제 이메일 전송 API 연동 (Resend/SendGrid)
 - [ ] **블로그 섹션 추가**: MDX 기반 기술 블로그 작성 기능
-- [ ] **프로젝트 상세 페이지**: 각 프로젝트별 상세 설명 페이지 생성
+- [x] **프로젝트 상세 페이지**: 각 프로젝트별 상세 설명 페이지 생성 (`/projects/[id]` 구현 완료)
+- [x] **경력 및 교육 섹션**: 인턴 경력, 학력, 자격증 정보 페이지 추가 완료
 - [ ] **Storybook 도입**: 컴포넌트 문서화 및 UI 테스트
 
 ### 중기 목표 (3개월)
