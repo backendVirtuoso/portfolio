@@ -101,8 +101,11 @@
   "education": {
     "title": "교육 및 자격증",
     "subtitle": "학력 및 자격증 현황",
-    "edu": {
+    "academic": {
       "title": "학력"
+    },
+    "training": {
+      "title": "교육"
     },
     "cert": {
       "title": "자격증"

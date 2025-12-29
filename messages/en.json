@@ -101,8 +101,11 @@
   "education": {
     "title": "Education & Certifications",
     "subtitle": "Academic background and professional certifications",
-    "edu": {
-      "title": "Education"
+    "academic": {
+      "title": "Academic"
+    },
+    "training": {
+      "title": "Training"
     },
     "cert": {
       "title": "Certifications"
