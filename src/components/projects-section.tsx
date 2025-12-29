@@ -4,12 +4,15 @@ import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Calendar, Users } from "lucide-react"
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { projects } from "@/data/projects"
 import type { ProjectCategory } from "@/types"
+import { useRouter } from "next/navigation"
 
 export function ProjectsSection() {
   const t = useTranslations()
+  const locale = useLocale()
+  const router = useRouter()
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("all")
   const [expandedProjects, setExpandedProjects] = useState<Set<string>>(new Set())
   const [expandedDescriptions, setExpandedDescriptions] = useState<Set<string>>(new Set())
@@ -24,7 +27,7 @@ export function ProjectsSection() {
 
   const filteredProjects =
     selectedCategory === "all" ? projects : projects.filter((project) => project.category === selectedCategory)
-  
+
   const displayedProjects = filteredProjects.slice(0, displayCount)
   const hasMoreProjects = filteredProjects.length > displayCount
 
@@ -70,7 +73,7 @@ export function ProjectsSection() {
     <section id="project" className="relative min-h-screen flex items-center bg-background py-24 px-4 border-t border-border/50">
       {/* Section Decorator */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
+
       <div className="mx-auto max-w-7xl w-full">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-balance font-sans text-4xl font-bold tracking-tight text-foreground md:text-5xl">
@@ -96,7 +99,8 @@ export function ProjectsSection() {
           {displayedProjects.map((project) => (
             <Card
               key={project.title}
-              className="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1 border-border/50 hover:border-primary/30"
+              className="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1 border-border/50 hover:border-primary/30 cursor-pointer"
+              onClick={() => router.push(`/${locale}/projects/${project.id}`)}
             >
               {/* 카드 헤더 - 카테고리와 제목 */}
               <div className="border-b border-border/50 bg-muted/30 px-6 py-4">
@@ -124,7 +128,7 @@ export function ProjectsSection() {
 
               {/* 카드 본문 */}
               <div className="flex-1 p-6 flex flex-col gap-4">
-                <p 
+                <p
                   onClick={() => toggleDescription(project.title)}
                   className={`text-sm leading-relaxed text-muted-foreground cursor-pointer transition-all hover:text-foreground 
                     ${expandedDescriptions.has(project.title) ? '' : 'line-clamp-3'} 
@@ -146,7 +150,10 @@ export function ProjectsSection() {
                   ))}
                   {project.tech.length > 5 && !expandedProjects.has(project.title) && (
                     <button
-                      onClick={() => toggleExpanded(project.title)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        toggleExpanded(project.title)
+                      }}
                       className="inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground hover:bg-muted-foreground/20 transition-colors cursor-pointer"
                     >
                       +{project.tech.length - 5}
@@ -154,7 +161,10 @@ export function ProjectsSection() {
                   )}
                   {expandedProjects.has(project.title) && project.tech.length > 5 && (
                     <button
-                      onClick={() => toggleExpanded(project.title)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        toggleExpanded(project.title)
+                      }}
                       className="inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground hover:bg-muted-foreground/20 transition-colors cursor-pointer"
                     >
                       접기
@@ -172,6 +182,7 @@ export function ProjectsSection() {
                       size="sm"
                       className="flex-1 gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
                       asChild
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <a href={project.github} target="_blank" rel="noopener noreferrer">
                         <Github className="h-4 w-4" />
@@ -183,6 +194,7 @@ export function ProjectsSection() {
                       size="sm"
                       className="flex-1 gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
                       asChild
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <a href={project.demo} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="h-4 w-4" />
@@ -196,6 +208,7 @@ export function ProjectsSection() {
                     size="sm"
                     className="w-full gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
                     asChild
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                       <Github className="h-4 w-4" />
