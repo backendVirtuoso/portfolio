@@ -174,13 +174,54 @@ export function ProjectsSection() {
               </div>
 
               {/* 카드 푸터 - 액션 버튼 */}
-              <div className="flex gap-2 border-t border-border/50 bg-muted/20 p-4">
-                {project.demo && project.demo !== "#" ? (
-                  <>
+              <div className="flex flex-col gap-2 border-t border-border/50 bg-muted/20 p-4">
+                {/* 자세히 보기 버튼 */}
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="w-full gap-2 transition-all duration-300"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    router.push(`/${locale}/projects/${project.id}`)
+                  }}
+                >
+                  {t("project.detail.viewDetail")}
+                </Button>
+
+                {/* 코드 & 데모 버튼 */}
+                <div className="flex gap-2">
+                  {project.demo && project.demo !== "#" ? (
+                    <>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                        asChild
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4" />
+                          {t("project.code")}
+                        </a>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                        asChild
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="h-4 w-4" />
+                          {t("project.demo")}
+                        </a>
+                      </Button>
+                    </>
+                  ) : (
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-1 gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                      className="w-full gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
                       asChild
                       onClick={(e) => e.stopPropagation()}
                     >
@@ -189,33 +230,8 @@ export function ProjectsSection() {
                         {t("project.code")}
                       </a>
                     </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                      asChild
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4" />
-                        {t("project.demo")}
-                      </a>
-                    </Button>
-                  </>
-                ) : (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                    asChild
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4" />
-                      {t("project.code")}
-                    </a>
-                  </Button>
-                )}
+                  )}
+                </div>
               </div>
             </Card>
           ))}

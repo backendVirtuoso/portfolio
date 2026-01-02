@@ -27,6 +27,11 @@ export function Header() {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
+    if (sectionId === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      setIsMobileMenuOpen(false)
+      return
+    }
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
@@ -61,7 +66,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <button
-            onClick={() => scrollToSection("about")}
+            onClick={() => scrollToSection("/")}
             className="relative text-xl font-bold text-foreground px-3 py-2 transition-colors group"
           >
             {t("header.name")}
