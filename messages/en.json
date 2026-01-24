@@ -90,7 +90,10 @@
       "growth": "Growth",
       "learnings": "Learnings",
       "myRole": "My Role",
-      "responsibilities": "Responsibilities"
+      "responsibilities": "Responsibilities",
+      "diagrams": "Diagrams",
+      "erd": "ERD (Entity Relationship Diagram)",
+      "architecture": "System Architecture"
     }
   },
   "career": {

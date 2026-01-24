@@ -90,7 +90,10 @@
       "growth": "성장한 점",
       "learnings": "배운 점",
       "myRole": "나의 역할",
-      "responsibilities": "담당 업무"
+      "responsibilities": "담당 업무",
+      "diagrams": "다이어그램",
+      "erd": "ERD (Entity Relationship Diagram)",
+      "architecture": "시스템 아키텍처"
     }
   },
   "career": {

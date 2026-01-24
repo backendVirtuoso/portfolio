@@ -49,6 +49,11 @@ export interface Project {
       responsibilities?: string[]
       learnings?: string[]
     }
+    // 08. 프로젝트 이미지 | ERD, Architecture 다이어그램
+    images?: {
+      erd?: string
+      architecture?: string
+    }
   }
 }
 

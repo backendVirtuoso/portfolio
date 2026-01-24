@@ -2,7 +2,8 @@ import { notFound } from "next/navigation"
 import { projects } from "@/data/projects"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { ArrowLeft, Github, ExternalLink, Calendar, Users, Briefcase } from "lucide-react"
+import { ArrowLeft, Github, ExternalLink, Calendar, Users, Briefcase, Database, Server } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { getTranslations } from "next-intl/server"
@@ -138,6 +139,54 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 <p className="text-muted-foreground leading-relaxed">
                   {project.details.introduction}
                 </p>
+              </Card>
+            )}
+
+            {/* 다이어그램 섹션 */}
+            {project.details.images && (project.details.images.erd || project.details.images.architecture) && (
+              <Card className="p-6 border-primary/20">
+                <h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+                  <span className="text-primary">*</span>
+                  {t("project.detail.diagrams")}
+                </h2>
+                <div className="space-y-8">
+                  {/* ERD */}
+                  {project.details.images.erd && (
+                    <div>
+                      <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
+                        <Database className="h-4 w-4 text-primary" />
+                        {t("project.detail.erd")}
+                      </h3>
+                      <div className="relative w-full overflow-hidden rounded-lg border border-border/50 bg-muted/30">
+                        <Image
+                          src={project.details.images.erd}
+                          alt={`${project.title} ERD`}
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {/* Architecture */}
+                  {project.details.images.architecture && (
+                    <div>
+                      <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
+                        <Server className="h-4 w-4 text-primary" />
+                        {t("project.detail.architecture")}
+                      </h3>
+                      <div className="relative w-full overflow-hidden rounded-lg border border-border/50 bg-muted/30">
+                        <Image
+                          src={project.details.images.architecture}
+                          alt={`${project.title} Architecture`}
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </Card>
             )}
 

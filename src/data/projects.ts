@@ -138,6 +138,9 @@ export const projects: Project[] = [
           "프로그레시브 인핸스먼트(Progressive Enhancement) 개념 - 모바일 우선 성능 최적화",
         ],
       },
+      images: {
+        architecture: "/images/projects/react-sap-architecture.jpg",
+      },
     },
   },
   {
@@ -349,6 +352,10 @@ export const projects: Project[] = [
           "외부 API 연동 및 데이터 동기화 전략 수립",
         ],
       },
+      images: {
+        erd: "/images/projects/k-sketch-erd.jpg",
+        architecture: "/images/projects/k-sketch-architecture.jpg",
+      },
     },
   },
   {
@@ -437,6 +444,10 @@ export const projects: Project[] = [
           "Spring Boot 기반 웹 애플리케이션 개발 전반",
           "클라우드 배포 및 운영 경험",
         ],
+      },
+      images: {
+        erd: "/images/projects/old-portfolio-erd.jpg",
+        architecture: "/images/projects/old-portfolio-architecture.jpg",
       },
     },
   },
@@ -608,6 +619,10 @@ export const projects: Project[] = [
           "데이터 시각화 및 사용자 경험 개선",
           "단기 프로젝트 개발 경험",
         ],
+      },
+      images: {
+        erd: "/images/projects/jeju-for-suffer-erd.jpg",
+        architecture: "/images/projects/jeju-for-suffer-architecture.jpg",
       },
     },
   },
