@@ -139,7 +139,7 @@ export const projects: Project[] = [
         ],
       },
       images: {
-        architecture: "/images/projects/react-sap-architecture.jpg",
+        architecture: "/images/projects/portfolio-nextjs-architecture.jpg",
       },
     },
   },
