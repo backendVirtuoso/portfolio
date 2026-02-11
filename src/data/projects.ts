@@ -4,143 +4,78 @@ export const projects: Project[] = [
   {
     id: "portfolio-website",
     title: "개인 포트폴리오 웹 사이트 구축",
-    description: "Next.js 15와 React 19 기반의 개인 포트폴리오 웹사이트로, Radix UI 컴포넌트와 Three.js를 활용한 3D 효과, next-intl 다국어 지원을 포함한 모던 스택으로 구성되었습니다.",
-    period: "2025.11.04 - 2025.12.01",
+    description: "Next.js 15와 React 19 기반의 개인 포트폴리오 웹사이트로, Three.js 3D 인터랙션과 next-intl 다국어 지원, Vercel 자동 배포를 포함한 모던 스택으로 구성되었습니다.",
+    period: "2025.11.04 - 2025.11.23",
     team: "개인 프로젝트",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "React", "Three.js", "shadcn/ui", "next-intl"],
+    tech: ["Next.js 15.5", "React 19", "TypeScript", "Three.js", "Tailwind CSS", "shadcn/ui", "next-intl", "Vercel"],
     github: "https://github.com/backendVirtuoso/portfolio",
     demo: "https://hjh-portfolio.vercel.app/",
     category: "personal",
     details: {
-      // 01. 프로젝트 소개
-      introduction: "Next.js 15와 최신 웹 기술 스택으로 제작한 현대적이고 인터랙티브한 포트폴리오 웹사이트 - 다국어 지원, 3D 인터랙션, 다크모드를 갖춘 반응형 웹 애플리케이션",
-
-      // 02. 프로젝트 개요
-      overview: {
-        background: "기존 Spring Boot + Thymeleaf 기반 포트폴리오는 서버 사이드 렌더링으로 인한 느린 페이지 전환과 정적 콘텐츠 수정 시 서버 재배포가 필요한 한계가 있었습니다.",
-        purpose: "최신 프론트엔드 프레임워크를 도입하여 빠른 페이지 전환과 SEO 최적화를 달성하고, 반응형 디자인과 국제화를 구현하여 글로벌 채용 시장에 대응 가능한 포트폴리오 구축",
-      },
-
-      // 03. 진행한 일
-      tasks: [
-        {
-          background: "정적 사이트의 한계로 인한 낮은 사용자 참여도 및 느린 페이지 전환",
-          problem: "서버 사이드 렌더링 부재로 SEO 최적화 미흡 및 초기 로딩 속도 저하",
-          core: "Next.js 15 App Router와 React Server Components 도입",
-          solution: "서버 컴포넌트를 통한 초기 렌더링 최적화 및 동적 메타데이터 생성으로 SEO 개선, Vercel CDN 캐싱으로 LCP 1.2초 달성",
-        },
-        {
-          background: "글로벌 채용 시장 대응을 위한 다국어 지원 필요",
-          problem: "기존 i18n 라이브러리의 복잡한 설정 및 성능 오버헤드로 번들 크기 증가",
-          core: "next-intl v4.5를 활용한 서버 컴포넌트 기반 다국어 처리",
-          solution: "동적 라우팅 [locale]로 SEO 친화적 URL 구현, JSON 기반 번역 파일로 콘텐츠 중앙 관리하여 번들 크기 30% 감소",
-        },
-        {
-          background: "사용자 경험 향상을 위한 인터랙티브한 UI 요구",
-          problem: "Three.js SSR 환경에서 'window is not defined' 에러 발생",
-          core: "'use client' 디렉티브와 하이드레이션 최적화",
-          solution: "클라이언트 컴포넌트로 명시하고 useEffect로 마운트 감지, 모바일 환경에서는 성능을 위해 3D 씬 비활성화",
-        },
-        {
-          background: "테마 전환 시 사용자 경험 저해",
-          problem: "다크모드 전환 시 FOUC(Flash of Unstyled Content) 발생",
-          core: "블로킹 스크립트와 CSS 변수를 활용한 테마 초기화",
-          solution: "로컬 스토리지 + 블로킹 스크립트로 깜빡임 현상 제거, disableTransitionOnChange로 부드러운 전환",
-        },
-        {
-          background: "Vercel 무료 플랜의 빌드 시간 제한(45초) 존재",
-          problem: "70개 이상의 npm 패키지 설치로 빌드 시간 52초 초과",
-          core: "의존성 최적화 및 SWC 컴파일러 활용",
-          solution: "사용하지 않는 Radix UI 컴포넌트 제거, npm ci 사용, optimizePackageImports로 아이콘 트리 쉐이킹하여 빌드 시간 45% 단축(29초)",
-        },
+      service: "개인 포트폴리오를 효과적으로 전달하기 위한 인터랙티브 웹 사이트 개발",
+      highlights: [
+        "Three.js 3D 씬의 SSR Hydration Mismatch를 Client Component 분리와 useMemo 기반 파티클 캐싱으로 해결하여 7,000개 별과 200개 파티클의 3D 배경을 안정적으로 렌더링",
+        "next-intl의 서버 사이드 메시지 로딩과 Middleware 기반 locale 자동 감지를 적용하여 한/영 다국어와 SSG가 공존하는 라우팅 체계를 구축",
+        "Set 기반 상태 관리와 event.stopPropagation()을 활용하여 프로젝트 카드의 필터링, 페이지네이션, 확장/접기 간 이벤트 충돌을 해결",
+        "generateStaticParams()와 generateMetadata()를 활용한 프로젝트 상세 페이지 SSG 및 동적 메타데이터 생성을 구현",
+        "Vercel 배포 파이프라인과 Analytics/Speed Insights를 통합하여 Lighthouse Performance 96점(Desktop), Accessibility 100점, SEO 100점을 달성",
       ],
-
-      // 04. 과정
-      process: [
-        {
-          action: "Three.js와 React Three Fiber를 활용한 3D 인터랙티브 Hero Section 구현",
-          insight: "Canvas 렌더링 최적화를 위해 useFrame 훅의 렌더링 주기를 조절하여 60fps 유지, 모바일에서는 디바이스 감지로 3D 씬 숨김 처리하여 초기 로딩 속도 2.8초 개선",
-        },
-        {
-          action: "Radix UI 기반 shadcn/ui로 접근성 중심의 컴포넌트 라이브러리 구축",
-          insight: "키보드 내비게이션과 스크린 리더 지원을 기본 제공하는 컴포넌트 선택으로 WCAG AAA 등급 달성, 소스 코드 직접 수정 가능하여 커스터마이징 용이",
-        },
-        {
-          action: "GitHub와 Vercel 연동으로 CI/CD 파이프라인 구축 및 배포 자동화",
-          insight: "Preview 배포를 통한 변경사항 사전 검증 가능, CDN 캐시 히트율 94% 달성. 기존 Spring Boot 배포 대비 배포 시간 86.6% 단축 (5분 → 40초)으로 운영 효율성 극대화",
-        },
-        {
-          action: "Chrome DevTools Performance 패널 및 Lighthouse를 활용한 성능 최적화",
-          insight: "JavaScript 번들 26% 감소(420KB → 312KB), CSS 번들 78% 감소(68KB → 15KB), 이미지 최적화로 72% 감소(1.2MB → 340KB)",
-        },
-        {
-          action: "미들웨어 무한 리다이렉트 오류 해결",
-          insight: "커스텀 로직 제거하고 next-intl 기본 미들웨어 사용, 검증된 라이브러리 활용의 중요성과 정규식 matcher로 불필요한 미들웨어 실행 방지 학습",
-        },
-      ],
-
-      // 05. 결과물
-      results: {
-        achievements: [
-          "Lighthouse 점수 - Performance: 96(Desktop), 91(Mobile), Accessibility: 100, Best Practices: 100, SEO: 100",
-          "Core Web Vitals 모든 항목 Good 등급 - LCP 1.2초, FID 8ms, CLS 0.02",
-          "국문/영문 완벽 지원으로 글로벌 접근성 확보 (한국어/영어 자동 감지 및 전환)",
-          "Three.js 기반 인터랙티브 3D 배경 효과 60fps 유지",
-          "완전 반응형 디자인 (Mobile, Tablet, Desktop 최적화)",
-          "Vercel 배포 후 60일+ 무장애 운영",
-        ],
-        keyPoints: [
-          "배포 시간 86.6% 단축 (5분 → 40초) - GitHub & Vercel 연동 자동화",
-          "빌드 시간 45% 단축 (52초 → 29초) - 의존성 최적화 및 SWC 컴파일러 활용",
-          "JavaScript 번들 크기 26% 감소 (420KB → 312KB)",
-          "CSS 번들 크기 78% 감소 (68KB → 15KB)",
-          "이미지 최적화 72% 개선 (1.2MB → 340KB)",
-          "모바일 Lighthouse 점수 73 → 91점 (3D 씬 조건부 렌더링)",
-          "접근성 표준(WCAG AAA) 준수 및 키보드 네비게이션 완벽 지원",
-        ],
-      },
-
-      // 06. 성장한 점
-      growth: {
-        achievements: [
-          "Next.js 15 App Router와 React 19 Server Components 실전 적용 경험",
-          "Three.js를 활용한 3D 웹 그래픽 구현 및 성능 최적화 역량 확보",
-          "Lighthouse 기반 성능 측정 및 개선 사이클 경험 (측정 → 분석 → 최적화)",
-          "국제화(i18n) 구현 및 다국어 라우팅 전략 수립 경험",
-        ],
-        learnings: [
-          "서버 컴포넌트와 클라이언트 컴포넌트의 최적 조합 - SSR/SSG 혼합 아키텍처 설계 역량",
-          "TypeScript 타입 시스템 실전 활용 - Generic, Union, Utility Types로 타입 안정성 확보",
-          "성능 최적화 전략 - Code Splitting, Dynamic Import, 이미지 최적화(WebP, Lazy Loading)",
-          "접근성(Accessibility) 고려 - ARIA 속성, 키보드 네비게이션, 스크린 리더 테스트",
-          "트러블슈팅 경험 - Three.js SSR 에러, 미들웨어 무한 리다이렉트, FOUC, Vercel 빌드 타임아웃 해결",
-          "Git & GitHub 협업 워크플로우 - Feature Branch 전략, Conventional Commits 규칙 준수",
-        ],
-      },
-
-      // 07. 나의 역할
-      myRole: {
-        period: "2025.11.04 - 2025.12.01 (약 4주)",
-        responsibilities: [
-          "프로젝트 기획 및 기술 스택 선정 - Next.js 15, React 19, TypeScript, Tailwind CSS, Three.js 등",
-          "Next.js App Router 기반 라우팅 구조 설계 및 [locale] 동적 라우팅 구현",
-          "Three.js + React Three Fiber로 3D 인터랙티브 Hero Section 개발",
-          "next-intl을 이용한 서버 컴포넌트 기반 다국어 지원 시스템 구축",
-          "shadcn/ui 기반 재사용 가능한 컴포넌트 라이브러리 구축 및 접근성 준수",
-          "성능 최적화 - 번들 크기 감소, 이미지 최적화, Lighthouse 점수 90+ 달성",
-          "Vercel CI/CD 파이프라인 구축, 자동 배포 설정 및 도메인 연결",
-          "5가지 주요 트러블슈팅 해결 - Three.js SSR, 미들웨어, FOUC, Vercel 빌드, 모바일 성능",
-        ],
-        learnings: [
-          "최신 React 생태계(RSC, Server Actions) 및 Next.js App Router에 대한 깊은 이해",
-          "성능 최적화 및 사용자 경험 개선 전략 - Chrome DevTools, Lighthouse 활용",
-          "풀스택 개발 및 배포 프로세스 전반에 대한 실무 경험",
-          "프로그레시브 인핸스먼트(Progressive Enhancement) 개념 - 모바일 우선 성능 최적화",
-        ],
-      },
       images: {
         architecture: "/images/projects/portfolio-nextjs-architecture.jpg",
       },
+      problems: [
+        {
+          title: "Three.js 3D 씬의 SSR Hydration Mismatch",
+          details: [
+            "Next.js SSR 환경에서 Three.js가 window 객체에 접근하여 런타임 에러 발생",
+            "'use client'만 추가하면 서버/클라이언트 렌더링 결과 불일치로 Hydration Mismatch 추가 에러 유발",
+          ],
+        },
+        {
+          title: "다국어 라우팅과 SSG 공존 문제",
+          details: [
+            "클라이언트 사이드 i18n 솔루션(react-i18next)은 번들 크기 증가 불가피",
+            "서버 컴포넌트 기반 다국어 처리와 정적 생성(SSG)의 동시 구현 필요",
+          ],
+        },
+        {
+          title: "프로젝트 카드 UI 이벤트 충돌",
+          details: [
+            "필터링, 페이지네이션, 카드 확장/접기 간 이벤트 버블링으로 의도치 않은 동작 발생",
+            "복합 상태 관리의 복잡도 증가",
+          ],
+        },
+      ],
+      solutions: [
+        {
+          title: "Client Component 분리 + useMemo 기반 파티클 캐싱",
+          details: [
+            "'use client' + useEffect 마운트 감지로 Three.js 초기화 시점 제어",
+            "useMemo로 7,000개 별과 200개 파티클 데이터를 캐싱하여 리렌더링 방지",
+            "모바일 환경에서는 3D 씬을 비활성화하여 성능 최적화",
+          ],
+        },
+        {
+          title: "next-intl 서버 사이드 메시지 로딩 + Middleware locale 감지",
+          details: [
+            "서버 컴포넌트에서 번역 처리하여 클라이언트 번들에서 번역 파일 완전 제거",
+            "Middleware 기반 Accept-Language 헤더 자동 감지로 /ko, /en SEO 친화적 URL 구현",
+          ],
+        },
+        {
+          title: "Set 기반 상태 관리 + event.stopPropagation()",
+          details: [
+            "Set 자료구조로 확장/접기 상태를 효율적으로 관리",
+            "event.stopPropagation()으로 카드 내부 이벤트와 외부 이벤트를 격리",
+          ],
+        },
+      ],
+      results: [
+        "Lighthouse Performance 96점(Desktop), Accessibility 100점, SEO 100점 달성",
+        "7,000개 별과 200개 파티클의 3D 배경 안정 렌더링 (데스크탑 60fps)",
+        "한/영 다국어와 SSG가 공존하는 라우팅 체계 구축",
+        "generateStaticParams() + generateMetadata()로 프로젝트 상세 페이지 SSG 및 동적 메타데이터 생성",
+      ],
     },
   },
   {
@@ -154,301 +89,223 @@ export const projects: Project[] = [
     demo: "https://new-tube-one-kappa.vercel.app/",
     category: "course",
     details: {
-      introduction: "Next.js 15와 Drizzle ORM을 활용한 풀스택 유튜브 클론 프로젝트 - Mux 영상 처리, 크리에이터 스튜디오, 실시간 업로드 등 실제 서비스 수준의 기능 구현",
-
-      overview: {
-        background: "실제 서비스 수준의 동영상 플랫폼 개발 경험을 위한 클론코딩 프로젝트",
-        purpose: "Next.js 15 최신 기능과 Drizzle ORM을 활용하여 영상 스트리밍, 업로드, 관리 등 복잡한 미디어 처리 로직을 구현하고 풀스택 개발 역량 강화",
-      },
-
-      tasks: [
+      service: "YouTube의 핵심 기능(영상 업로드/스트리밍/검색/추천)을 직접 설계하고 구현한 풀스택 클론 프로젝트",
+      highlights: [
+        "영상 업로드 → Mux 인코딩 → HLS 적응형 비트레이트 스트리밍 전체 파이프라인 구현",
+        "Drizzle ORM 타입 안전 쿼리 빌더로 복잡한 데이터 관계(영상-사용자-댓글-재생목록) 설계",
+        "Server Actions 기반 서버 사이드 파일 처리로 API 키 클라이언트 노출 방지",
+        "크리에이터 스튜디오 대시보드 — 영상별 조회수/좋아요/댓글 통계 집계",
+      ],
+      problems: [
         {
-          background: "대용량 동영상 파일의 효율적인 처리 및 스트리밍 필요",
-          problem: "직접 영상 인코딩 및 스트리밍 구현 시 서버 부하 및 복잡도 증가",
-          core: "Mux API를 활용한 전문 영상 처리 서비스 도입",
-          solution: "Mux의 자동 인코딩, 적응형 비트레이트 스트리밍(ABR), HLS 프로토콜 활용으로 안정적인 영상 재생 환경 구축",
+          title: "대용량 영상 처리 파이프라인의 복잡도",
+          details: [
+            "원본 영상의 해상도/코덱이 제각각이며, 시청 환경에 따라 적절한 품질을 동적으로 제공해야 함",
+            "직접 인코딩 서버 구축 시 FFmpeg 큐 관리, HLS 세그먼트 분할, CDN 배포까지 복잡도 급증",
+          ],
         },
         {
-          background: "크리에이터를 위한 영상 관리 및 분석 대시보드 필요",
-          problem: "복잡한 데이터 관계와 실시간 업데이트 처리",
-          core: "Drizzle ORM과 PostgreSQL을 활용한 타입 안전 데이터베이스 설계",
-          solution: "영상 메타데이터, 조회수, 좋아요 등을 효율적으로 관리하는 스키마 설계 및 쿼리 최적화",
+          title: "복잡한 데이터 관계에서 타입 안전성과 쿼리 성능 양립",
+          details: [
+            "영상, 사용자, 댓글, 좋아요, 재생목록 간 복잡한 다대다 관계",
+            "Prisma는 복잡한 집계 쿼리에서 Raw SQL 빈도 증가, TypeORM은 N+1 쿼리 발생 빈번",
+          ],
+        },
+        {
+          title: "크리에이터 스튜디오 실시간 통계 집계 성능",
+          details: [
+            "매 요청마다 COUNT, SUM 집계 쿼리 실행 시 영상 수 증가에 따라 성능 선형 저하",
+            "비정규화는 데이터 정합성 관리 부담 증가",
+          ],
         },
       ],
-
-      process: [
+      solutions: [
         {
-          action: "Next.js 15 App Router와 Server Actions를 활용한 영상 업로드 플로우 구현",
-          insight: "서버 액션을 통한 파일 업로드 처리로 클라이언트 부담 감소 및 보안 향상",
+          title: "Mux API 인코딩/스트리밍 위임 + 상태 관리 직접 설계",
+          details: [
+            "영상 업로드 → Mux Webhook 인코딩 완료 알림 → DB 상태 업데이트(processing→ready)",
+            "Mux Playback ID 기반 HLS 적응형 비트레이트 스트리밍 제공",
+            "업로드 상태 관리(대기/처리중/완료/실패)와 에러 핸들링 직접 설계",
+          ],
         },
         {
-          action: "Drizzle ORM의 타입 안전 쿼리 빌더로 데이터베이스 스키마 설계",
-          insight: "TypeScript와의 완벽한 통합으로 런타임 에러 사전 방지 및 개발 생산성 향상",
+          title: "Drizzle ORM + NeonDB 타입 안전 데이터 계층 구축",
+          details: [
+            "SQL에 가까운 쿼리 빌더로 타입 안전성과 쿼리 제어를 양립",
+            "relationalQuery로 영상-사용자-댓글 다대다 관계를 타입 안전하게 조회",
+            "TypeScript 타입과 DB 스키마를 하나의 소스(schema.ts)에서 관리",
+          ],
         },
         {
-          action: "shadcn/ui 컴포넌트로 유튜브 UI/UX 재현",
-          insight: "기존 디자인 시스템 분석 및 재구현을 통한 UI/UX 설계 감각 향상",
+          title: "Drizzle 서브쿼리와 집계 함수를 활용한 효율적 통계 설계",
+          details: [
+            "SQL 수준 서브쿼리로 영상별 통계를 단일 쿼리에서 조인하여 반환",
+            "대시보드 조회 시 N+1 문제 없이 영상 목록 + 통계를 한 번에 가져오는 구조",
+          ],
         },
       ],
-
-      results: {
-        achievements: [
-          "영상 업로드, 스트리밍, 검색, 재생목록 등 핵심 기능 구현",
-          "크리에이터 스튜디오 대시보드 - 영상 관리, 조회수 분석 기능",
-          "Mux를 활용한 적응형 비트레이트 스트리밍(ABR) 구현",
-          "NeonDB를 활용한 서버리스 PostgreSQL 연동",
-        ],
-        keyPoints: [
-          "Drizzle ORM으로 타입 안전한 데이터베이스 쿼리 작성",
-          "Next.js Server Actions를 활용한 서버 사이드 파일 처리",
-          "Mux API 연동으로 전문적인 영상 처리 경험",
-        ],
-      },
-
-      growth: {
-        achievements: [
-          "풀스택 개발 역량 - 프론트엔드부터 백엔드, 데이터베이스까지 전체 구현",
-          "외부 API 연동 경험 - Mux 영상 처리 API 통합",
-          "복잡한 데이터 모델링 경험 - 영상, 사용자, 댓글 등 다대다 관계 설계",
-        ],
-        learnings: [
-          "Drizzle ORM의 타입 안전 쿼리와 마이그레이션 시스템 학습",
-          "대용량 파일 업로드 및 스트리밍 처리 방법 이해",
-          "Next.js 15 Server Actions를 활용한 서버 사이드 로직 구현",
-          "NeonDB 서버리스 데이터베이스 활용 및 관리",
-        ],
-      },
-
-      myRole: {
-        period: "2025.06.02 - 2025.06.28 (약 4주)",
-        responsibilities: [
-          "프로젝트 전체 기획 및 기술 스택 선정",
-          "Next.js App Router 기반 페이지 라우팅 구조 설계",
-          "Drizzle ORM을 활용한 데이터베이스 스키마 설계 및 마이그레이션",
-          "Mux API 연동 - 영상 업로드, 인코딩, 스트리밍 구현",
-          "크리에이터 스튜디오 대시보드 개발",
-          "사용자 인증 및 권한 관리 시스템 구축",
-          "Vercel 배포 및 환경 변수 관리",
-        ],
-        learnings: [
-          "Drizzle ORM과 PostgreSQL을 활용한 타입 안전 데이터베이스 개발",
-          "미디어 스트리밍 서비스 아키텍처 이해",
-          "Next.js Server Actions를 활용한 실전 개발 경험",
-        ],
-      },
+      results: [
+        "Mux 연동으로 영상 업로드 → 인코딩 → HLS 스트리밍 전체 파이프라인 구현",
+        "Drizzle ORM 타입 안전 쿼리 — Prisma 대비 SQL 수준 제어력 + TypeScript 타입 추론 양립",
+        "Server Actions 기반 서버 사이드 파일 처리 — API 키 클라이언트 노출 방지",
+        "Mux Webhook 기반 비동기 상태 관리 — 업로드 → 인코딩 → 완료 상태 자동 갱신",
+      ],
     },
   },
   {
     id: "k-sketch",
     title: "K-Sketch",
-    description: "Spring Boot v3와 React 18 기반의 종합 여행 플랫폼으로, JWT + OAuth2 인증, WebSocket + Kafka 실시간 채팅, Tour API 연동을 통한 여행지 정보 제공 및 일정 관리 기능을 갖추고 있습니다. Redis 캐싱과 이벤트 기반 아키텍처를 적용한 풀스택 프로젝트입니다.",
+    description: "Spring Boot 기반 실시간 채팅 및 여행 경로 플랫폼으로, Redis 캐싱과 Kafka 이벤트 드리븐 아키텍처를 적용하여 조회 성능 12배 개선 및 Non-blocking 시스템을 구축한 5인 팀 프로젝트입니다.",
     period: "2024.10.21 - 2025.03.19",
     team: "5인 팀 프로젝트",
-    tech: ["React", "Spring Boot", "MyBatis", "MySQL", "Redis", "Kafka"],
+    tech: ["Spring Boot", "MyBatis", "MySQL", "Redis", "Apache Kafka", "STOMP/WebSocket", "Cloudtype"],
     github: "https://github.com/backendVirtuoso/K-Sketch",
     demo: "#",
     category: "team",
     details: {
-      introduction: "Spring Boot v3와 React 18 기반의 종합 여행 플랫폼 - Redis 캐싱과 Kafka 이벤트 드리븐 아키텍처로 DB 병목을 해결하고 조회 속도 12배 개선",
-
-      overview: {
-        background: "RDB에 대한 강한 의존성이 확장성의 발목을 잡고 있었습니다. 채팅방 입장 시마다 동일한 메시지 내역을 DB에서 반복 조회하며 발생하는 과도한 Disk I/O가 커넥션 풀 고갈의 직접적인 원인이었고, 트래픽 증가 시 서비스 전체 마비로 이어질 수 있는 구조적 결함 발견",
-        purpose: "DB 접근을 원천 차단하는 아키텍처로 재설계하여 조회 성능 가속화 및 쓰기 부하 분산, 느슨한 결합(Loose Coupling) 시스템 구축으로 확장 가능한 토대 마련",
-      },
-
-      tasks: [
-        {
-          background: "채팅방 입장 시마다 동일한 메시지 내역을 DB에서 반복 조회",
-          problem: "변하지 않는 과거 대화 내역에 대해 반복적으로 발생하는 Disk I/O가 시스템 자원을 낭비하고 커넥션 풀 고갈 유발",
-          core: "Look Aside 패턴 기반 Redis 캐싱 전략",
-          solution: "채팅방별 '최근 메시지 Top 100'을 Redis(In-Memory)에 캐싱하여 DB 접근을 원천 차단. Cache Miss 발생 시에만 DB를 참조하도록 설계하여 다수의 유저가 동시에 입장하더라도 DB 부하 없이 메모리에서 데이터를 즉각 반환. 결과적으로 조회 속도 12배 개선 달성",
-        },
-        {
-          background: "채팅 메시지 저장(Insert) 트래픽이 몰릴 경우 메인 서버 스레드 블로킹 위험",
-          problem: "동기적인 DB 처리가 메인 비즈니스 로직을 블로킹하여 순간적인 트래픽 스파이크(Spike) 상황에서 메시지 유실 가능성",
-          core: "Kafka 기반 이벤트 드리븐 아키텍처",
-          solution: "Kafka를 메시지 브로커로 도입하여 채팅 전송 로직과 DB 저장 로직을 물리적으로 분리. 클라이언트 메시지를 Kafka Topic으로 발행하고, Consumer가 이를 구독하여 DB에 저장함으로써 느슨한 결합(Loose Coupling) 시스템 구축. 순간적인 트래픽 스파이크 상황에서도 메시지 유실 없이 안정적인 처리 가능",
-        },
-        {
-          background: "사용자 인증 및 보안이 중요한 여행 플랫폼 특성",
-          problem: "단순 세션 기반 인증으로는 확장성 및 보안성 부족",
-          core: "JWT + OAuth2 기반 토큰 인증 시스템 구축",
-          solution: "Access Token과 Refresh Token을 활용한 보안 강화, 소셜 로그인(Google, Kakao) 연동으로 사용자 편의성 향상",
-        },
+      service: "사용자가 여행 일정을 생성·관리하고, 공공 API 기반의 관광지·축제·숙박 정보를 탐색할 수 있는 여행 일정 플랫폼",
+      highlights: [
+        "관광지 API 조회 시, 외부 API 반복 호출로 인한 느린 응답 문제 발생 및 Redis 캐시 (24시간 TTL) + React Query 클라이언트 캐싱 이중 캐시 전략 적용으로 평균 응답속도 3s → 200ms 개선",
+        "채팅 Kafka Consumer 지연으로 WebSocket Heartbeat Timeout 발생 및 Heartbeat 주기 조정(10s/20s), SockJS 버퍼 확장, Disconnect Delay 설정으로 100+ 동시 접속 안정화",
+        "STOMP + Kafka 기반 실시간 채팅 시스템 구현 (채팅방 생성/입장/퇴장, 최근 100건 메시지 Redis 캐싱)",
+        "Cloudtype 기반 백엔드/프론트엔드 운영 배포 환경 구축 및 커스텀 도메인(k-sketch.site) 연결",
+        "Redis (세션 관리 + 캐시) 및 Kafka (메시지 큐) 개발 환경 구성",
+        "PR 템플릿 도입 및 Git Flow 브랜치 전략 수립으로 코드 리뷰 프로세스 정착에 기여",
       ],
-
-      process: [
-        {
-          action: "Spring Boot v3와 MyBatis를 활용한 RESTful API 설계 및 구현",
-          insight: "MyBatis의 동적 쿼리를 활용하여 복잡한 여행 일정 검색 조건 처리, XML 매핑으로 SQL 관리 용이성 향상",
-        },
-        {
-          action: "JWT 토큰 기반 인증/인가 시스템 구축 및 Spring Security 설정",
-          insight: "Filter Chain을 통한 토큰 검증, Role 기반 권한 관리, 예외 처리 핸들러 구현으로 보안 강화",
-        },
-        {
-          action: "Kafka Consumer/Producer 구현 및 메시지 파티셔닝 전략 수립",
-          insight: "채팅방 ID 기준 파티셔닝으로 메시지 순서 보장, 컨슈머 그룹 활용으로 확장성 확보",
-        },
-        {
-          action: "Redis 캐시 전략 설계 - TTL 설정, 캐시 무효화 정책",
-          insight: "여행지 정보는 1시간 TTL, 사용자 세션은 7일 TTL 설정으로 적절한 캐시 수명 관리",
-        },
-      ],
-
-      results: {
-        achievements: [
-          "5인 팀 프로젝트로 백엔드 API 30개 이상 개발",
-          "Redis Look Aside 패턴으로 채팅 메시지 조회 속도 12배 개선",
-          "Kafka 이벤트 드리븐 아키텍처로 DB 부하 분산 및 메시지 유실 방지",
-          "메인 비즈니스 로직이 DB 응답 지연에 영향받지 않는 비차단(Non-blocking) 구조 완성",
-          "JWT + OAuth2 인증으로 보안 강화 및 소셜 로그인 연동",
-          "WebSocket + Kafka 실시간 채팅 시스템 구축 - 동시 접속자 100명 이상 지원",
-          "Tour API 연동 - 전국 여행지 정보 10,000개 이상 제공",
-        ],
-        keyPoints: [
-          "Look Aside 패턴 + Redis 캐싱으로 조회 속도 12배(1200%) 개선",
-          "Kafka Consumer 인스턴스 Scale-out으로 유연한 처리량 조절 가능",
-          "DB 접근 원천 차단으로 커넥션 풀 고갈 문제 근본 해결",
-          "이벤트 기반 아키텍처로 느슨한 결합(Loose Coupling) 시스템 구축",
-          "MyBatis 동적 쿼리로 복잡한 검색 조건 처리",
-          "팀 협업을 통한 대규모 프로젝트 경험",
-        ],
-      },
-
-      growth: {
-        achievements: [
-          "Spring Boot v3 최신 기능 실전 적용 경험",
-          "Kafka 메시지 브로커를 활용한 이벤트 기반 아키텍처 설계 역량",
-          "5인 팀에서 백엔드 리드 역할 수행",
-          "대규모 여행 데이터 처리 및 최적화 경험",
-        ],
-        learnings: [
-          "JWT 토큰 기반 인증/인가 시스템 구축 및 보안 고려사항",
-          "WebSocket 프로토콜과 실시간 통신 메커니즘 이해",
-          "Kafka의 파티셔닝, 컨슈머 그룹, 메시지 순서 보장 학습",
-          "Redis 캐싱 전략 - TTL, 캐시 무효화, 메모리 관리",
-          "MyBatis와 Spring Boot 통합 및 동적 SQL 작성 기법",
-          "팀 협업 - Git Branch 전략, 코드 리뷰, API 문서화",
-        ],
-      },
-
-      myRole: {
-        period: "2024.10.21 - 2025.03.19 (약 5개월)",
-        responsibilities: [
-          "백엔드 아키텍처 설계 및 Spring Boot 기반 RESTful API 개발",
-          "JWT + OAuth2 인증 시스템 구축 - Google, Kakao 소셜 로그인 연동",
-          "WebSocket + Kafka 실시간 채팅 시스템 개발",
-          "Redis 캐싱 전략 수립 및 구현 - TTL 설정, 캐시 무효화",
-          "Tour API 연동 및 여행지 정보 데이터베이스 설계",
-          "MyBatis 동적 쿼리를 활용한 복잡한 검색 기능 구현",
-          "MySQL 데이터베이스 스키마 설계 및 쿼리 최적화",
-          "팀원 코드 리뷰 및 API 문서화(Swagger)",
-        ],
-        learnings: [
-          "Spring Boot 생태계 전반에 대한 깊은 이해 - Security, WebSocket, Kafka 통합",
-          "대규모 트래픽 처리를 위한 캐싱 및 메시징 시스템 설계",
-          "팀 프로젝트에서 백엔드 리드로서 아키텍처 의사결정 경험",
-          "외부 API 연동 및 데이터 동기화 전략 수립",
-        ],
-      },
       images: {
         erd: "/images/projects/k-sketch-erd.jpg",
         architecture: "/images/projects/k-sketch-architecture.jpg",
       },
+      problems: [
+        {
+          title: "반복적인 Disk I/O로 인한 커넥션 풀 고갈",
+          details: [
+            "채팅방 입장 시마다 동일한 메시지 내역을 MySQL에서 반복 조회",
+            "변하지 않는 과거 대화 내역에 대해 매번 DB 접근 발생",
+            "동시 접속자 증가 시 커넥션 풀 고갈로 서비스 전체 마비 위험",
+          ],
+        },
+        {
+          title: "동기적 DB 처리로 인한 메인 스레드 블로킹 위험",
+          details: [
+            "메시지 저장(Insert) 트래픽이 몰릴 경우 동기적 처리가 병목 발생",
+            "트래픽 스파이크 상황에서 메시지 유실 가능성 존재",
+          ],
+        },
+        {
+          title: "RDB에 대한 강한 의존성으로 확장성 제약",
+          details: [
+            "읽기/쓰기 로직이 모두 MySQL에 집중",
+            "Scale-out 시 DB가 단일 장애 지점(SPOF)이 될 수 있는 구조",
+          ],
+        },
+      ],
+      solutions: [
+        {
+          title: "Redis Cache-Aside 패턴 도입 (조회 성능 가속화)",
+          details: [
+            "채팅방별 '최근 메시지 Top 100'을 Redis(In-Memory)에 캐싱",
+            "Cache Miss가 발생할 때만 DB를 참조하도록 설계",
+            "다수의 유저가 동시 입장해도 DB 부하 없이 메모리에서 즉각 반환",
+          ],
+        },
+        {
+          title: "Kafka 기반 Event-Driven 아키텍처 적용 (쓰기 부하 분산)",
+          details: [
+            "채팅 전송 로직과 DB 저장 로직을 물리적으로 분리",
+            "클라이언트 메시지를 Kafka Topic으로 발행",
+            "Consumer가 이를 구독하여 DB에 저장하는 비동기 처리 방식 적용",
+          ],
+        },
+        {
+          title: "느슨한 결합(Loose Coupling) 시스템 구축",
+          details: [
+            "메시지 브로커를 둠으로써 트래픽 증가 시 Consumer 인스턴스만 Scale-out",
+            "읽기(Redis)와 쓰기(Kafka→MySQL) 책임을 물리적으로 분리",
+          ],
+        },
+      ],
+      results: [
+        "조회 지연 시간 12배 단축: 60ms → 5ms (Redis 캐싱 적용)",
+        "트래픽 스파이크 대응력 확보: Kafka 메시지 큐로 메시지 유실 없는 안정적 처리",
+        "확장 가능한 아키텍처 완성: Consumer 인스턴스 추가만으로 처리량 유연하게 조절 가능",
+        "DB 부하 원천 차단: 비차단(Non-blocking) 구조로 메인 비즈니스 로직이 DB 응답 지연에 영향받지 않음",
+      ],
     },
   },
   {
     id: "old-portfolio",
     title: "(구) 개인 포트폴리오 웹 사이트 구축",
-    description: "Spring Boot와 Spring Security를 활용하여 OAuth2 소셜 로그인과 이메일 발송 기능을 구현한 포트폴리오 웹사이트입니다. AWS Lightsail 및 Cloudtype으로 배포되었습니다.",
+    description: "Spring Boot와 Spring Data JPA를 활용하여 OAuth2 소셜 로그인과 이메일 발송 기능을 구현한 포트폴리오 웹사이트입니다. GitHub Actions + Cloudtype 기반 CI/CD 자동 배포를 적용했습니다.",
     period: "2024.07.29 - 2024.08.18",
     team: "개인 프로젝트",
-    tech: ["Spring Boot", "Thymeleaf", "PostgreSQL", "cloudtype"],
+    tech: ["Spring Boot", "Spring Data JPA", "Thymeleaf", "PostgreSQL", "Spring Mail", "GitHub Actions", "Cloudtype"],
     github: "https://github.com/backendVirtuoso/portfolio-website",
     demo: "#",
     category: "personal",
     details: {
-      introduction: "Spring Boot와 Thymeleaf 기반의 첫 번째 개인 포트폴리오 웹사이트 - OAuth2 소셜 로그인과 이메일 발송 기능을 갖춘 서버 사이드 렌더링 프로젝트",
-
-      overview: {
-        background: "백엔드 개발자로서의 기술 역량을 보여줄 포트폴리오 사이트 필요",
-        purpose: "Spring Boot 프레임워크를 활용하여 인증, 이메일 발송 등 실무 기능을 구현하고 클라우드 배포 경험 확보",
-      },
-
-      tasks: [
-        {
-          background: "사용자 인증 기능 구현 필요",
-          problem: "자체 회원가입/로그인 구현 시 보안 취약점 및 관리 부담",
-          core: "Spring Security + OAuth2를 활용한 소셜 로그인 구현",
-          solution: "Google, GitHub OAuth2 연동으로 안전하고 편리한 인증 시스템 구축",
-        },
-        {
-          background: "방문자와의 소통을 위한 컨택트 기능 필요",
-          problem: "이메일 서버 구축 및 관리의 복잡성",
-          core: "Spring Boot Mail 모듈과 Gmail SMTP 활용",
-          solution: "문의 양식을 통한 자동 이메일 발송 기능 구현",
-        },
+      service: "방문자에게 반응형 포트폴리오 전시 페이지와 실시간 이메일 문의 기능을 제공하는 풀스택 웹 애플리케이션",
+      highlights: [
+        "GitHub Actions + Cloudtype 기반 CI/CD 파이프라인 구축 (main 브랜치 push 시 자동 배포)",
+        "SMTP 인증 실패 및 네트워크 오류 발생 시 사용자에게 피드백이 전달되지 않는 문제를 Try-Catch 처리와 Flash Attributes 기반 PRG(Post-Redirect-Get) 패턴으로 개선하여 Redirect 이후에도 성공/실패 메시지를 유지하도록 구현하고, 이메일 발송 성공률을 95% → 98%로 향상시키며 UX를 개선함",
+        "JAR 패키징 후 실행 시 발생하던 정적 리소스(CSS/JS) 404 오류를 해결하기 위해 application.yml에 static-path-pattern 및 static-locations를 명시적으로 설정하고, Thymeleaf th:href=\"@{...}\" 문법을 적용하여 개발·운영 환경 간 리소스 경로 차이를 해소함",
+        "콘텐츠 삭제 시 데이터가 물리적으로 제거되는 문제를 Soft Delete 패턴(isActive 필드)으로 개선하고, findAllByIsActive() 기반 JPA 쿼리 메서드를 도입하여 활성/비활성 데이터를 분리 관리함으로써 복구 가능 구조를 설계함",
       ],
-
-      process: [
-        {
-          action: "Spring Security 설정 및 OAuth2 Client 구현",
-          insight: "Security Filter Chain 이해, OAuth2 인증 플로우 학습",
-        },
-        {
-          action: "Thymeleaf 템플릿 엔진으로 동적 페이지 렌더링",
-          insight: "서버 사이드 렌더링의 장단점 이해",
-        },
-        {
-          action: "PostgreSQL 데이터베이스 연동 및 JPA 엔티티 설계",
-          insight: "ORM 개념 학습 및 데이터베이스 스키마 설계 경험",
-        },
-      ],
-
-      results: {
-        achievements: [
-          "OAuth2 소셜 로그인 구현 (Google, GitHub)",
-          "이메일 발송 기능 구현 - 문의 양식 연동",
-          "Cloudtype 클라우드 플랫폼 배포",
-          "PostgreSQL 데이터베이스 연동",
-        ],
-        keyPoints: [
-          "Spring Security + OAuth2 인증 시스템 구축 경험",
-          "서버 사이드 렌더링(Thymeleaf) 이해",
-          "클라우드 배포 경험 확보",
-        ],
-      },
-
-      growth: {
-        learnings: [
-          "Spring Boot 프레임워크 전반에 대한 이해",
-          "Spring Security와 OAuth2 인증 메커니즘 학습",
-          "JPA/Hibernate ORM 개념 및 활용",
-          "클라우드 배포 프로세스 경험 (Cloudtype, AWS Lightsail)",
-          "이메일 발송 시스템 구현 및 SMTP 설정",
-        ],
-      },
-
-      myRole: {
-        period: "2024.07.29 - 2024.08.18 (약 3주)",
-        responsibilities: [
-          "프로젝트 전체 설계 및 개발",
-          "Spring Security + OAuth2 소셜 로그인 구현",
-          "이메일 발송 기능 개발",
-          "Thymeleaf 템플릿 작성 및 UI 구성",
-          "PostgreSQL 데이터베이스 설계",
-          "Cloudtype 및 AWS Lightsail 배포",
-        ],
-        learnings: [
-          "Spring Boot 기반 웹 애플리케이션 개발 전반",
-          "클라우드 배포 및 운영 경험",
-        ],
-      },
       images: {
         erd: "/images/projects/old-portfolio-erd.jpg",
         architecture: "/images/projects/old-portfolio-architecture.jpg",
       },
+      problems: [
+        {
+          title: "수동 빌드/배포 프로세스로 인한 생산성 저하",
+          details: [
+            "코드 수정 시마다 수동으로 빌드 및 배포 수행",
+            "평균 10분 이상의 배포 시간 소요",
+          ],
+        },
+        {
+          title: "배포 과정의 일관성 부재",
+          details: [
+            "개발자마다 다른 배포 방식으로 환경 불일치 발생 가능성",
+            "휴먼 에러로 인한 배포 실패 위험",
+          ],
+        },
+        {
+          title: "빠른 피드백 루프 부재",
+          details: [
+            "코드 변경 후 결과 확인까지 시간 지연",
+            "반복적인 수정-배포 사이클에서 비효율 누적",
+          ],
+        },
+      ],
+      solutions: [
+        {
+          title: "GitHub Actions 워크플로우 구성",
+          details: [
+            "main 브랜치 푸시 시 자동으로 빌드 트리거",
+            "YAML 기반 워크플로우 파일로 빌드 단계 정의",
+          ],
+        },
+        {
+          title: "Cloudtype 연동 자동 배포 파이프라인 구축",
+          details: [
+            "GitHub → Build → Deploy → Cloudtype 자동화",
+            "Cloudflare Custom Domain 연동으로 도메인 설정",
+          ],
+        },
+        {
+          title: "빌드 캐싱 최적화",
+          details: [
+            "Gradle 의존성 캐싱으로 반복 빌드 시간 단축",
+            "빌드 아티팩트 재사용으로 배포 속도 향상",
+          ],
+        },
+      ],
+      results: [
+        "배포 소요 시간 80% 단축: 10분 → 2분 내외",
+        "운영 효율성 극대화: 자동화로 개발 집중도 향상",
+        "일관된 배포 품질: 휴먼 에러 제거 및 배포 프로세스 표준화",
+      ],
     },
   },
   {
@@ -462,168 +319,128 @@ export const projects: Project[] = [
     demo: "#",
     category: "team",
     details: {
-      introduction: "Spring Framework 5.x와 Vue.js 기반의 금융기관 내부 업무 시스템 - MyBatis 동적 쿼리를 활용한 복잡한 금융 데이터 처리",
-
-      overview: {
-        background: "금융기관 내부 업무 처리 및 데이터 조회 시스템 개발 교육 프로젝트",
-        purpose: "Spring Framework와 MyBatis를 활용한 엔터프라이즈 애플리케이션 개발 역량 강화 및 금융 도메인 이해",
-      },
-
-      tasks: [
+      service: "금융기관 내부 업무 시스템에서 복합 조건 검색과 데이터 관리를 지원하는 웹 애플리케이션",
+      highlights: [
+        "MyBatis 동적 쿼리로 12가지 검색 조건 조합을 단일 매퍼로 처리",
+        "Spring MVC 3계층 컨벤션 수립으로 팀 모듈 통합 효율화",
+        "파라미터 바인딩(#{})으로 SQL Injection 원천 방지",
+      ],
+      problems: [
         {
-          background: "복잡한 금융 데이터 조회 조건 처리 필요",
-          problem: "정적 SQL로는 다양한 검색 조건 조합 처리 어려움",
-          core: "MyBatis 동적 쿼리 활용",
-          solution: "<if>, <choose>, <foreach> 등의 동적 SQL 태그를 활용하여 유연한 쿼리 작성",
+          title: "12가지 검색 조건의 동적 쿼리 처리",
+          details: [
+            "금융 업무에서 날짜 범위 + 거래 유형 + 금액 범위 + 고객명 등 12가지 조건의 자유로운 조합 필요",
+            "정적 SQL로 모든 조합(2^12 = 4,096가지)에 대응하려면 수십 개의 쿼리 작성·관리 필요",
+            "애플리케이션 레벨 문자열 SQL 동적 생성 시 SQL Injection 위험성 증가",
+          ],
+        },
+        {
+          title: "팀원 간 코드 스타일/계층 구조 불일치",
+          details: [
+            "6인 팀에서 각자 개발한 모듈의 코드 스타일과 계층 구조가 달라 통합 시 충돌 빈번",
+            "Controller에서 직접 SQL을 호출하거나 Service 없이 DAO를 직접 사용하는 코드 존재",
+          ],
         },
       ],
-
-      process: [
+      solutions: [
         {
-          action: "Spring MVC 패턴 기반 Controller-Service-DAO 계층 설계",
-          insight: "계층 분리를 통한 유지보수성 향상 및 비즈니스 로직 재사용성 확보",
+          title: "MyBatis 동적 SQL 태그로 단일 XML 매퍼 처리",
+          details: [
+            "<if test=\"\">로 조건 존재 여부에 따른 동적 WHERE절 생성",
+            "<foreach>로 IN 절 동적 구성, <choose>로 정렬 조건 분기 처리",
+            "파라미터 바인딩(#{})으로 SQL Injection 원천 방지",
+          ],
         },
         {
-          action: "MyBatis XML 매퍼를 활용한 동적 쿼리 작성",
-          insight: "복잡한 조건문을 SQL에서 분리하여 가독성 및 유지보수성 향상",
-        },
-        {
-          action: "Vue.js를 활용한 프론트엔드 개발",
-          insight: "컴포넌트 기반 UI 개발 및 상태 관리 학습",
+          title: "Spring MVC Controller-Service-DAO 3계층 규칙 수립",
+          details: [
+            "Controller(요청/응답), Service(비즈니스 로직), DAO(데이터 접근) 역할 명확 분리",
+            "코드 리뷰로 계층 규칙 준수 여부 확인",
+            "모듈 간 통합 시 충돌 최소화, 비즈니스 로직 재사용성 향상",
+          ],
         },
       ],
-
-      results: {
-        achievements: [
-          "6인 팀 프로젝트로 금융 업무 시스템 개발",
-          "MyBatis 동적 쿼리로 복잡한 검색 조건 처리",
-          "Spring MVC 패턴 기반 백엔드 API 개발",
-          "Vue.js 프론트엔드 통합",
-        ],
-        keyPoints: [
-          "MyBatis 동적 SQL 활용 역량",
-          "Spring Framework 계층 구조 이해",
-          "팀 협업 및 코드 통합 경험",
-        ],
-      },
-
-      growth: {
-        learnings: [
-          "Spring Framework 5.x MVC 패턴 이해",
-          "MyBatis 동적 쿼리 작성 및 XML 매퍼 활용",
-          "금융 도메인 비즈니스 로직 이해",
-          "Vue.js 프론트엔드 프레임워크 기초",
-          "PostgreSQL 데이터베이스 활용",
-        ],
-      },
-
-      myRole: {
-        period: "2024.07.04 - 2024.07.25 (약 3주)",
-        responsibilities: [
-          "백엔드 API 개발 - Controller, Service, DAO 계층 구현",
-          "MyBatis 동적 쿼리 작성 - 복잡한 검색 조건 처리",
-          "PostgreSQL 데이터베이스 쿼리 최적화",
-          "팀원과 코드 통합 및 버그 수정",
-        ],
-        learnings: [
-          "Spring Framework 실무 활용 경험",
-          "MyBatis를 활용한 데이터 액세스 계층 개발",
-          "팀 협업 및 Git 버전 관리",
-        ],
-      },
+      results: [
+        "12가지 검색 조건의 모든 조합을 단일 XML 매퍼 파일로 관리",
+        "Spring MVC 3계층 컨벤션으로 모듈 간 결합도 최소화",
+        "Vue.js 프론트엔드와 RESTful API 안정적 연동",
+      ],
     },
   },
   {
     id: "jeju-for-suffer",
     title: "Jeju for suffer (실시간 모니터링)",
-    description: "Spring Boot 기반 제주도 해수욕장 종합 정보 플랫폼으로, 실시간 수질 데이터 시각화, 기상청 날씨 정보, 서핑 클래스 예약 및 결제 시스템을 제공합니다. ",
+    description: "Spring Boot 기반 제주도 해수욕장 종합 정보 플랫폼으로, 실시간 수질 데이터 시각화, 기상청 날씨 정보, 서핑 클래스 예약 시스템을 제공합니다.",
     period: "2024.06.21 - 2024.07.03",
     team: "6인 팀 프로젝트",
-    tech: ["CSS3", "HTML5", "JavaScript", "Spring Boot", "H2"],
+    tech: ["Spring Boot", "Spring Security 6", "Spring Data JPA", "H2 Database", "Thymeleaf"],
     github: "https://github.com/GSITM-Team3/spring-environment-monitoring",
     demo: "#",
     category: "team",
     details: {
-      introduction: "Spring Boot 기반의 제주도 해수욕장 종합 정보 플랫폼 - 실시간 수질 데이터 시각화, 기상청 날씨 정보, 서핑 클래스 예약 시스템",
-
-      overview: {
-        background: "제주도 해수욕장 방문객을 위한 실시간 환경 정보 및 서핑 클래스 예약 서비스 필요",
-        purpose: "공공 API 연동을 통한 실시간 수질 및 날씨 데이터 제공, 서핑 클래스 예약/결제 시스템 구축으로 관광객 편의성 향상",
-      },
-
-      tasks: [
-        {
-          background: "해수욕장 수질 정보를 실시간으로 제공할 필요",
-          problem: "공공 API 데이터 형식 복잡 및 실시간 업데이트 처리",
-          core: "환경부 수질 측정망 API 연동 및 데이터 파싱",
-          solution: "Spring Boot RestTemplate으로 API 호출, JSON 데이터 파싱 후 데이터베이스 저장 및 시각화",
-        },
-        {
-          background: "서핑 클래스 예약 및 결제 시스템 필요",
-          problem: "복잡한 예약 로직 및 결제 처리",
-          core: "Spring Boot 기반 예약 시스템 및 결제 모듈 구현",
-          solution: "예약 가능 시간 체크, 중복 예약 방지, 결제 API 연동",
-        },
+      service: "제주도 18개 해수욕장의 수질 데이터, 기상 정보, 서핑 강습 예약, 커뮤니티 기능을 하나의 플랫폼에 통합한 서핑 정보 서비스",
+      highlights: [
+        "기상청 단기예보 API 연동을 통한 기온·풍속·파고·풍향 날씨 정보 제공",
+        "게시글 검색(작성자/위치 기반) 및 페이지네이션(3건 단위) 구현",
+        "WebMvcConfig를 통한 정적 리소스 매핑 및 파일 업로드 경로 설정 (최대 20MB)",
+        "Notion 기반 기능 명세서 작성",
       ],
-
-      process: [
-        {
-          action: "기상청 날씨 API 및 환경부 수질 API 연동",
-          insight: "공공 데이터 API 활용 방법 및 데이터 파싱 기술 습득",
-        },
-        {
-          action: "Chart.js를 활용한 수질 데이터 시각화",
-          insight: "데이터 시각화 라이브러리 활용으로 사용자 경험 향상",
-        },
-        {
-          action: "H2 인메모리 데이터베이스 활용",
-          insight: "빠른 개발 및 테스트를 위한 경량 데이터베이스 활용",
-        },
-      ],
-
-      results: {
-        achievements: [
-          "실시간 수질 데이터 시각화 - Chart.js 활용",
-          "기상청 날씨 정보 API 연동",
-          "서핑 클래스 예약 및 결제 시스템 구현",
-          "6인 팀 프로젝트로 2주 내 개발 완료",
-        ],
-        keyPoints: [
-          "공공 API 연동 및 데이터 처리 경험",
-          "Spring Boot 기반 백엔드 개발",
-          "데이터 시각화 라이브러리 활용",
-        ],
-      },
-
-      growth: {
-        learnings: [
-          "공공 데이터 API 연동 및 활용 방법",
-          "Spring Boot RestTemplate을 활용한 외부 API 호출",
-          "Chart.js를 활용한 데이터 시각화",
-          "H2 데이터베이스 활용 및 JPA 엔티티 설계",
-          "예약 시스템 비즈니스 로직 구현",
-        ],
-      },
-
-      myRole: {
-        period: "2024.06.21 - 2024.07.03 (약 2주)",
-        responsibilities: [
-          "환경부 수질 측정망 API 연동 및 데이터 처리",
-          "기상청 날씨 API 연동",
-          "Chart.js를 활용한 수질 데이터 시각화",
-          "서핑 클래스 예약 로직 구현",
-          "H2 데이터베이스 스키마 설계",
-        ],
-        learnings: [
-          "외부 API 연동 실무 경험",
-          "데이터 시각화 및 사용자 경험 개선",
-          "단기 프로젝트 개발 경험",
-        ],
-      },
       images: {
         erd: "/images/projects/jeju-for-suffer-erd.jpg",
         architecture: "/images/projects/jeju-for-suffer-architecture.jpg",
       },
+      problems: [
+        {
+          title: "외부 날씨 API JSON 파싱 오류",
+          details: [
+            "기상청 실시간 API 응답의 복잡한 JSON 중첩 구조",
+            "실제 응답 구조와 DTO 매핑 로직 불일치로 예외 발생",
+          ],
+        },
+        {
+          title: "대량 게시글 조회 시 성능 저하",
+          details: [
+            "페이지네이션 미적용으로 전체 데이터 한 번에 로딩",
+            "게시글 수 증가에 따른 응답 시간 선형 증가",
+          ],
+        },
+        {
+          title: "참조 무결성 제약 조건 처리 미흡",
+          details: [
+            "회원 탈퇴 시 연관 데이터(게시글, 댓글, 좋아요, 예약) 처리 문제",
+            "FK 제약조건으로 인한 삭제 실패",
+          ],
+        },
+      ],
+      solutions: [
+        {
+          title: "응답 전문 분석 및 DTO 매핑 로직 재설계",
+          details: [
+            "API 문서와 실제 응답 구조 비교 분석",
+            "다양한 응답 형태에 대응할 수 있는 유연한 DTO 설계",
+            "예외 처리 강화로 파싱 실패 시 폴백 로직 구현",
+          ],
+        },
+        {
+          title: "JPA Pageable 적용으로 쿼리 최적화",
+          details: [
+            "페이지 단위 조회로 한 번에 가져오는 데이터 양 제한",
+            "정렬 조건 추가로 최신 게시글 우선 표시",
+          ],
+        },
+        {
+          title: "참조 무결성 유지하면서 회원 탈퇴 처리",
+          details: [
+            "연관 데이터 순차 삭제 로직 구현 (좋아요 → 댓글 → 게시글 → 예약 → 회원)",
+            "트랜잭션 처리로 데이터 일관성 보장",
+          ],
+        },
+      ],
+      results: [
+        "데이터 파싱 오류 해결: 서비스 안정성 확보 및 날씨 정보 정상 표시",
+        "대량 조회 성능 개선: 페이지네이션 적용으로 일정한 응답 속도 유지",
+        "회원 관리 기능 완성: 참조 무결성 유지하면서 회원 탈퇴 처리 가능",
+      ],
     },
   },
   {
@@ -637,84 +454,65 @@ export const projects: Project[] = [
     demo: "https://backendvirtuoso.github.io/gsitm-react-traffic-safety/",
     category: "team",
     details: {
-      introduction: "React 기반의 경기도 교통사고 다발지역 조회 및 시각화 SPA - 카카오맵 API 연동, react-virtualized 렌더링 최적화",
-
-      overview: {
-        background: "교통안전 정보를 효과적으로 시각화하여 사용자에게 제공할 필요",
-        purpose: "React를 활용한 SPA 개발 역량 강화 및 대용량 데이터 렌더링 최적화, 지도 API 연동 경험 확보",
-      },
-
-      tasks: [
+      service: "경기도 교통사고 다발지역 데이터를 지도 위에 시각화하고 사고유형/지역/연도별 필터링을 제공하는 교통안전 정보 플랫폼",
+      highlights: [
+        "react-virtualized로 5,000건 이상 데이터 렌더링 성능 80% 향상 (DOM 노드 5,000개→30개)",
+        "카카오맵 API + MarkerClusterer로 사고 위치 시각화 및 사고유형별 마커 색상 분리",
+        "useMemo + useCallback 메모이제이션으로 필터 변경 시 불필요한 재계산/리렌더링 방지",
+        "GitHub Pages 배포 — 실제 접속 가능한 교통안전 정보 웹 서비스 운영",
+      ],
+      problems: [
         {
-          background: "수천 개의 교통사고 데이터 렌더링 시 성능 저하",
-          problem: "모든 데이터를 한 번에 렌더링하면 브라우저 성능 저하 및 사용자 경험 악화",
-          core: "react-virtualized 라이브러리 도입",
-          solution: "가상 스크롤링으로 화면에 보이는 항목만 렌더링하여 성능 80% 향상",
+          title: "5,000건 데이터 동시 렌더링 시 브라우저 프리징",
+          details: [
+            "모든 DOM 노드를 한 번에 생성하여 브라우저 메인 스레드 블로킹",
+            "초기 렌더링 시 3초 이상 프리징, 스크롤 시 프레임 드롭(10fps 이하)",
+          ],
         },
         {
-          background: "교통사고 위치를 지도에 시각화할 필요",
-          problem: "복잡한 지도 API 연동 및 마커 관리",
-          core: "카카오맵 API 연동 및 마커 클러스터링",
-          solution: "사고 유형별 마커 표시, 클러스터링으로 가독성 향상",
+          title: "지도 위 대량 마커 시각화 성능 문제",
+          details: [
+            "5,000개 이상의 마커를 카카오맵에 동시 표시 시 렌더링 성능 급격히 저하",
+            "마커가 겹쳐서 정보 식별 불가",
+          ],
+        },
+        {
+          title: "복합 필터링 상태 관리 복잡도",
+          details: [
+            "사고유형/지역/연도 필터 상태를 여러 컴포넌트(리스트, 지도, 통계)에서 공유 필요",
+            "필터 조건 변경 시 5,000건 전체 데이터 순회로 UI 반응 지연",
+          ],
         },
       ],
-
-      process: [
+      solutions: [
         {
-          action: "React 컴포넌트 설계 및 상태 관리",
-          insight: "함수형 컴포넌트와 Hooks를 활용한 효율적인 상태 관리",
+          title: "react-virtualized 가상 스크롤링 적용",
+          details: [
+            "화면에 보이는 20~30개 항목만 DOM에 유지, 스크롤 위치에 따라 동적 교체",
+            "DOM 노드 수 5,000개→30개로 감소, 60fps 스크롤 안정 유지",
+          ],
         },
         {
-          action: "react-virtualized로 대용량 리스트 렌더링 최적화",
-          insight: "가상 스크롤링 개념 이해 및 성능 최적화 전략 학습",
+          title: "카카오맵 MarkerClusterer 클러스터링",
+          details: [
+            "줌 레벨에 따라 인접 마커를 자동 그룹핑하여 가독성 확보",
+            "사고 유형별(차대차/차대사람/단독사고) 마커 색상 분리로 시각적 구분",
+          ],
         },
         {
-          action: "카카오맵 API 연동 및 마커 표시",
-          insight: "외부 라이브러리 연동 및 지도 API 활용 경험",
+          title: "useState + useMemo 조합으로 필터 상태 관리 최적화",
+          details: [
+            "useMemo로 필터링 결과를 캐싱하여 동일 조건 재계산 방지",
+            "useCallback으로 이벤트 핸들러 메모이제이션하여 하위 컴포넌트 불필요한 리렌더링 방지",
+          ],
         },
       ],
-
-      results: {
-        achievements: [
-          "경기도 교통사고 데이터 5,000건 이상 처리",
-          "react-virtualized로 렌더링 성능 80% 향상",
-          "카카오맵 API 연동 - 사고 위치 시각화",
-          "사고유형별/지역별/연도별 필터링 기능",
-          "GitHub Pages 배포 - 실제 사용 가능한 웹 서비스",
-        ],
-        keyPoints: [
-          "React Hooks를 활용한 효율적인 상태 관리",
-          "대용량 데이터 렌더링 최적화",
-          "지도 API 연동 경험",
-        ],
-      },
-
-      growth: {
-        learnings: [
-          "React 함수형 컴포넌트 및 Hooks(useState, useEffect) 활용",
-          "react-virtualized를 활용한 성능 최적화",
-          "카카오맵 API 연동 및 마커 관리",
-          "SPA(Single Page Application) 개발 경험",
-          "GitHub Pages를 활용한 정적 사이트 배포",
-          "팀 협업 및 컴포넌트 분리 전략",
-        ],
-      },
-
-      myRole: {
-        period: "2024.05.28 - 2024.06.04 (약 1주)",
-        responsibilities: [
-          "React 컴포넌트 설계 및 개발",
-          "react-virtualized 렌더링 최적화 구현",
-          "카카오맵 API 연동 및 마커 표시",
-          "필터링 기능 구현 - 사고유형/지역/연도별",
-          "GitHub Pages 배포",
-        ],
-        learnings: [
-          "React 기반 SPA 개발 전반",
-          "성능 최적화 기법 및 가상 스크롤링",
-          "외부 API 연동 실무 경험",
-        ],
-      },
+      results: [
+        "렌더링 성능 80% 향상: DOM 노드 5,000개→30개, 초기 렌더링 시간 대폭 단축",
+        "카카오맵 MarkerClusterer로 5,000개 마커 가독성 확보",
+        "React Hooks 기반 효율적 상태 관리 패턴 정립",
+        "GitHub Pages 배포로 실제 사용 가능한 웹 서비스 운영",
+      ],
     },
   },
 ]
