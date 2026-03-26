@@ -2,6 +2,129 @@ import type { Project } from "@/types"
 
 export const projects: Project[] = [
   {
+    id: "todak-todak",
+    title: "토닥토닥 (Todak-Todak)",
+    description: "하루 두 번, 따뜻한 감성의 글귀를 이메일로 전달하는 구독 서비스입니다. Passwordless Magic Link 인증, Kafka 기반 이메일 배치 발송, Claude AI 글귀 생성을 갖춘 풀스택 프로젝트입니다.",
+    period: "2026.03.21 - 2026.03.26",
+    team: "개인 프로젝트",
+    tech: ["Spring Boot 4.0", "Java 21", "MySQL 8.0", "Redis 7", "Apache Kafka", "Claude API", "Spring Batch", "JWT", "Next.js 15", "TypeScript", "Tailwind CSS v4", "Axios", "Recharts"],
+    github: "https://github.com/ha018/ongi-be",
+    demo: "https://todaktodak.site/",
+    category: "personal",
+    details: {
+      service: "매일 07:00/19:00에 위로·응원·격려·축하 등 6개 카테고리 글귀를 이메일로 발송하는 구독 서비스. Claude AI 커스텀 글귀 생성과 관리자 대시보드 포함",
+      highlights: [
+        "Spring Batch + Kafka(6파티션, Concurrency 3)로 ACTIVE 구독자 100명씩 청크 처리 후 이메일 비동기 발송 파이프라인 구축",
+        "Passwordless Magic Link 인증 — 비밀번호 없이 이메일 링크 15분 유효 토큰으로 로그인, JWT 7일 유효기간 발급",
+        "Claude API(claude-haiku-4-5-20251001)로 상황 설명 + 카테고리 입력 시 맞춤 글귀 AI 생성 기능 구현",
+        "오늘의 글귀 Redis 캐싱(12h TTL)으로 DB 부하 감소, 구독자 이메일 인증 토큰도 Redis 관리",
+        "Flyway 마이그레이션으로 스키마 버전 관리(V1~V8), Docker Compose로 MySQL/Redis/Kafka 로컬 환경 원클릭 구성",
+        "Recharts 기반 관리자 대시보드 — 구독자 수/발송 횟수 통계 차트, 구독자 목록·발송 이력 페이지네이션 테이블",
+      ],
+      problems: [
+        {
+          title: "대량 이메일 발송 시 SMTP 서버 부하와 발송 실패 처리",
+          details: [
+            "구독자 전체에 순차 발송 시 SMTP 타임아웃 위험 및 단일 실패가 전체 발송 중단 유발",
+            "발송 스케줄러와 실제 메일 전송 간 강결합으로 스케일아웃 불가",
+          ],
+        },
+        {
+          title: "비밀번호 없는 인증 흐름 설계",
+          details: [
+            "세션 기반 인증은 서버 상태 관리 필요, 소셜 로그인은 OAuth 앱 등록 복잡도 증가",
+            "이메일 구독 서비스 특성상 이메일 주소만으로 간편 인증이 필요",
+          ],
+        },
+      ],
+      solutions: [
+        {
+          title: "Kafka 메시지 큐로 이메일 발송 파이프라인 분리",
+          details: [
+            "Spring Batch가 ongi.email.send 토픽에 발행, KafkaEmailConsumer(Concurrency 3)가 병렬 소비",
+            "6파티션으로 처리량 확장, 소비 실패 시 Kafka 재처리로 발송 안정성 확보",
+            "SendHistory 테이블에 발송 이력 기록으로 재발송·모니터링 가능",
+          ],
+        },
+        {
+          title: "Magic Link + JWT Stateless 인증 구현",
+          details: [
+            "이메일 요청 시 15분 유효 UUID 토큰 생성 → Redis 저장 → 이메일 링크 발송",
+            "링크 클릭 시 Redis 토큰 검증 후 JWT(7일) 발급, 이후 Bearer 토큰으로 Stateless 인증",
+            "Spring Security FilterChain에 JwtAuthFilter 추가, ADMIN 역할 분리",
+          ],
+        },
+      ],
+      results: [
+        "Spring Batch + Kafka 파이프라인으로 대량 이메일 발송 안정성 확보 및 스케일아웃 가능 구조 완성",
+        "Magic Link Passwordless 인증으로 회원가입·로그인 마찰 최소화",
+        "Claude AI 글귀 생성으로 서비스 차별화 — 상황 맞춤 위로·격려 메시지 생성",
+        "Flyway + Docker Compose로 로컬 환경 재현성 확보, 팀원 온보딩 시간 단축",
+      ],
+    },
+  },
+  // {
+  //   id: "chzzk-clone",
+  //   title: "CHZZK 클론 코딩",
+  //   description: "네이버 CHZZK 라이브 스트리밍 플랫폼의 UI/UX를 클론한 풀스택 프로젝트입니다. Spring Boot 백엔드로 YouTube Data API v3 데이터를 수집·저장하고, Next.js 15 프론트엔드로 CHZZK 스타일의 13개 페이지를 구현했습니다.",
+  //   period: "2026.01.07 - 2026.03.09",
+  //   team: "개인 프로젝트",
+  //   tech: ["Next.js 15", "React 19", "TypeScript 5", "Tailwind CSS v4", "Spring Boot 3.5", "Java 21", "MariaDB", "Spring Batch", "YouTube Data API v3", "JPA/Hibernate", "WebClient"],
+  //   github: "https://github.com/ha018/chzzk-clone-be",
+  //   demo: "https://chzzk-clone-phi.vercel.app",
+  //   category: "personal",
+  //   details: {
+  //     service: "YouTube Data API v3로 채널·영상·댓글 데이터를 수집하여 CHZZK 스타일 UI로 서빙하는 풀스택 클론 서비스",
+  //     highlights: [
+  //       "Spring Batch + 6시간 주기 Cron으로 YouTube PlaylistItems/Videos/CommentThreads API 자동 동기화 파이프라인 구축 (청크 크기 100)",
+  //       "IntersectionObserver Web API만으로 무한 스크롤 구현 — pageInfo.last 플래그로 마지막 페이지 감지, 외부 라이브러리 미사용",
+  //       "SSR(홈 페이지 SEO·초기 로딩) + CSR(라이브·클립·검색 인터랙티브 필터) 혼합 렌더링 전략 적용",
+  //       "다크/라이트 테마 FOUC 방지를 위해 루트 레이아웃 <script> 태그로 렌더링 전 테마 선적용, html.theme_dark 클래스 토글",
+  //       "WebClient 16MB 버퍼·30초 타임아웃 설정, 비동기 논블로킹으로 YouTube API 50건 배치 요청 처리",
+  //       "채널/영상/댓글 3개 테이블에 7개 인덱스(복합 인덱스 포함)로 채널별 최신 영상 조회 최적화",
+  //     ],
+  //     problems: [
+  //       {
+  //         title: "YouTube API 반복 호출로 인한 속도와 할당량 문제",
+  //         details: [
+  //           "채널 등록 시 PlaylistItems(페이지네이션), Videos(50건 배치), CommentThreads API를 순차 호출해야 하는 복잡한 수집 파이프라인",
+  //           "API 할당량(quota) 소진 위험과 대량 데이터 처리 시 타임아웃 위험",
+  //         ],
+  //       },
+  //       {
+  //         title: "동적 Next.js 환경에서 다크모드 FOUC(Flash of Unstyled Content)",
+  //         details: [
+  //           "hydration 전 테마를 모르는 상태로 렌더링되어 흰 화면 깜빡임 발생",
+  //           "Context Provider는 클라이언트에서만 작동하여 서버 렌더링 시 기본값 노출",
+  //         ],
+  //       },
+  //     ],
+  //     solutions: [
+  //       {
+  //         title: "Spring Batch 청크 처리 + 배치 API 호출로 수집 최적화",
+  //         details: [
+  //           "청크 크기 100으로 DB 저장, YouTube Videos API 50건 배치 요청으로 API 호출 수 최소화",
+  //           "중복 YouTube ID 감지로 기존 데이터는 건너뛰어 증분 동기화 구현",
+  //           "WebClient 비동기 논블로킹으로 I/O 대기 없이 여러 API 요청 처리",
+  //         ],
+  //       },
+  //       {
+  //         title: "루트 레이아웃 인라인 스크립트로 테마 선적용",
+  //         details: [
+  //           "Next.js 루트 layout.tsx의 <script>에서 localStorage 값을 읽어 hydration 전 html 클래스 설정",
+  //           "CSS Custom Properties를 html.theme_dark 클래스로 분기하여 JS 없이 테마 전환",
+  //         ],
+  //       },
+  //     ],
+  //     results: [
+  //       "13개 페이지(홈·라이브·클립·카테고리·채널·검색 등) CHZZK UI 구현",
+  //       "Spring Batch 6시간 주기 자동 동기화로 운영 중 수동 개입 없이 최신 데이터 유지",
+  //       "SSR + CSR 혼합 전략으로 홈 페이지 SEO와 인터랙티브 필터 페이지 UX 동시 달성",
+  //       "REST API 4개 컨트롤러, Swagger UI 문서화 완성",
+  //     ],
+  //   },
+  // },
+  {
     id: "portfolio-website",
     title: "개인 포트폴리오 웹 사이트 구축",
     description: "Next.js 15와 React 19 기반의 개인 포트폴리오 웹사이트로, Three.js 3D 인터랙션과 next-intl 다국어 지원, Vercel 자동 배포를 포함한 모던 스택으로 구성되었습니다.",
