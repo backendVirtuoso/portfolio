@@ -99,8 +99,7 @@ export function ProjectsSection() {
           {displayedProjects.map((project) => (
             <Card
               key={project.title}
-              className="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1 border-border/50 hover:border-primary/30 cursor-pointer"
-              onClick={() => router.push(`/${locale}/projects/${project.id}`)}
+              className="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 border-border/50 hover:border-primary/30"
             >
               {/* 카드 헤더 - 카테고리와 제목 */}
               <div className="border-b border-border/50 bg-muted/30 px-6 py-4">
@@ -130,8 +129,8 @@ export function ProjectsSection() {
               <div className="flex-1 p-6 flex flex-col gap-4">
                 <p
                   onClick={() => toggleDescription(project.title)}
-                  className={`text-sm leading-relaxed text-muted-foreground cursor-pointer transition-all hover:text-foreground 
-                    ${expandedDescriptions.has(project.title) ? '' : 'line-clamp-3'} 
+                  className={`text-sm leading-relaxed text-muted-foreground cursor-pointer select-none transition-all hover:text-foreground
+                    ${expandedDescriptions.has(project.title) ? '' : 'line-clamp-3'}
                     ${expandedDescriptions.has(project.title) ? '' : 'min-h-[4rem]'}`}
                   title="클릭하여 펼치기/접기"
                 >
@@ -140,7 +139,7 @@ export function ProjectsSection() {
 
                 {/* 기술 스택 */}
                 <div className="flex flex-wrap gap-2 mt-auto">
-                  {(expandedProjects.has(project.title) ? project.tech : project.tech.slice(0, 5)).map((tech) => (
+                  {project.tech.slice(0, 5).map((tech) => (
                     <span
                       key={tech}
                       className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20 transition-colors hover:bg-primary/20"
@@ -148,7 +147,17 @@ export function ProjectsSection() {
                       {tech}
                     </span>
                   ))}
-                  {project.tech.length > 5 && !expandedProjects.has(project.title) && (
+                  {expandedProjects.has(project.title) &&
+                    project.tech.slice(5).map((tech) => (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20 transition-colors hover:bg-primary/20 animate-in fade-in duration-200"
+                      >
+                        {tech}
+                      </span>
+                    ))
+                  }
+                  {project.tech.length > 5 && (
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
@@ -156,18 +165,7 @@ export function ProjectsSection() {
                       }}
                       className="inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground hover:bg-muted-foreground/20 transition-colors cursor-pointer"
                     >
-                      +{project.tech.length - 5}
-                    </button>
-                  )}
-                  {expandedProjects.has(project.title) && project.tech.length > 5 && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        toggleExpanded(project.title)
-                      }}
-                      className="inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground hover:bg-muted-foreground/20 transition-colors cursor-pointer"
-                    >
-                      접기
+                      {expandedProjects.has(project.title) ? "접기" : `+${project.tech.length - 5}`}
                     </button>
                   )}
                 </div>

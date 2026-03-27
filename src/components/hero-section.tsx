@@ -28,7 +28,7 @@ export function HeroSection() {
           <h1 className="mb-10 text-balance font-sans text-5xl font-bold tracking-tight text-foreground md:text-7xl leading-tight md:leading-tight">
             {t("hero.greeting")}
             <br />
-            <span className="text-primary">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               {t("hero.name")}
             </span>
             {t("hero.title")}
@@ -78,18 +78,18 @@ export function HeroSection() {
 
         {/* Scroll Indicator - Down Arrow */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
             className="text-muted-foreground/50"
           >
-            <path d="M12 5v14M19 12l-7 7-7-7"/>
+            <path d="M12 5v14M19 12l-7 7-7-7" />
           </svg>
         </div>
       </div>

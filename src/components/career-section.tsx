@@ -25,7 +25,7 @@ export function CareerSection() {
         {/* Experience */}
         <div className="space-y-6">
           {experiences.map((exp, index) => (
-            <Card key={index} className="p-6 bg-card border-border hover:border-primary transition-colors">
+            <Card key={index} className="p-6 bg-card border-l-4 border-l-primary/20 hover:border-l-primary/60 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                 <div>
                   <h4 className="text-xl font-bold text-foreground">{exp.company}</h4>

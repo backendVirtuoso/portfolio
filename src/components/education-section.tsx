@@ -24,71 +24,65 @@ export function EducationSection() {
           <p className="text-lg text-muted-foreground">{t("education.subtitle")}</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {/* Academic Education */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
+          <Card className="flex flex-col p-6 border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border/50">
               <div className="p-2 rounded-lg bg-primary/10">
-                <GraduationCap className="h-6 w-6 text-primary" />
+                <GraduationCap className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">{t("education.academic.title")}</h3>
+              <h3 className="text-lg font-bold text-foreground">{t("education.academic.title")}</h3>
             </div>
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4 flex-1">
               {education.map((edu, index) => (
-                <Card key={index} className="p-6 bg-card border-border hover:border-primary transition-colors">
-                  <div className="flex flex-col">
-                    <h4 className="text-lg font-bold text-foreground mb-1">{edu.school}</h4>
-                    <p className="text-primary font-medium mb-2">{edu.degree}</p>
-                    <p className="text-sm text-muted-foreground">{edu.period}</p>
-                    {edu.description && <p className="text-sm text-muted-foreground mt-2">{edu.description}</p>}
-                  </div>
-                </Card>
+                <div key={index} className="relative pl-4 border-l-2 border-primary/20">
+                  <h4 className="text-sm font-bold text-foreground mb-0.5">{edu.school}</h4>
+                  <p className="text-sm text-primary font-medium mb-1">{edu.degree}</p>
+                  <p className="text-xs text-muted-foreground">{edu.period}</p>
+                  {edu.description && <p className="text-xs text-muted-foreground mt-1">{edu.description}</p>}
+                </div>
               ))}
             </div>
-          </div>
+          </Card>
 
           {/* Bootcamp/Training */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
+          <Card className="flex flex-col p-6 border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border/50">
               <div className="p-2 rounded-lg bg-primary/10">
-                <BookOpen className="h-6 w-6 text-primary" />
+                <BookOpen className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">{t("education.training.title")}</h3>
+              <h3 className="text-lg font-bold text-foreground">{t("education.training.title")}</h3>
             </div>
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4 flex-1">
               {bootcamp.map((edu, index) => (
-                <Card key={index} className="p-6 bg-card border-border hover:border-primary transition-colors">
-                  <div className="flex flex-col">
-                    <h4 className="text-lg font-bold text-foreground mb-1">{edu.school}</h4>
-                    <p className="text-primary font-medium mb-2">{edu.degree}</p>
-                    <p className="text-sm text-muted-foreground mb-2">{edu.period}</p>
-                    <p className="text-sm text-muted-foreground whitespace-pre-line">{edu.description}</p>
-                  </div>
-                </Card>
+                <div key={index} className="relative pl-4 border-l-2 border-primary/20">
+                  <h4 className="text-sm font-bold text-foreground mb-0.5">{edu.school}</h4>
+                  <p className="text-sm text-primary font-medium mb-1">{edu.degree}</p>
+                  <p className="text-xs text-muted-foreground mb-2">{edu.period}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed whitespace-pre-line">{edu.description}</p>
+                </div>
               ))}
             </div>
-          </div>
+          </Card>
 
           {/* Certifications */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
+          <Card className="flex flex-col p-6 border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border/50">
               <div className="p-2 rounded-lg bg-primary/10">
-                <Award className="h-6 w-6 text-primary" />
+                <Award className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">{t("education.cert.title")}</h3>
+              <h3 className="text-lg font-bold text-foreground">{t("education.cert.title")}</h3>
             </div>
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4 flex-1">
               {certifications.map((cert, index) => (
-                <Card key={index} className="p-6 bg-card border-border hover:border-primary transition-colors">
-                  <div className="flex flex-col">
-                    <h4 className="text-lg font-bold text-foreground mb-1">{cert.name}</h4>
-                    <p className="text-sm text-muted-foreground mb-1">{cert.issuer}</p>
-                    <p className="text-sm text-primary font-medium">{cert.date}</p>
-                  </div>
-                </Card>
+                <div key={index} className="relative pl-4 border-l-2 border-primary/20">
+                  <h4 className="text-sm font-bold text-foreground mb-0.5">{cert.name}</h4>
+                  <p className="text-xs text-muted-foreground mb-1">{cert.issuer}</p>
+                  <p className="text-xs text-primary font-medium">{cert.date}</p>
+                </div>
               ))}
             </div>
-          </div>
+          </Card>
         </div>
       </div>
     </section>

@@ -24,18 +24,18 @@ export function TechStackSection() {
           {techStack.map((stack) => {
             const Icon = stack.icon
             return (
-              <Card key={stack.category} className="group p-8 transition-all hover:shadow-lg hover:shadow-primary/10">
+              <Card key={stack.category} className="group p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
                 <div className="inline-flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   <Icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-sans text-2xl font-semibold text-foreground">{t(stack.category)}</h3>
-                <ul className="space-y-3">
+                <h3 className="mt-2 mb-2 font-sans text-2xl font-semibold text-foreground">{t(stack.category)}</h3>
+                <ul className="space-y-2">
                   {stack.items.map((item) => (
                     <li
                       key={item}
                       className="text-sm text-muted-foreground transition-colors group-hover:text-foreground flex items-center"
                     >
-                      <span className="mr-2 h-1.5 w-1.5 rounded-full bg-primary/60"></span>
+                      <span className="mr-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60"></span>
                       {item}
                     </li>
                   ))}
