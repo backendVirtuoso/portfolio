@@ -21,6 +21,10 @@ export const projects: Project[] = [
         "Flyway 마이그레이션으로 스키마 버전 관리(V1~V8), Docker Compose로 MySQL/Redis/Kafka 로컬 환경 원클릭 구성",
         "Recharts 기반 관리자 대시보드 — 구독자 수/발송 횟수 통계 차트, 구독자 목록·발송 이력 페이지네이션 테이블",
       ],
+      images: {
+        erd: "/images/projects/todak-erd.jpg",
+        architecture: "/images/projects/todak-architecture.jpg",
+      },
       problems: [
         {
           title: "대량 이메일 발송 시 SMTP 서버 부하와 발송 실패 처리",
