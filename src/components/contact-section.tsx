@@ -1,79 +1,54 @@
-"use client"
-
-import { Mail, Github, Linkedin } from "lucide-react"
+import { useTranslations } from "next-intl"
+import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { useTranslations } from 'next-intl'
+import { Section } from "@/components/section"
+import { profile } from "@/data/profile"
 
 export function ContactSection() {
-  const t = useTranslations()
+  const t = useTranslations("contact")
 
-  const contacts = [
-    {
-      icon: Mail,
-      label: t("contact.email"),
-      value: "h_leopold@naver.com",
-      href: "mailto:h_leopold@naver.com",
-      external: false,
-      colorClass: "bg-primary/10 text-primary",
-    },
-    {
-      icon: Github,
-      label: t("contact.github"),
-      value: "github.com/backendVirtuoso",
-      href: "https://github.com/backendVirtuoso",
-      external: true,
-      colorClass: "bg-muted text-foreground/70",
-    },
-    {
-      icon: Linkedin,
-      label: t("contact.linkedin"),
-      value: "linkedin.com/in/황준하",
-      href: "https://www.linkedin.com/in/황준하/",
-      external: true,
-      colorClass: "bg-primary/10 text-primary",
-    },
+  const rows = [
+    { label: t("github"), value: profile.githubLabel, href: profile.github },
+    { label: t("linkedin"), value: profile.linkedinLabel, href: profile.linkedin },
+    { label: t("resume"), value: t("resumeValue"), href: profile.resume },
   ]
 
   return (
-    <section id="contact" className="relative min-h-screen flex items-center py-24 px-4 bg-muted/30 border-t border-border/50">
-      {/* Section Decorator */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+    <Section id="contact" title={t("title")} subtitle={t("subtitle")} layout="stack">
+      <a
+        href={`mailto:${profile.email}`}
+        className="link-draw inline-block break-all pb-1 text-[clamp(2rem,7vw,5.5rem)] font-medium leading-[1.05] tracking-[-0.035em] text-foreground"
+        aria-label={`${t("email")}: ${profile.email}`}
+      >
+        {profile.email}
+      </a>
 
-      <div className="mx-auto max-w-4xl w-full">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">{t("contact.title")}</h2>
-          <p className="text-lg text-muted-foreground">{t("contact.subtitle")}</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
-          {contacts.map((contact) => {
-            const Icon = contact.icon
-            return (
-              <Card
-                key={contact.label}
-                className="flex flex-col items-center text-center p-6 border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-pointer"
-                onClick={() => contact.external ? window.open(contact.href, "_blank", "noopener,noreferrer") : window.location.href = contact.href}
-              >
-                <div className={`p-4 rounded-full ${contact.colorClass}`}>
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-base font-bold text-foreground mb-1.5">{contact.label}</h3>
-                <p className="text-sm text-muted-foreground break-all">{contact.value}</p>
-              </Card>
-            )
-          })}
-        </div>
-
-        <div className="text-center">
-          <Button size="lg" className="gap-2" asChild>
-            <a href="mailto:h_leopold@naver.com">
-              <Mail className="h-4 w-4" />
-              {t("contact.send")}
-            </a>
-          </Button>
-        </div>
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <Button size="lg" asChild>
+          <a href={`mailto:${profile.email}`}>{t("send")}</a>
+        </Button>
       </div>
-    </section>
+
+      <ul className="mt-14 border-t border-border">
+        {rows.map((row) => (
+          <li key={row.label} className="border-b border-border">
+            <a
+              href={row.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group grid min-h-16 grid-cols-[8rem_1fr_auto] items-center gap-4 py-4 transition-colors duration-150 ease-brand hover:bg-muted sm:grid-cols-[10rem_1fr_auto] sm:gap-6"
+            >
+              <span className="meta">{row.label}</span>
+              <span className="min-w-0 truncate text-base text-foreground">{row.value}</span>
+              <ArrowUpRight
+                aria-hidden
+                className="mr-2 size-5 text-muted-foreground transition-[transform,color] duration-150 ease-brand group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
+                strokeWidth={1.5}
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
   )
 }

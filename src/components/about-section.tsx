@@ -1,55 +1,24 @@
-"use client"
+import { useTranslations } from "next-intl"
+import { Section } from "@/components/section"
 
-import { User, Target, Heart } from "lucide-react"
-import { Card } from "@/components/ui/card"
-import { useTranslations } from 'next-intl'
+const ITEMS = ["whoiam", "whatido", "whatlove"] as const
 
 export function AboutSection() {
-  const t = useTranslations()
+  const t = useTranslations("about")
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center py-24 px-4 bg-background border-t border-border/50">
-      {/* Section Decorator */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
-      <div className="mx-auto max-w-6xl w-full">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">{t("about.title")}</h2>
-          <p className="text-lg text-muted-foreground">{t("about.subtitle")}</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="p-6 bg-card border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4 p-3 rounded-full bg-primary/10">
-                <User className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">{t("about.whoiam.title")}</h3>
-              <p className="text-muted-foreground leading-relaxed">{t("about.whoiam.desc")}</p>
-            </div>
-          </Card>
-
-          <Card className="p-6 bg-card border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4 p-3 rounded-full bg-accent/10">
-                <Target className="h-8 w-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">{t("about.whatido.title")}</h3>
-              <p className="text-muted-foreground leading-relaxed">{t("about.whatido.desc")}</p>
-            </div>
-          </Card>
-
-          <Card className="p-6 bg-card border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4 p-3 rounded-full bg-accent/10">
-                <Heart className="h-8 w-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">{t("about.whatlove.title")}</h3>
-              <p className="text-muted-foreground leading-relaxed">{t("about.whatlove.desc")}</p>
-            </div>
-          </Card>
-        </div>
-      </div>
-    </section>
+    <Section id="about" title={t("title")} subtitle={t("subtitle")}>
+      <dl className="divide-y divide-border border-y border-border">
+        {ITEMS.map((key, i) => (
+          <div key={key} className="grid gap-2 py-7 sm:grid-cols-[3rem_10rem_1fr] sm:gap-6">
+            <dt className="contents">
+              <span aria-hidden className="meta pt-0.5">0{i + 1}</span>
+              <span className="text-base font-medium text-foreground">{t(`${key}.title`)}</span>
+            </dt>
+            <dd className="text-base leading-[1.75] text-body">{t(`${key}.desc`)}</dd>
+          </div>
+        ))}
+      </dl>
+    </Section>
   )
 }

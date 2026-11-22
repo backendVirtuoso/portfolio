@@ -1,96 +1,65 @@
-"use client"
-
-import { ThreeScene } from "./three-scene"
+import type { CSSProperties } from "react"
+import { useTranslations } from "next-intl"
+import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useTranslations } from 'next-intl'
-import { Github, Linkedin, Mail, FileText } from "lucide-react"
+import { PipelineVisual } from "@/components/pipeline-visual"
+import { profile } from "@/data/profile"
+
+const step = (i: number) => ({ "--i": i }) as CSSProperties
 
 export function HeroSection() {
-  const t = useTranslations()
+  const t = useTranslations("hero")
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0">
-        <ThreeScene />
-      </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-background/80 via-background/50 to-background/80" />
-
-      {/* Content */}
-      <div className="relative z-20 flex min-h-screen flex-col items-center justify-center px-4">
-        <div className="mx-auto max-w-8xl text-center">
-          <div className="mb-8 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-            {t("hero.badge")}
-          </div>
-
-          <h1 className="mb-10 text-balance font-sans text-5xl font-bold tracking-tight text-foreground md:text-7xl leading-tight md:leading-tight">
-            {t("hero.greeting")}
-            <br />
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              {t("hero.name")}
-            </span>
-            {t("hero.title")}
-          </h1>
-
-          <p className="mb-10 text-pretty text-lg leading-loose text-muted-foreground md:text-xl md:leading-loose whitespace-pre-line">
-            {t("hero.description")}
+    <section aria-labelledby="hero-title" className="relative flex min-h-[100svh] items-center pt-16" data-enter>
+      <div className="wrap grid items-center gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
+        <div className="lg:col-span-6">
+          <p className="meta enter" style={step(0)}>
+            {t("eyebrow")}
           </p>
 
-          <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg" className="gap-2" asChild>
-              <a href="mailto:h_leopold@naver.com">
-                <Mail className="h-4 w-4" />
-                {t("hero.contact")}
+          <h1
+            id="hero-title"
+            className="enter mt-5 text-[40px] font-semibold leading-[1.08] tracking-[-0.03em] text-foreground sm:text-5xl lg:text-[56px]"
+            style={step(1)}
+          >
+            <span className="block">{t("name")}</span>
+            <span className="mt-1 block font-medium text-body">{t("role")}</span>
+          </h1>
+
+          <p className="enter mt-6 max-w-[36rem] text-lg leading-[1.7] text-body" style={step(2)}>
+            {t("description")}
+          </p>
+
+          <div className="enter mt-9 flex flex-col gap-3 sm:flex-row" style={step(3)}>
+            <Button size="lg" asChild>
+              <a href={profile.resume} target="_blank" rel="noopener noreferrer">
+                {t("resume")}
+                <ArrowUpRight strokeWidth={1.5} />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2 bg-transparent" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                <FileText className="h-4 w-4" />
-                {t("hero.resume")}
-              </a>
+            <Button size="lg" variant="outline" asChild>
+              <a href={`mailto:${profile.email}`}>{t("contact")}</a>
             </Button>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center justify-center gap-4">
-            <Button variant="ghost" size="icon" className="rounded-full" asChild>
-              <a href="https://github.com/backendVirtuoso" target="_blank" rel="noopener noreferrer">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
+          <ul className="enter mt-8 flex items-center gap-5 text-sm" style={step(4)}>
+            <li>
+              <a href={profile.github} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex min-h-11 items-center text-body hover:text-foreground">
+                GitHub
               </a>
-            </Button>
-            <Button variant="ghost" size="icon" className="rounded-full" asChild>
-              <a href="https://linkedin.com/in/준하-황-5b121a350/" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
+            </li>
+            <li>
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex min-h-11 items-center text-body hover:text-foreground">
+                LinkedIn
               </a>
-            </Button>
-            <Button variant="ghost" size="icon" className="rounded-full" asChild>
-              <a href="mailto:h_leopold@naver.com">
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
-              </a>
-            </Button>
-          </div>
+            </li>
+            <li className="meta">{profile.email}</li>
+          </ul>
         </div>
 
-        {/* Scroll Indicator - Down Arrow */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-muted-foreground/50"
-          >
-            <path d="M12 5v14M19 12l-7 7-7-7" />
-          </svg>
+        <div className="enter lg:col-span-6 lg:pl-6" style={step(3)}>
+          <PipelineVisual />
         </div>
       </div>
     </section>

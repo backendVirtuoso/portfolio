@@ -1,261 +1,185 @@
 "use client"
 
 import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, Calendar, Users } from "lucide-react"
-import { useTranslations, useLocale } from 'next-intl'
+import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/routing"
+import { Section } from "@/components/section"
 import { projects } from "@/data/projects"
-import type { ProjectCategory } from "@/types"
-import { useRouter } from "next/navigation"
+import type { Project, ProjectCategory } from "@/types"
+import { cn } from "@/lib/utils"
+
+const INITIAL_COUNT = 5
+const CATEGORIES: ProjectCategory[] = ["all", "team", "personal", "course"]
+const hasLink = (href?: string) => Boolean(href && href !== "#")
+
+function TechLine({ tech, max }: { tech: string[]; max: number }) {
+  const t = useTranslations("project")
+  const shown = tech.slice(0, max)
+  const rest = tech.length - shown.length
+  return (
+    <p className="meta" translate="no">
+      {shown.join(" · ")}
+      {rest > 0 && <span> · {t("moreTech", { count: rest })}</span>}
+    </p>
+  )
+}
+
+function ProjectLinks({ project }: { project: Project }) {
+  const t = useTranslations("project")
+  return (
+    <div className="relative z-10 flex items-center gap-5 text-sm">
+      {hasLink(project.github) && (
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex min-h-11 items-center text-body hover:text-foreground">
+          {t("code")}
+        </a>
+      )}
+      {hasLink(project.demo) && (
+        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex min-h-11 items-center text-body hover:text-foreground">
+          {t("demo")}
+        </a>
+      )}
+    </div>
+  )
+}
+
+function FeaturedProject({ project }: { project: Project }) {
+  const t = useTranslations("project")
+  const image = project.details?.images?.architecture
+  return (
+    <article className="card-link relative grid overflow-hidden rounded-xl border border-border bg-background lg:grid-cols-12">
+      <div className="flex flex-col p-6 md:p-8 lg:col-span-5">
+        <p className="meta">
+          {t(`category.${project.category}`)} · {project.period}
+        </p>
+        <h3 className="mt-4 whitespace-pre-line text-2xl font-medium leading-tight tracking-[-0.02em] text-foreground md:text-[28px]">
+          <Link href={`/projects/${project.id}`} className="after:absolute after:inset-0 after:content-['']">
+            {project.title}
+          </Link>
+        </h3>
+        <p className="mt-4 text-[15px] leading-[1.75] text-body">{project.description}</p>
+        <div className="mt-6">
+          <TechLine tech={project.tech} max={8} />
+        </div>
+        <div className="mt-auto flex items-center justify-between gap-4 pt-6">
+          <ProjectLinks project={project} />
+          <span className="inline-flex items-center gap-1 text-sm text-link">
+            {t("detail.viewDetail")}
+            <ArrowUpRight className="size-4" strokeWidth={1.5} />
+          </span>
+        </div>
+      </div>
+      {image && (
+        <div className="relative border-t border-border bg-white lg:col-span-7 lg:border-l lg:border-t-0">
+          <div className="relative aspect-[16/10] h-full w-full overflow-hidden">
+            <Image
+              src={image}
+              alt={`${project.title} ${t("detail.architecture")}`}
+              fill
+              sizes="(min-width: 1024px) 640px, 100vw"
+              className="zoom object-contain p-4 md:p-6"
+            />
+          </div>
+        </div>
+      )}
+    </article>
+  )
+}
+
+function ProjectRow({ project }: { project: Project }) {
+  const t = useTranslations("project")
+  return (
+    <li className="group relative grid gap-3 border-b border-border py-7 transition-colors duration-150 ease-brand sm:grid-cols-[10rem_1fr_auto] sm:gap-6">
+      <p className="meta pt-1">
+        {t(`category.${project.category}`)}
+        <br className="hidden sm:block" />
+        <span className="sm:hidden"> · </span>
+        {project.period.split(" - ")[0]}
+      </p>
+      <div className="min-w-0">
+        <h3 className="whitespace-pre-line text-lg font-medium leading-snug tracking-[-0.01em] text-foreground">
+          <Link href={`/projects/${project.id}`} className="after:absolute after:inset-0 after:content-['']">
+            {project.title}
+          </Link>
+        </h3>
+        <p className="mt-2 line-clamp-2 text-[15px] leading-[1.7] text-body">{project.description}</p>
+        <div className="mt-3">
+          <TechLine tech={project.tech} max={5} />
+        </div>
+        <div className="mt-1">
+          <ProjectLinks project={project} />
+        </div>
+      </div>
+      <ArrowUpRight
+        aria-hidden
+        className="hidden size-5 text-muted-foreground transition-[transform,color] duration-150 ease-brand group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground sm:block"
+        strokeWidth={1.5}
+      />
+    </li>
+  )
+}
 
 export function ProjectsSection() {
-  const t = useTranslations()
-  const locale = useLocale()
-  const router = useRouter()
-  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("all")
-  const [expandedProjects, setExpandedProjects] = useState<Set<string>>(new Set())
-  const [expandedDescriptions, setExpandedDescriptions] = useState<Set<string>>(new Set())
-  const [displayCount, setDisplayCount] = useState<number>(6)
+  const t = useTranslations("project")
+  const [category, setCategory] = useState<ProjectCategory>("all")
+  const [showAll, setShowAll] = useState(false)
 
-  const categories = [
-    { value: "all" as const, label: t("project.filter.all") },
-    { value: "team" as const, label: t("project.filter.team") },
-    { value: "personal" as const, label: t("project.filter.personal") },
-    { value: "course" as const, label: t("project.filter.course") },
-  ]
-
-  const filteredProjects =
-    selectedCategory === "all" ? projects : projects.filter((project) => project.category === selectedCategory)
-
-  const displayedProjects = filteredProjects.slice(0, displayCount)
-  const hasMoreProjects = filteredProjects.length > displayCount
-
-  const toggleExpanded = (projectTitle: string) => {
-    setExpandedProjects((prev) => {
-      const newSet = new Set(prev)
-      if (newSet.has(projectTitle)) {
-        newSet.delete(projectTitle)
-      } else {
-        newSet.add(projectTitle)
-      }
-      return newSet
-    })
-  }
-
-  const toggleDescription = (projectTitle: string) => {
-    setExpandedDescriptions((prev) => {
-      const newSet = new Set(prev)
-      if (newSet.has(projectTitle)) {
-        newSet.delete(projectTitle)
-      } else {
-        newSet.add(projectTitle)
-      }
-      return newSet
-    })
-  }
-
-  const toggleShowMore = () => {
-    if (displayCount === 6) {
-      setDisplayCount(filteredProjects.length)
-    } else {
-      setDisplayCount(6)
-    }
-  }
-
-  // 카테고리 변경 시 displayCount 초기화
-  const handleCategoryChange = (category: ProjectCategory) => {
-    setSelectedCategory(category)
-    setDisplayCount(6)
-  }
+  const filtered = category === "all" ? projects : projects.filter((p) => p.category === category)
+  const visible = showAll ? filtered : filtered.slice(0, INITIAL_COUNT)
+  const [featured, ...rest] = visible
+  const featuredHasImage = Boolean(featured?.details?.images?.architecture)
 
   return (
-    <section id="project" className="relative min-h-screen flex items-center bg-background py-24 px-4 border-t border-border/50">
-      {/* Section Decorator */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-
-      <div className="mx-auto max-w-7xl w-full">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-balance font-sans text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-            {t("project.title")}
-          </h2>
-          <p className="text-pretty text-lg text-muted-foreground">{t("project.subtitle")}</p>
-        </div>
-
-        <div className="mb-12 flex flex-wrap justify-center gap-3">
-          {categories.map((category) => (
-            <Button
-              key={category.value}
-              variant={selectedCategory === category.value ? "default" : "outline"}
-              onClick={() => handleCategoryChange(category.value)}
-              className="min-w-[100px] px-6 transition-all duration-300 hover:scale-105"
+    <Section id="project" title={t("title")} subtitle={t("subtitle", { count: projects.length })} layout="stack">
+      <div role="group" aria-label={t("filterLabel")} className="mb-8 inline-flex rounded-md border border-border bg-muted p-1">
+        {CATEGORIES.map((value) => {
+          const active = category === value
+          return (
+            <button
+              key={value}
+              type="button"
+              aria-pressed={active}
+              onClick={() => {
+                setCategory(value)
+                setShowAll(false)
+              }}
+              className={cn(
+                "min-h-11 rounded-[5px] px-4 text-sm md:min-h-9 transition-[color,background-color,box-shadow] duration-150 ease-brand",
+                active ? "bg-background text-foreground shadow-[0_0_0_1px_var(--border)]" : "text-body hover:text-foreground"
+              )}
             >
-              {category.label}
-            </Button>
-          ))}
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {displayedProjects.map((project) => (
-            <Card
-              key={project.title}
-              className="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 border-border/50 hover:border-primary/30"
-            >
-              {/* 카드 헤더 - 카테고리와 제목 */}
-              <div className="border-b border-border/50 bg-muted/30 px-6 py-4">
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <span className="shrink-0 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary uppercase tracking-wide">
-                    {t(`project.category.${project.category}`)}
-                  </span>
-                </div>
-                <h3 className="font-sans text-lg font-bold text-foreground leading-tight line-clamp-2 min-h-[3rem] whitespace-pre-line">
-                  {project.title}
-                </h3>
-                {/* 프로젝트 기간 및 팀 정보 */}
-                <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="h-3.5 w-3.5" />
-                    <span>{project.period}</span>
-                  </div>
-                  <span className="text-muted-foreground/50">•</span>
-                  <div className="flex items-center gap-1.5">
-                    <Users className="h-3.5 w-3.5" />
-                    <span>{project.team}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* 카드 본문 */}
-              <div className="flex-1 p-6 flex flex-col gap-4">
-                <p
-                  onClick={() => toggleDescription(project.title)}
-                  className={`text-sm leading-relaxed text-muted-foreground cursor-pointer select-none transition-all hover:text-foreground
-                    ${expandedDescriptions.has(project.title) ? '' : 'line-clamp-3'}
-                    ${expandedDescriptions.has(project.title) ? '' : 'min-h-[4rem]'}`}
-                  title="클릭하여 펼치기/접기"
-                >
-                  {project.description}
-                </p>
-
-                {/* 기술 스택 */}
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tech.slice(0, 5).map((tech) => (
-                    <span
-                      key={tech}
-                      className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20 transition-colors hover:bg-primary/20"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {expandedProjects.has(project.title) &&
-                    project.tech.slice(5).map((tech) => (
-                      <span
-                        key={tech}
-                        className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20 transition-colors hover:bg-primary/20 animate-in fade-in duration-200"
-                      >
-                        {tech}
-                      </span>
-                    ))
-                  }
-                  {project.tech.length > 5 && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        toggleExpanded(project.title)
-                      }}
-                      className="inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground hover:bg-muted-foreground/20 transition-colors cursor-pointer"
-                    >
-                      {expandedProjects.has(project.title) ? "접기" : `+${project.tech.length - 5}`}
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* 카드 푸터 - 액션 버튼 */}
-              <div className="flex flex-col gap-2 border-t border-border/50 bg-muted/20 p-4">
-                {/* 자세히 보기 버튼 */}
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="w-full gap-2 transition-all duration-300"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    router.push(`/${locale}/projects/${project.id}`)
-                  }}
-                >
-                  {t("project.detail.viewDetail")}
-                </Button>
-
-                {/* 코드 & 데모 버튼 */}
-                <div className="flex gap-2">
-                  {project.demo && project.demo !== "#" ? (
-                    <>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex-1 gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                        asChild
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4" />
-                          {t("project.code")}
-                        </a>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex-1 gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                        asChild
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4" />
-                          {t("project.demo")}
-                        </a>
-                      </Button>
-                    </>
-                  ) : (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full gap-2 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-                      asChild
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4" />
-                        {t("project.code")}
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        {filteredProjects.length === 0 && (
-          <div className="py-16 text-center">
-            <div className="mx-auto max-w-md">
-              <p className="text-lg font-medium text-muted-foreground">{t("project.empty")}</p>
-            </div>
-          </div>
-        )}
-
-        {filteredProjects.length > 6 && (
-          <div className="mt-12 flex justify-center">
-            <Button
-              onClick={toggleShowMore}
-              variant="outline"
-              size="lg"
-              className="min-w-[150px] px-8 transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-            >
-              {displayCount === 6 ? t("project.showMore") : t("project.showLess")}
-            </Button>
-          </div>
-        )}
+              {t(`filter.${value}`)}
+            </button>
+          )
+        })}
       </div>
-    </section>
+
+      {filtered.length === 0 ? (
+        <p className="border-y border-border py-16 text-body">{t("empty")}</p>
+      ) : (
+        <>
+          {featured && featuredHasImage ? <FeaturedProject project={featured} /> : null}
+          <ul className={cn("border-t border-border", featuredHasImage && "mt-10")}>
+            {(featuredHasImage ? rest : visible).map((project) => (
+              <ProjectRow key={project.id} project={project} />
+            ))}
+          </ul>
+        </>
+      )}
+
+      {filtered.length > INITIAL_COUNT && (
+        <div className="mt-10">
+          <button
+            type="button"
+            onClick={() => setShowAll((v) => !v)}
+            aria-expanded={showAll}
+            className="inline-flex h-11 items-center rounded-md border border-border-strong px-5 text-[15px] font-medium text-foreground transition-[background-color,transform] duration-150 ease-brand hover:bg-surface-2 active:translate-y-px"
+          >
+            {showAll ? t("showLess") : t("showMore")}
+          </button>
+        </div>
+      )}
+    </Section>
   )
 }

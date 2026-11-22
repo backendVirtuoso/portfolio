@@ -1,50 +1,28 @@
-"use client"
-
-import { Card } from "@/components/ui/card"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from "next-intl"
+import { Section } from "@/components/section"
 import { techStack } from "@/data/tech-stack"
 
 export function TechStackSection() {
   const t = useTranslations()
 
   return (
-    <section id="skill" className="relative min-h-screen flex items-center py-24 px-4 bg-muted/30 border-t border-border/50">
-      {/* Section Decorator */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
-      <div className="mx-auto max-w-7xl w-full">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-balance font-sans text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-            {t("skill.title")}
-          </h2>
-          <p className="text-pretty text-lg text-muted-foreground">{t("skill.subtitle")}</p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {techStack.map((stack) => {
-            const Icon = stack.icon
-            return (
-              <Card key={stack.category} className="group p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  <Icon className="h-7 w-7" />
-                </div>
-                <h3 className="mt-2 mb-2 font-sans text-2xl font-semibold text-foreground">{t(stack.category)}</h3>
-                <ul className="space-y-2">
-                  {stack.items.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm text-muted-foreground transition-colors group-hover:text-foreground flex items-center"
-                    >
-                      <span className="mr-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60"></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            )
-          })}
-        </div>
-      </div>
-    </section>
+    <Section id="skill" title={t("skill.title")} subtitle={t("skill.subtitle")}>
+      <dl className="divide-y divide-border border-y border-border">
+        {techStack.map((stack) => (
+          <div key={stack.category} className="grid gap-3 py-6 sm:grid-cols-[10rem_1fr] sm:gap-6">
+            <dt className="meta pt-1">{t(stack.category)}</dt>
+            <dd>
+              <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[17px] text-foreground">
+                {stack.items.map((item) => (
+                  <li key={item} translate="no">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </Section>
   )
 }

@@ -1,43 +1,71 @@
 {
+  "meta": {
+    "title": "황준하 · 백엔드 개발자",
+    "description": "Java와 Spring으로 API와 데이터 파이프라인을 만드는 신입 백엔드 개발자 황준하의 포트폴리오"
+  },
+  "skip": "본문으로 건너뛰기",
   "nav": {
-    "about": "About",
-    "skill": "Skill",
-    "career": "Career",
-    "education": "교육/자격증",
-    "project": "Project",
-    "contact": "Contact"
+    "about": "소개",
+    "skill": "기술",
+    "career": "경력",
+    "education": "교육",
+    "project": "프로젝트",
+    "contact": "연락처"
   },
   "header": {
-    "name": "황준하's Portfolio"
+    "name": "황준하",
+    "home": "맨 위로",
+    "menuOpen": "메뉴 열기",
+    "menuClose": "메뉴 닫기",
+    "language": "Switch to English",
+    "languageShort": "EN",
+    "themeLight": "라이트 모드로 전환",
+    "themeDark": "다크 모드로 전환"
   },
   "hero": {
-    "badge": "백엔드 개발자",
-    "greeting": "늘 끊임없이 배우고자 하는",
-    "name": "백엔드 개발자 황준하 ",
-    "title": "포트폴리오입니다.",
-    "description": "확장 가능한 서버 아키텍처와 효율적인 데이터베이스 설계를 통해\n안정적이고 성능 좋은 백엔드 시스템을 구축합니다.",
-    "contact": "연락하기",
-    "resume": "이력서 보기"
+    "eyebrow": "신입 백엔드 개발자 · Java, Spring Boot",
+    "name": "황준하",
+    "role": "느린 쿼리를 찾아 고치는 백엔드 개발자",
+    "description": "API와 데이터베이스를 설계하고, Kafka와 Redis로 배치·비동기 처리를 구성합니다. 인턴십에서는 SimHash 유사도 쿼리의 응답 시간을 90% 줄였습니다.",
+    "resume": "이력서 보기",
+    "contact": "이메일 보내기",
+    "visual": {
+      "file": "todak-be / mail-pipeline",
+      "title": "토닥토닥 이메일 발송 파이프라인",
+      "scheduler": "스케줄러",
+      "schedulerMeta": "매일 07:00 · 19:00",
+      "batch": "Spring Batch",
+      "batchMeta": "ACTIVE 구독자 100명씩 청크",
+      "kafka": "Kafka",
+      "kafkaMeta": "6 partitions",
+      "consumer": "메일 컨슈머",
+      "consumerMeta": "concurrency 3",
+      "redis": "Redis",
+      "redisMeta": "오늘의 글귀 캐시 · TTL 12h",
+      "mysql": "MySQL 8",
+      "mysqlMeta": "구독자 · 발송 이력",
+      "open": "프로젝트 상세 보기"
+    }
   },
   "about": {
-    "title": "About Me",
-    "subtitle": "저를 소개합니다",
+    "title": "소개",
+    "subtitle": "문제를 원인까지 따라가 고치는 걸 좋아합니다",
     "whoiam": {
-      "title": "Who I Am",
+      "title": "어떤 개발자인지",
       "desc": "문제 해결을 즐기는 신입 백엔드 개발자입니다. 효율적인 코드와 확장 가능한 아키텍처 설계에 관심이 많습니다."
     },
     "whatido": {
-      "title": "What I Do",
-      "desc": "RESTful API 설계, 데이터베이스 최적화, 서버 아키텍처 구축을 통해 안정적인 백엔드 시스템을 개발합니다."
+      "title": "하는 일",
+      "desc": "RESTful API 설계, 데이터베이스 최적화, 서버 아키텍처 구성으로 안정적인 백엔드 시스템을 만듭니다."
     },
     "whatlove": {
-      "title": "What I Love",
-      "desc": "새로운 기술을 배우고 적용하는 것을 좋아하며, 팀과 협업하여 더 나은 서비스를 만드는 것에 열정이 있습니다."
+      "title": "좋아하는 것",
+      "desc": "새로운 기술을 배워 실제 서비스에 적용하는 일, 그리고 팀과 함께 더 나은 서비스를 만드는 일을 좋아합니다."
     }
   },
   "skill": {
     "title": "기술 스택",
-    "subtitle": "다양한 기술을 활용하여 최적의 솔루션을 제공합니다",
+    "subtitle": "실무와 프로젝트에서 직접 써본 기술",
     "frontend": "프론트엔드",
     "backend": "백엔드",
     "database": "데이터베이스",
@@ -47,7 +75,8 @@
   },
   "project": {
     "title": "프로젝트",
-    "subtitle": "실무에 적용 가능한 프로젝트 경험",
+    "subtitle": "팀, 개인, 강의 프로젝트 {count}개",
+    "filterLabel": "프로젝트 분류",
     "filter": {
       "all": "전체",
       "team": "팀",
@@ -59,22 +88,23 @@
       "personal": "개인",
       "course": "강의"
     },
-    "code": "코드",
-    "demo": "데모",
-    "empty": "해당 카테고리의 프로젝트가 없습니다.",
-    "showMore": "더보기",
+    "code": "코드 보기",
+    "demo": "데모 열기",
+    "moreTech": "외 {count}개",
+    "empty": "이 분류에는 프로젝트가 없습니다",
+    "showMore": "프로젝트 모두 보기",
     "showLess": "접기",
     "detail": {
       "back": "프로젝트 목록으로",
       "notFound": "프로젝트를 찾을 수 없습니다",
-      "period": "프로젝트 기간",
-      "team": "팀 구성",
+      "period": "기간",
+      "team": "구성",
       "techStack": "기술 스택",
       "viewDetail": "상세 보기",
       "service": "서비스",
       "highlights": "핵심 성과",
       "diagrams": "다이어그램",
-      "erd": "ERD (Entity Relationship Diagram)",
+      "erd": "ERD",
       "architecture": "시스템 아키텍처",
       "problems": "문제 원인",
       "solutions": "해결 과정",
@@ -83,12 +113,12 @@
   },
   "career": {
     "title": "경력",
-    "subtitle": "업무 경험 및 주요 성과",
+    "subtitle": "인턴십에서 맡은 일과 결과",
     "responsibilities": "주요 업무"
   },
   "education": {
-    "title": "교육 및 자격증",
-    "subtitle": "학력 및 자격증 현황",
+    "title": "교육과 자격증",
+    "subtitle": "학력, 교육 과정, 자격증",
     "academic": {
       "title": "학력"
     },
@@ -100,20 +130,17 @@
     }
   },
   "contact": {
-    "title": "Contact",
-    "subtitle": "함께 일하고 싶으시다면 언제든 연락주세요",
-    "email": "Email",
-    "phone": "Phone",
+    "title": "연락처",
+    "subtitle": "채용과 협업 제안은 이메일로 받습니다",
+    "email": "이메일",
     "github": "GitHub",
     "linkedin": "LinkedIn",
+    "resume": "이력서",
+    "resumeValue": "PDF로 보기",
     "send": "이메일 보내기"
   },
   "footer": {
     "name": "황준하",
-    "description": "확장 가능한 서버 아키텍처와 효율적인 데이터베이스 설계를 통해 안정적이고 성능 좋은 백엔드 시스템을 구축합니다.",
-    "quicklinks": "Quick Links",
-    "connect": "Connect",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved"
   }
 }
-

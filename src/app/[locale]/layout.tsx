@@ -1,72 +1,82 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { NextIntlClientProvider } from "next-intl"
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server"
+import { notFound } from "next/navigation"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
-import { notFound } from 'next/navigation';
-import { Archivo, Space_Grotesk } from "next/font/google"
+import { routing } from "@/i18n/routing"
 import "../globals.css"
 
-const archivo = Archivo({
-  subsets: ["latin"],
-  variable: "--font-archivo",
-  display: "swap",
-})
+type Props = {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-})
+export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "meta" })
+  return {
+    title: t("title"),
+    description: t("description"),
+    generator: "backendVirtuoso",
+    other: { "page-type": "service", "site-kind": "other" },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      locale: locale === "ko" ? "ko_KR" : "en_US",
+    },
+  }
+}
 
-export const metadata: Metadata = {
-  title: "BE 개발자 황준하 포트폴리오입니다.",
-  description: "신입 백엔드 개발자 황준하의 포트폴리오입니다",
-  generator: "backendVirtuoso",
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 }
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }))
 }
 
-type Props = {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-};
-
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = await params;
+  const { locale } = await params
 
-  // Ensure that the incoming `locale` is valid
-  const isValidLocale = routing.locales.some((l) => l === locale);
-  if (!isValidLocale) {
-    notFound();
+  if (!routing.locales.some((l) => l === locale)) {
+    notFound()
   }
 
-  // Enable static rendering
-  setRequestLocale(locale);
-
-  const messages = await getMessages();
+  setRequestLocale(locale)
+  const messages = await getMessages()
+  const t = await getTranslations()
 
   return (
-    <html lang={locale} suppressHydrationWarning className={`${archivo.variable} ${spaceGrotesk.variable}`}>
-      <body className={`font-sans antialiased`}>
+    <html lang={locale} data-type="service" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className="font-sans antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-foreground focus:px-4 focus:py-2 focus:text-sm focus:text-background"
+        >
+          {t("skip")}
+        </a>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             <Header />
             {children}
-            <SpeedInsights />
             <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
   )
 }
-

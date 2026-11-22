@@ -1,58 +1,53 @@
-"use client"
-
-import { Briefcase } from "lucide-react"
-import { Card } from "@/components/ui/card"
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations, useLocale } from "next-intl"
+import { Section } from "@/components/section"
 import { experiencesData } from "@/data/education"
 
 export function CareerSection() {
-  const t = useTranslations()
-  const locale = useLocale() as 'ko' | 'en'
-  
+  const t = useTranslations("career")
+  const locale = useLocale() as "ko" | "en"
   const experiences = experiencesData[locale]
 
   return (
-    <section id="career" className="relative min-h-screen flex items-center py-24 px-4 bg-background border-t border-border/50">
-      {/* Section Decorator */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
-      <div className="mx-auto max-w-6xl w-full">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">{t("career.title")}</h2>
-          <p className="text-lg text-muted-foreground">{t("career.subtitle")}</p>
-        </div>
+    <Section id="career" title={t("title")} subtitle={t("subtitle")}>
+      <ol className="border-t border-border">
+        {experiences.map((exp) => (
+          <li key={exp.company + exp.period} className="border-b border-border py-8">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+              <h3 className="text-xl font-medium tracking-[-0.01em] text-foreground">{exp.company}</h3>
+              <span className="meta shrink-0">{exp.period}</span>
+            </div>
+            <p className="mt-1 text-sm text-body">{exp.position}</p>
+            <p className="mt-5 text-base leading-[1.75] text-body">{exp.description}</p>
 
-        {/* Experience */}
-        <div className="space-y-6">
-          {experiences.map((exp, index) => (
-            <Card key={index} className="p-6 bg-card border-l-4 border-l-primary/20 hover:border-l-primary/60 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                <div>
-                  <h4 className="text-xl font-bold text-foreground">{exp.company}</h4>
-                  <p className="text-primary font-medium">{exp.position}</p>
-                </div>
-                <span className="text-sm text-muted-foreground mt-2 md:mt-0">{exp.period}</span>
-              </div>
-              <p className="text-muted-foreground mb-4">{exp.description}</p>
-              <div className="mb-4">
-                <h5 className="font-semibold text-foreground mb-2">{t("career.responsibilities")}</h5>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                  {exp.responsibilities.map((resp, idx) => (
-                    <li key={idx} className="text-sm">{resp}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {exp.tech.map((tech, idx) => (
-                  <span key={idx} className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
+            <h4 className="meta mt-7">{t("responsibilities")}</h4>
+            <ul className="mt-3 space-y-3">
+              {exp.responsibilities.map((resp) => {
+                const [lead, ...rest] = resp.split(/:\s/)
+                return (
+                  <li key={resp} className="grid grid-cols-[1rem_1fr] text-[15px] leading-[1.7] text-body">
+                    <span aria-hidden className="mt-[0.7em] block h-px w-2 bg-border-strong" />
+                    <span>
+                      {rest.length > 0 ? (
+                        <>
+                          <span className="font-medium text-foreground">{lead}</span>
+                          {" — "}
+                          {rest.join(": ")}
+                        </>
+                      ) : (
+                        resp
+                      )}
+                    </span>
+                  </li>
+                )
+              })}
+            </ul>
+
+            <p className="meta mt-7" translate="no">
+              {exp.tech.join(" · ")}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </Section>
   )
 }

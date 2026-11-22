@@ -1,53 +1,82 @@
 {
+  "meta": {
+    "title": "Junha Hwang · Backend developer",
+    "description": "Portfolio of Junha Hwang, a junior backend developer building APIs and data pipelines with Java and Spring"
+  },
+  "skip": "Skip to content",
   "nav": {
     "about": "About",
-    "skill": "Skill",
-    "career": "Career",
+    "skill": "Stack",
+    "career": "Experience",
     "education": "Education",
-    "project": "Project",
+    "project": "Projects",
     "contact": "Contact"
   },
   "header": {
-    "name": "Junha Hwang's Portfolio"
+    "name": "Junha Hwang",
+    "home": "Back to top",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "language": "한국어로 보기",
+    "languageShort": "KO",
+    "themeLight": "Switch to light mode",
+    "themeDark": "Switch to dark mode"
   },
   "hero": {
-    "badge": "Backend Developer",
-    "greeting": "Always eager to learn,",
-    "name": "Backend Developer Junha Hwang ",
-    "title": "Portfolio",
-    "description": "Building stable and high-performance backend systems\nthrough scalable server architecture and efficient database design.",
-    "contact": "Contact Me",
-    "resume": "View Resume"
+    "eyebrow": "Junior backend developer · Java, Spring Boot",
+    "name": "Junha Hwang",
+    "role": "Backend developer who finds slow queries and fixes them",
+    "description": "I design APIs and databases and build batch and async processing with Kafka and Redis. During my internship I cut the response time of a SimHash similarity query by 90%.",
+    "resume": "View resume",
+    "contact": "Send an email",
+    "visual": {
+      "file": "todak-be / mail-pipeline",
+      "title": "Todak-Todak email delivery pipeline",
+      "scheduler": "Scheduler",
+      "schedulerMeta": "daily 07:00 · 19:00",
+      "batch": "Spring Batch",
+      "batchMeta": "chunks of 100 ACTIVE subscribers",
+      "kafka": "Kafka",
+      "kafkaMeta": "6 partitions",
+      "consumer": "Mail consumer",
+      "consumerMeta": "concurrency 3",
+      "redis": "Redis",
+      "redisMeta": "quote-of-the-day cache · TTL 12h",
+      "mysql": "MySQL 8",
+      "mysqlMeta": "subscribers · send history",
+      "open": "View project details"
+    }
   },
   "about": {
-    "title": "About Me",
-    "subtitle": "Let me introduce myself",
+    "title": "About",
+    "subtitle": "I like following a problem down to its cause",
     "whoiam": {
-      "title": "Who I Am",
-      "desc": "I'm a junior backend developer who enjoys problem-solving. I'm interested in efficient code and scalable architecture design."
+      "title": "Who I am",
+      "desc": "A junior backend developer who enjoys solving problems. I care about efficient code and architecture that can grow."
     },
     "whatido": {
-      "title": "What I Do",
-      "desc": "I develop stable backend systems through RESTful API design, database optimization, and server architecture construction."
+      "title": "What I do",
+      "desc": "I build stable backend systems through RESTful API design, database tuning and server architecture."
     },
     "whatlove": {
-      "title": "What I Love",
-      "desc": "I love learning and applying new technologies, and I'm passionate about creating better services through team collaboration."
+      "title": "What I enjoy",
+      "desc": "Learning a new technology and putting it into a real service, and building better services together with a team."
     }
   },
   "skill": {
-    "title": "Tech Stack",
-    "subtitle": "Providing optimal solutions using various technologies",
+    "title": "Tech stack",
+    "subtitle": "Tools I have used at work and in projects",
     "frontend": "Frontend",
     "backend": "Backend",
     "database": "Database",
     "orm": "ORM",
     "tools": "Tools",
-    "certificate": "Certificate"
+    "certificate": "Certificates"
   },
   "project": {
     "title": "Projects",
-    "subtitle": "Practical project experience applicable to real-world scenarios",
+    "subtitle": "{count} team, personal and course projects",
+    "filterLabel": "Project type",
     "filter": {
       "all": "All",
       "team": "Team",
@@ -59,61 +88,59 @@
       "personal": "Personal",
       "course": "Course"
     },
-    "code": "Code",
-    "demo": "Demo",
-    "empty": "No projects in this category.",
-    "showMore": "Show More",
-    "showLess": "Show Less",
+    "code": "View code",
+    "demo": "Open demo",
+    "moreTech": "+{count} more",
+    "empty": "No projects of this type",
+    "showMore": "Show all projects",
+    "showLess": "Show fewer",
     "detail": {
-      "back": "Back to Projects",
+      "back": "Back to projects",
       "notFound": "Project not found",
-      "period": "Project Period",
-      "team": "Team Composition",
-      "techStack": "Tech Stack",
-      "viewDetail": "View Details",
+      "period": "Period",
+      "team": "Team",
+      "techStack": "Tech stack",
+      "viewDetail": "View details",
       "service": "Service",
-      "highlights": "Key Highlights",
+      "highlights": "Key results",
       "diagrams": "Diagrams",
-      "erd": "ERD (Entity Relationship Diagram)",
-      "architecture": "System Architecture",
-      "problems": "Problem Analysis",
-      "solutions": "Solution Process",
+      "erd": "ERD",
+      "architecture": "System architecture",
+      "problems": "Problems",
+      "solutions": "Solutions",
       "results": "Results"
     }
   },
   "career": {
-    "title": "Career",
-    "subtitle": "Work experience and key achievements",
-    "responsibilities": "Key Responsibilities"
+    "title": "Experience",
+    "subtitle": "What I worked on during my internship, and what changed",
+    "responsibilities": "Responsibilities"
   },
   "education": {
-    "title": "Education & Certifications",
-    "subtitle": "Academic background and professional certifications",
+    "title": "Education and certificates",
+    "subtitle": "Degrees, training and certificates",
     "academic": {
-      "title": "Academic"
+      "title": "Degrees"
     },
     "training": {
       "title": "Training"
     },
     "cert": {
-      "title": "Certifications"
+      "title": "Certificates"
     }
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Feel free to reach out if you'd like to work together",
+    "subtitle": "Job offers and collaboration requests by email",
     "email": "Email",
-    "phone": "Phone",
     "github": "GitHub",
     "linkedin": "LinkedIn",
-    "send": "Send Email"
+    "resume": "Resume",
+    "resumeValue": "Open the PDF",
+    "send": "Send an email"
   },
   "footer": {
     "name": "Junha Hwang",
-    "description": "Building stable and high-performance backend systems through scalable server architecture and efficient database design.",
-    "quicklinks": "Quick Links",
-    "connect": "Connect",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved"
   }
 }
-

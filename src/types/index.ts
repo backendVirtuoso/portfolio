@@ -1,5 +1,3 @@
-import type { LucideIcon } from "lucide-react"
-
 export type ProjectCategory = "all" | "team" | "personal" | "course"
 
 export interface Project {
@@ -40,7 +38,6 @@ export interface Project {
 
 export interface TechStack {
   category: string
-  icon: LucideIcon
   items: string[]
 }
 
@@ -48,7 +45,7 @@ export interface Education {
   school: string
   degree: string
   period: string
-  description: string
+  description?: string
 }
 
 export interface Certification {
